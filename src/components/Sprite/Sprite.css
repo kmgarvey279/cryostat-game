@@ -1,0 +1,34 @@
+div.sprite{
+  z-index: 100;
+  position: absolute;
+  bottom: 15px;
+  right: -13px;
+  break-inside: avoid;
+}
+
+div.boss-sprite {
+  z-index: 110;
+  position: absolute;
+  break-inside: avoid;
+  bottom: -55px;
+  right: -8px;
+}
+
+div#fall{
+  right: 4px;
+  bottom: 5px;
+  animation-name: fall;
+  animation-duration: 1s;
+}
+  @keyframes fall {
+    0%  {transform: rotate(90deg) scale(1.0);}
+    25%  {transform: rotate(180deg) scale(0.5);}
+    50%  {transform: rotate(270deg) scale(0.0);}
+    75%  {transform: rotate(360deg) scale(-0.5);}
+  }
+
+
+
+
+
+

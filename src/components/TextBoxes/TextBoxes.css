@@ -1,0 +1,53 @@
+div#wrap {
+  position: relative;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 10%;
+  overflow: auto;
+}
+
+div#content {
+  background-color: yellow;
+  right: 300px;
+  margin-top: 200px;
+  border: 3px solid orange;
+  width: 70%;
+  height: 100px;
+  opacity: 0.9;
+}
+
+div.special {
+  background-color: whitesmoke !important;
+  border: 3px solid slategrey !important;
+}
+  div.special span.next-button-prompt {
+    border: solid lightgray 1px;
+    padding: 1px; 
+  }
+  div.special div.next-prompt {
+    padding-top: 15px;
+    color: lightgray;
+  }
+
+div#text {
+  position: relative;
+  margin-top: 15px;
+}
+
+div#dialogueText {
+  position: relative;
+  top: -10px;
+}
+
+.next-button-prompt {
+  border: solid orange 1px;
+  padding: 1px; 
+}
+
+.next-prompt {
+  padding-top: 15px;
+  color: orange;
+}

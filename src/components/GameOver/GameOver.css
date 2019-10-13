@@ -1,0 +1,8 @@
+div#select {
+  background: linear-gradient(90deg, rgba(242,122,6,0) 0%, red 50%, rgba(0,212,255,0) 100%);
+}
+
+div.game-over {
+  color: red;
+  padding: 10px;
+}
