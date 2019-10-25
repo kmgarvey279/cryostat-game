@@ -56,7 +56,7 @@ export function updateTileArray(newArray) {
 const initialState = {
     status: 'none',
     location: 0,
-    health: 1000,
+    health: 100,
     tileArr: [57, 58, 70, 71, 83, 84, 96, 97, 109, 110],
     name: '',
     titles: []

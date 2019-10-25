@@ -29,7 +29,9 @@ class Options extends React.Component {
     } else if (event.keyCode === 32 || event.keyCode === 13) {
       if (this.props.text.activeText.includes("terminal")){
         this.props.dispatch(soundsModule.changeEffect('confirm'));
-      }
+      } else if(this.props.text.activeText === 'save') {
+        this.props.dispatch(soundsModule.changeEffect('merge'));
+      };
       this.props.dispatch(textModule.selectOption(this.props.menu.selectedOption - 1));
       this.props.dispatch(textModule.setParagraph(this.props.text.paragraph + 1));
       this.props.dispatch(textModule.setLine(0));

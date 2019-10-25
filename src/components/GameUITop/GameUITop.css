@@ -6,7 +6,7 @@ div#UI-content {
   z-index: 10;
   display: inline-block;
   width: 600px;
-  border: solid black 1px;
+
   border-radius: 5px;
   height: 60px;
   position: absolute;
@@ -18,35 +18,47 @@ div#UI-content {
 
 #hp-bar {
   position: absolute;
-  left: 10%;
+  margin-top: 15px;
+  left: -18px;
 }
 
 #weapon {
   position: absolute;
   left: 0;
-  right: 15%;
+  right: 12%;
   margin: auto;
   display: block;
-  margin-top: 6px;
+  margin-top: 10px;
   height: 35px;
-  width: 60px;
-  border: double black 1px;
+  width: 40px;
+  border: solid black 1.5px;
+  border-radius: 5px;
   padding-bottom: 10px;
-  background-color: cornflowerblue;
+  background-color: cadetblue;
 }
 
 #skill {
   position: absolute;
-  left: 15%;
+  left: 10.5%;
   right: 0;
   margin: auto;
   display: block;
   margin-top: 6px;
   height: 35px;
-  width: 60px;
-  border: double black 1px;
+  width: 40px;
+  border-radius: 5px;
+  border: solid black 1.5px;
   padding-bottom: 10px;
-  background-color: cornflowerblue;
+  background-color: cadetblue;
+}
+
+#current-skill {
+  padding-top: 5px;
+}
+
+#current-weapon {
+  padding-top: 6px;
+  padding-left: 2px;
 }
 
 img {
@@ -54,9 +66,48 @@ img {
   bottom: 10px;
 }
 
+#selected-items {
+  position: absolute;
+  left: 235px;
+  top: 0.5px;
+  z-index: 10;
+}
+
 #entangle-bar {
   position: absolute;
-  right: 10%;
+  right: -5%;
+}
+
+#heart-icon {
+  position: absolute;
+  left: -80%;
+  top: -6%;
+}
+
+#particle-icon {
+  position: absolute;
+  right: -140%;
+  top: -1%;
+}
+
+#particle-percentage {
+  color: black;
+  z-index: 10;
+  position: absolute;
+  left: -235px;
+  top: 20px;
+  font-weight: bold;
+}
+
+#mp {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  z-index: 0;
+}
+
+.single-digit {
+  padding-left: 4px;
 }
 
 

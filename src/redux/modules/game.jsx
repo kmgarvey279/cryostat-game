@@ -10,14 +10,14 @@ export const TOGGLE_EAST = "TOGGLE_EAST";
 export const TOGGLE_NORTH = "TOGGLE_NORTH";
 export const TOGGLE_SOUTH = "TOGGLE_SOUTH";
 export const TOGGLE_FIRE = "TOGGLE_FIRE";
-export const UPDATE_BULLET_COUNT = "UPDATE_BULLET_COUNT";
-export const UPDATE_PLATFORM_TIMERS = "UPDATE_PLATFORM_TIMERS";
+export const UPDATE_TIMERS = "UPDATE_TIMERS";
 export const CLEAR_TIMERS = "CLEAR_TIMERS";
 export const UPDATE_FILTER = "UPDATE_FILTER";
 export const LOAD_GAME = "LOAD_GAME";
 export const SET_FILE = "SET_FILE";
 export const SET_BRANCH = "SET_BRANCH";
 export const SET_EYE = "SET_EYE";
+export const CHANGE_DESTINATION = "CHANGE_DESTINATION";
 
 
 //Action Creators
@@ -88,17 +88,10 @@ export function toggleFire(newBool) {
   }
 };
 
-  export function updateBulletCount(newCount) {
+  export function updateTimers(newTimerArr) {
     return {
-      type: UPDATE_BULLET_COUNT,
-      bulletCount: newCount
-    }
-  };
-
-  export function updatePlatformTimers(newTimerArr) {
-    return {
-      type: UPDATE_PLATFORM_TIMERS,
-      platformTimers: newTimerArr
+      type: UPDATE_TIMERS,
+      timers: newTimerArr
     }
   };
   
@@ -112,9 +105,7 @@ export function toggleFire(newBool) {
   export function clearTimers() {
     return {
       type: CLEAR_TIMERS,
-      enemyTimers: [],
-      switchTimers: [],
-      platformTimers: []
+      timers: [],
     }
   };
 
@@ -139,6 +130,13 @@ export function toggleFire(newBool) {
     }
   }
 
+  export function changeDestination(destination) {
+    return {
+      type: CHANGE_DESTINATION,
+      destination: destination
+    }
+  }
+
 //Initial State
 const initialState = {
   branch: 1,
@@ -146,24 +144,22 @@ const initialState = {
   previousRoomId: null,
   gameState: 'title',
   respawnPoint: '',
-  enemyTimers: [],
-  switchTimers: [],
-  platformTimers: [],
+  timers: [],
   east: false,
   west: false,
   south: false,
   north: false,
   fire: false,
-  bulletCount: 0,
   filter: 'spooky',
   file: '',
-  eye: 'none'
+  eye: 'none',
+  destination: ''
 }
 
 //Reducer
 const gameReducer = (state = initialState, action) => {
   let newState;
-  const { gameToLoad, gameState, roomId, respawnPoint, previousRoomId, activeText, north, east, west, south, fire, bulletCount, enemyTimers, switchTimers, platformTimers, filter, file, branch, eye} = action;
+  const { gameToLoad, gameState, roomId, respawnPoint, previousRoomId, activeText, north, east, west, south, fire, timers, filter, file, branch, eye, destination} = action;
   switch (action.type) {
     case LOAD_GAME:
       return gameToLoad;
@@ -212,21 +208,14 @@ const gameReducer = (state = initialState, action) => {
         fire: fire
       });
       return newState;
-    case UPDATE_BULLET_COUNT:
+    case UPDATE_TIMERS:
       newState = Object.assign({}, state, {
-        bulletCount: bulletCount
-      });
-      return newState;
-    case UPDATE_PLATFORM_TIMERS:
-      newState = Object.assign({}, state, {
-        platformTimers: platformTimers
+        timers: timers
       });
       return newState;
     case CLEAR_TIMERS:
       newState = Object.assign({}, state, {
-        enemyTimers: enemyTimers,
-        switchTimers: switchTimers,
-        platformTimers: platformTimers
+        timers: []
       });
       return newState;
     case UPDATE_FILTER:
@@ -250,6 +239,11 @@ const gameReducer = (state = initialState, action) => {
         eye: eye
       });
       return newState;
+    case CHANGE_DESTINATION:
+      newState = Object.assign({}, state, {
+        destination: destination
+      });
+        return newState;
   default:
     return state;
   }

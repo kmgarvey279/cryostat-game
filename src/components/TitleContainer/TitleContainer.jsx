@@ -57,6 +57,8 @@ class TitleContainer extends React.Component {
     //Title Screen
     if (this.props.menu.selectedMenu == 'title' && this.props.game.gameState == 'postExitBranch'){
       this.props.dispatch(menuModule.changeMenu('branchSelect'));
+      this.props.dispatch(soundsModule.changeEffect('ping'));
+      this.props.dispatch(soundsModule.changeMusic('title'));
     } else if (this.props.menu.selectedMenu == 'title') {
       this.props.dispatch(menuModule.changeMenu('select'));
       this.props.dispatch(soundsModule.changeEffect('ping'));
@@ -81,15 +83,16 @@ class TitleContainer extends React.Component {
             this.props.dispatch(menuModule.changeMenu('error'));
           } else {
             this.props.handleStart();
+            this.props.dispatch(menuModule.changeOption(1));
             this.props.history.push('/game');
           };
         } else {
-          alert('file is empty');
+          this.props.dispatch(soundsModule.changeEffect('doorLocked'));
         };
       } else if (selectNum == 4) {
-        alert('unable to delete');
+        this.props.dispatch(soundsModule.changeEffect('doorLocked'));
       } else if (selectNum == 5) {
-        alert('unable to copy');
+        this.props.dispatch(soundsModule.changeEffect('doorLocked'));
       } else if (selectNum == 6) {
         this.props.dispatch(menuModule.changeMenu('title'));
       }
@@ -104,6 +107,7 @@ class TitleContainer extends React.Component {
         }
         this.props.history.push('/game');
         this.props.dispatch(menuModule.changeMenu('title'));
+        this.props.dispatch(menuModule.changeOption(1));
       } else if (selectNum == 4) {
         this.props.dispatch(menuModule.changeMenu('delete'));
       } else if (selectNum == 5) {
@@ -114,6 +118,7 @@ class TitleContainer extends React.Component {
     //File Delete
     } else if (this.props.menu.selectedMenu == 'delete'){
       if (selectNum <= 3) {
+        this.props.dispatch(soundsModule.changeEffect('dead'));
         this.props.dispatch(savesModule.eraseGame(selectNum))
       } else if (selectNum == 4) {
         this.props.dispatch(menuModule.changeMenu('select'));
@@ -136,11 +141,11 @@ class TitleContainer extends React.Component {
       }
     //Select file to copy to
     } else if (this.props.menu.selectedMenu == 'copySelected'){
-      if (selectNum >= 3) {
-        if (selectNum == this.props.menu.gameToCopy) {
-          //can't copy to itself!
+      if (selectNum <= 3) {
+        if (selectNum === this.props.menu.gameToCopy) {
         } else {
-          this.props.dispatch(savesModule.copyGame(this.props.saves[selectNum], this.props.menu.gameToCopy));
+          this.props.dispatch(soundsModule.changeEffect('merge'));
+          this.props.dispatch(savesModule.copyGame(selectNum, this.props.saves[this.props.menu.gameToCopy]));
           this.props.dispatch(menuModule.setGameToCopy(null));
         }
       } else if (selectNum == 4) {

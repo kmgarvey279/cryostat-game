@@ -20,7 +20,7 @@ import slide from './slide-2.wav';
 import title from './krank_sounds/industry/unlink.wav';
 import hit from './Jump4.wav';
 import dead from './Randomize11.wav';
-import warpPad from './krank_sounds/water/wall.wav';
+import warpPad from './krank_sounds/industry/exit.wav';
 import shot from './shot.mp3';
 import wind from './Wind.ogg';
 import metal from './metal.mp3';
@@ -35,6 +35,8 @@ import phone from './telephone.mp3';
 import pickUp from './phone-pick-up.wav';
 import regen from './potion-drink-regen.wav';
 import ping from './ping.mp3';
+import entangle from './ecofuture.wav';
+import merge from './krank_sounds/water/magnet_start.wav';
 
 const effects = {
   shot: shot,
@@ -73,7 +75,9 @@ const effects = {
   phone: phone,
   pickUp: pickUp,
   regen: regen,
-  ping: ping
+  ping: ping,
+  entangle: entangle,
+  merge: merge
 };
 
 export default effects

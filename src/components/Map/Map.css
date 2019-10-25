@@ -11,23 +11,26 @@
 
   div#innerMap {
     margin-top: 20px;
-    width: 320px;
     min-width: 320px;
     max-width: 320px;
-    height: 500px;
     margin-left: auto;
     margin-right: auto;
-    min-height: 500px;
-    max-height: 500px;
+    min-height: 480px;
+    max-height: 480px;
     text-align: center;
     z-index: 200;
+    column-gap: 30px;
     -webkit-column-count: 3;
     -moz-column-count: 3;
     column-count: 3;
   }
 
-  div#mapKey {
+  #mapKey {
+    margin-left: auto;
+    margin-right: auto;
     position: relative;
-    top: -60px;
-    color: white;
+    width: 50%;
+    color: black;
+    background: rgba(0,238,255,1);
+    background: linear-gradient(90deg, rgba(167,1,1,0) 0%, rgba(0,238,255,1) 30%, rgba(0,238,255,1) 50%, rgba(0,238,255,1) 70%, rgba(241,255,0,0) 100%);
   }

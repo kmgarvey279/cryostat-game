@@ -5,6 +5,8 @@ import title from './The_Endless_Journey.mp3';
 import intro from './ville_seppanen.mp3';
 import spookyTitle from './Cold Silence.mp3';
 import array from './Spacearray.ogg';
+import gameOver from './Piano Loop.wav';
+import ghost from './Space Sprinkles.mp3';
 
 
 
@@ -15,7 +17,9 @@ const tracks = {
     boss: boss,
     machine: machine,
     array: array,
-    spookyTitle: spookyTitle
+    spookyTitle: spookyTitle,
+    gameOver: gameOver,
+    ghost: ghost
   };
   
   export default tracks

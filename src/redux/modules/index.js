@@ -13,6 +13,7 @@ import flagReducer from './flags';
 import soundsReducer from './sounds';
 import savesReducer from './save-data';
 import bossReducer from './boss/boss';
+import npcsReducer from './npcs';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
@@ -30,7 +31,8 @@ const rootReducer = combineReducers({
   text: textReducer,
   sounds: soundsReducer,
   saves: savesReducer,
-  boss: bossReducer
+  boss: bossReducer,
+  npcs: npcsReducer
 });
 
 export default rootReducer;

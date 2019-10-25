@@ -10,31 +10,23 @@ function HealthBar(props) {
   } else {
     barType = 'entanglement-bar';
   };
-  let barColor;
-  if(props.health <= 30) {
-    barColor = 'low';
-  } else if (props.health <= 50) {
-    barColor = 'mid';
-  } else {
-    barColor = 'high';
-  };
   let particleEffect = null;
   if(props.type == 'entanglement') {
-    particleEffect = <img src={playerParticleEast} width="120px" height="40px"/>;
+    particleEffect = <img src={playerParticleEast} width="160px" height="80px"/>;
   }
   return (
-    <div className={barType} id={barColor}>
+    <div className={barType}>
         <span id="particle-effect">{particleEffect}</span>
-        <span className={props.health >= 20 ? 'hp-full' : 'hp-empty'} id="hp-10"></span>
-        <span className={props.health >= 20 ? 'hp-full' : 'hp-empty'} id="hp-20"></span>
-        <span className={props.health >= 30 ? 'hp-full' : 'hp-empty'} id="hp-30"></span>
-        <span className={props.health >= 40 ? 'hp-full' : 'hp-empty'} id="hp-40"></span>
-        <span className={props.health >= 50 ? 'hp-full' : 'hp-empty'} id="hp-50"></span>
-        <span className={props.health >= 60 ? 'hp-full' : 'hp-empty'} id="hp-60"></span>
-        <span className={props.health >= 70 ? 'hp-full' : 'hp-empty'} id="hp-70"></span>
-        <span className={props.health >= 80 ? 'hp-full' : 'hp-empty'} id="hp-80"></span>
-        <span className={props.health >= 90 ? 'hp-full' : 'hp-empty'} id="hp-90"></span>
-        <span className={props.health >= 100 ? 'hp-full' : 'hp-empty'} id="hp-100"></span>
+        <span className={props.magic >= 20 ? 'hp-full' : 'hp-empty'} id="hp-10"></span>
+        <span className={props.magic >= 20 ? 'hp-full' : 'hp-empty'} id="hp-20"></span>
+        <span className={props.magic >= 30 ? 'hp-full' : 'hp-empty'} id="hp-30"></span>
+        <span className={props.magic >= 40 ? 'hp-full' : 'hp-empty'} id="hp-40"></span>
+        <span className={props.magic >= 50 ? 'hp-full' : 'hp-empty'} id="hp-50"></span>
+        <span className={props.magic >= 60 ? 'hp-full' : 'hp-empty'} id="hp-60"></span>
+        <span className={props.magic >= 70 ? 'hp-full' : 'hp-empty'} id="hp-70"></span>
+        <span className={props.magic >= 80 ? 'hp-full' : 'hp-empty'} id="hp-80"></span>
+        <span className={props.magic >= 90 ? 'hp-full' : 'hp-empty'} id="hp-90"></span>
+        <span className={props.magic >= 100 ? 'hp-full' : 'hp-empty'} id="hp-100"></span>
     </div>
   );
 }

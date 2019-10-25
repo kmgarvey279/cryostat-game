@@ -65,6 +65,18 @@ div.file#selectedFile {
   background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(140,177,219,1) 100%);
 }
 
+div.file#selectedVoidFile {
+  border: solid whitesmoke 1px;
+  background: lightgray;
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, darkslategray 100%);
+}
+
+div.file#voidFile {
+  border: solid darkgray 1px;
+  background: lightgray;
+  background: linear-gradient(0deg, gray 0%, darkslategray 100%);
+}
+
 .button-prompt {
   background-color: slateblue;
   color: black;

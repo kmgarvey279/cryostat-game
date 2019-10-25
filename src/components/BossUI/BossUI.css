@@ -27,3 +27,47 @@ div.boss-ui-wrap {
         font-size: 20px;
         color: white;  
     }
+
+
+  span.boss-hp-full {
+    display: inline-block;
+    height: 51px;
+    width: 50px;
+  }
+  span.boss-hp-empty {
+      display: inline-block;
+      height: 45px;
+      width: 50px;
+      background: black;
+      position:relative;
+      z-index: 3;
+  }
+  
+  div.boss-health-bar {
+      height: 51px;
+      width: 600px;
+      border: solid black 1.5px;
+      border-radius: 10px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 666px;
+  }
+
+  #boss-icon {
+    z-index: 1;
+    position: relative;
+    top: -5px;
+  }
+
+      div#low.boss-health-bar {
+          background: rgb(62,5,5);
+          background: linear-gradient(0deg, rgba(62,5,5,1) 0%, rgba(255,0,0,1) 100%);
+      }
+      div#mid.boss-health-bar {
+          background: rgb(190,101,10);
+          background: linear-gradient(0deg, rgba(190,101,10,1) 0%, rgba(231,255,0,1) 100%);
+      }
+      div#high.boss-health-bar {
+          background: rgb(5,48,4);
+          background: linear-gradient(0deg, rgba(5,48,4,1) 0%, rgba(10,255,0,1) 100%);
+      }

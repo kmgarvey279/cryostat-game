@@ -5,6 +5,7 @@ import Item from '../Item/Item';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import alert from '../../assets/images/room/alert.png';
+import NPCs from '../NPCs/NPCs';
 import lightningRight from '../../assets/images/room/lightningRight.gif';
 import * as roomConsts from '../../redux/modules/rooms/roomConstants';
 import './Square.css';
@@ -17,6 +18,8 @@ function Square(props){
     otherContent = <div>{<img id="alert" src={alert} weight="50" height="50" />}</div>
   } else if (props.value == 'D') {
     otherContent = <Door content={props.content} doors={props.doors}/>
+  } else if (props.npcs.location === props.squareId) {
+    otherContent = <NPCs npcs={props.npcs} />
   } else if (props.value == '$') {
     otherContent = <Item content={props.content}/>
   } else if (props.value == 'L') {
@@ -74,7 +77,8 @@ Square.propTypes = {
   doors: PropTypes.object,
   eye: PropTypes.string,
   explosion: PropTypes.bool,
-  warning: PropTypes.bool
+  warning: PropTypes.bool,
+  npcs: PropTypes.object
 };
 
 export default connect()(Square);

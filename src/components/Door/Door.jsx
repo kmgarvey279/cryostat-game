@@ -2,6 +2,7 @@ import * as roomConsts from '../../redux/modules/rooms/roomConstants';
 import React from 'react';
 import PropTypes from 'prop-types';
 import './Door.css';
+import doorReducer from '../../redux/modules/doors';
 
 function Door(props){
   let doorArr = props.content.find(function(content) {
@@ -36,7 +37,6 @@ function Door(props){
     } else if (door.status == 'open'){
       return (
         <div id="doorNorth">
-          {roomConsts.sprites['openDoorNorth']}
         </div>
       )
     }
@@ -68,12 +68,36 @@ function Door(props){
     } else if (door.status == 'open'){
       return (
         <div id="doorEast">
-          {roomConsts.sprites['openDoorEast']}
         </div>
       )
     }
   } else if (door.direction == 'south') {
-    if (door.isLocked === true) {
+    if(door.isLocked === 'keyCard1') {
+      if(door.status === 'closed') {
+        return (
+          <div id="doorSouth">
+            {roomConsts.sprites['unlockedDoorSouthKey1']}
+          </div>
+        )
+      } else if (door.status === 'opening') {
+        return (
+          <div id="doorSouth">
+            {roomConsts.sprites['openingDoorSouthKey1']}
+          </div>
+        )
+      } else if (door.status === 'closing') {
+        return (
+          <div id="doorSouth">
+            {roomConsts.sprites['closingDoorSouthKey1']}
+          </div>
+        )
+      } else if (door.status === 'open') {
+        return (
+          <div id="doorSouth">
+          </div>
+        )
+      }; 
+    } else if (door.isLocked === true) {
       return (
         <div id="doorSouth">
           {roomConsts.sprites['lockedDoorSouth']}
@@ -100,12 +124,36 @@ function Door(props){
     } else if (door.status == 'open'){
       return (
         <div id="doorSouth">
-          {roomConsts.sprites['openDoorSouth']}
         </div>
       )
-    }
+    };
   } else if (door.direction == 'west') {
-    if (door.isLocked === true) {
+    if(door.isLocked === 'keyCard2') {
+      if(door.status === 'closed') {
+        return (
+          <div id="doorWest">
+            {roomConsts.sprites['unlockedDoorWestKey2']}
+          </div>
+        )
+      } else if (door.status === 'opening') {
+        return (
+          <div id="doorWest">
+            {roomConsts.sprites['openingDoorWestKey2']}
+          </div>
+        )
+      } else if (door.status === 'closing') {
+        return (
+          <div id="doorWest">
+            {roomConsts.sprites['closingDoorWestKey2']}
+          </div>
+        )
+      } else if (door.status === 'open') {
+        return (
+          <div id="doorWest">
+          </div>
+        )
+      };
+    } else if (door.isLocked === true) {
       return (
         <div id="doorWest">
           {roomConsts.sprites['lockedDoorWest']}
@@ -132,7 +180,6 @@ function Door(props){
     } else if (door.status == 'open'){
       return (
         <div id="doorWest">
-          {roomConsts.sprites['openDoorWest']}
         </div>
       )
     }

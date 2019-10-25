@@ -43,11 +43,13 @@ class GameOver extends React.Component {
 
   selectOption(){
     if (this.props.menu.selectedOption === 1) {
-    this.props.dispatch(playerModule.updatePlayerHealth(100));
+    this.props.nullAll();
+    this.props.dispatch(playerModule.updatePlayerHealth(50));
     this.props.handleStart();
   } else if (this.props.menu.selectedOption === 2) {
     this.props.dispatch(menuModule.changeMenu('title'));
     this.props.history.push('/');
+    window.location.reload();
     }
   }
 
@@ -56,8 +58,7 @@ class GameOver extends React.Component {
       return (
         <div className="game-over">
           <h1>Branch Terminated</h1>
-          <img id="branch" src={branchEnd} width="1000" height="300"/>
-          <div id='select'><h4>Try Again</h4></div>
+          <div id='select'><h4>Return to Last Junction</h4></div>
           <div><h4>Embrace the Void</h4></div>
         </div>
       );
@@ -65,8 +66,7 @@ class GameOver extends React.Component {
       return (
         <div className="game-over">
           <h1>Branch Terminated</h1>
-          <img id="branch" src={branchEnd} width="1000" height="300"/>
-          <div><h4>Try Again</h4></div>
+          <div><h4>Return to Last Junction</h4></div>
           <div id='select'><h4>Embrace the Void</h4></div>
         </div>
       );
@@ -78,7 +78,8 @@ class GameOver extends React.Component {
 GameOver.propTypes = {
   menu: PropTypes.object.isRequired,
   player: PropTypes.object.isRequired,
-  handleStart: PropTypes.func.isRequired
+  handleStart: PropTypes.func.isRequired,
+  nullAll: PropTypes.func.isRequired
 };
 
 function mapDispatchToProps(dispatch) {

@@ -18,6 +18,8 @@ export function saveGame(file, player, flags, game, maps, doors) {
   }
 };
 export function copyGame(file, fileToCopy) {
+  console.log(file)
+  console.log(fileToCopy)
   return {
     type: COPY_GAME,
     file: file,

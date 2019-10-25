@@ -22,7 +22,8 @@ function CurrentRoom(props){
           warning={square.warning}
           player={props.player}
           doors={props.doors}
-          eye={props.game.eye}/>
+          eye={props.game.eye}
+          npcs={props.npcs}/>
         </div>;
       })};
     </div>
@@ -33,7 +34,8 @@ CurrentRoom.propTypes = {
   game: PropTypes.object.isRequired,
   currentRoom: PropTypes.object.isRequired,
   player: PropTypes.object,
-  doors: PropTypes.object
+  doors: PropTypes.object,
+  npcs: PropTypes.object
 };
 
 export default CurrentRoom;

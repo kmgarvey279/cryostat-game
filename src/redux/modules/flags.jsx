@@ -19,24 +19,18 @@ export function triggerFlag(flagId) {
 
 //Initial State
 const initialState = {
-  //first conversation (approch door)
   1: {triggered: false},
-  //second conversation (push first switch)
   2: {triggered: false},
-  //third coversation (dead end in room 7)
   3: {triggered: false},
-  //fourth conversation (unsolvable puzzle in room 3)
   4: {triggered: false},
-  //fifth conversation (enter room 4)
   5: {triggered: false},
-  //sixth conversation (machine online)
   6: {triggered: false},
-  //seventh conversation (new branch)
   7: {triggered: false},
-  //8th conversation (escape!)
   8: {triggered: false},
-  //9th conversation (another new branch)
-  9: {triggered: false}
+  9: {triggered: false},
+  10: {triggered: false},
+  11: {triggered: false},
+  12: {triggered: false}
 }
 
 //Reducer

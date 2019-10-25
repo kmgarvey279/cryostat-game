@@ -5,7 +5,7 @@ import './Speaker.css';
 function Speaker(props){
   return (
     <div id="speaker">
-      {props.speaker}
+      <span id="speaker-text">{props.speaker}</span>
     </div>
   )
 }

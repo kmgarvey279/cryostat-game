@@ -9,7 +9,7 @@ function ItemGet(props){
   let description = text.flavorText[props.newItem]
   return (
     <div id="wrap">
-      <div id="content">
+      <div id="item-content">
         <div id="header">{description[0]}</div>
         <div id="item-icon">{items.sprites[props.newItem]}</div>
         <span id="item-text">{description[1]}</span>

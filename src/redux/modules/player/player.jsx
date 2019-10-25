@@ -1,6 +1,7 @@
 import React from 'react';
 
 //Constants
+export const UPDATE_PLAYER_NAME = "UPDATE_PLAYER_NAME";
 export const UPDATE_PLAYER_HEALTH = "UPDATE_PLAYER_HEALTH";
 export const UPDATE_PLAYER_STATUS = "UPDATE_PLAYER_STATUS";
 export const UPDATE_PLAYER_LOCATION = "UPDATE_PLAYER_LOCATION";
@@ -12,6 +13,7 @@ export const ADD_WEAPON_TO_INVENTORY = "ADD_WEAPON_TO_INVENTORY";
 export const ADD_ITEM_TO_INVENTORY = "ADD_ITEM_TO_INVENTORY";
 export const UPDATE_NEW_ITEM = "UPDATE_NEW_ITEM";
 export const LOAD_PLAYER = "LOAD_PLAYER";
+export const UPDATE_ENTANGLEMENT = "UPDATE_ENTANGLEMENT";
 
 //Action Creators
 export function loadPlayer(playerToLoad) {
@@ -20,7 +22,12 @@ export function loadPlayer(playerToLoad) {
     playerToLoad: playerToLoad
   }
 };
-
+export function updatePlayerName(newName) {
+  return {
+    type: UPDATE_PLAYER_NAME,
+    name: newName
+  };
+}
 export function updatePlayerHealth(newHealth) {
   return {
     type: UPDATE_PLAYER_HEALTH,
@@ -37,12 +44,6 @@ export function updatePlayerDirection(newDirection) {
   return {
     type: UPDATE_PLAYER_DIRECTION,
     direction: newDirection
-  };
-}
-export function toggleInvincibility(newBool) {
-  return {
-    type: TOGGLE_INVINCIBILITY,
-    invincibility: newBool
   };
 }
 export function updateScore(newScore) {
@@ -82,11 +83,20 @@ export function updateNewItem(newItem){
   }
 }
 
+export function updateEntanglement(entanglement){
+  return {
+    type: UPDATE_ENTANGLEMENT,
+    entanglement: entanglement
+  }
+}
+
 
 //Initial State
 const initialState = {
     name: '???',
-    health: 60,
+    health: 50,
+    entanglement: 0,
+    magic: 0,
     status: 'normal',
     score: 0,
     direction: 'north',
@@ -100,11 +110,16 @@ const initialState = {
 //Reducer
 export default function playerReducer(state = initialState, action){
   let newState;
-  const { playerToLoad, health, location, direction, invincibility, score, currentWeapon, status, weapons, items, newItem } = action;
+  const { playerToLoad, name, health, location, direction, score, currentWeapon, status, weapons, items, newItem, entanglement } = action;
 
   switch (action.type) {
     case LOAD_PLAYER:
       return playerToLoad;
+    case UPDATE_PLAYER_NAME:
+      newState = Object.assign({}, state, {
+        name: name
+      });
+      return newState;
     case UPDATE_PLAYER_HEALTH:
         newState = Object.assign({}, state, {
           health: health
@@ -120,11 +135,6 @@ export default function playerReducer(state = initialState, action){
           direction: direction
         });
         return newState;
-    case TOGGLE_INVINCIBILITY:
-      newState = Object.assign({}, state, {
-        invincibility: invincibility
-      })
-      return newState;
     case UPDATE_SCORE:
       newState = Object.assign({}, state, {
         score: score
@@ -153,6 +163,11 @@ export default function playerReducer(state = initialState, action){
     case UPDATE_NEW_ITEM:
       newState = Object.assign({}, state, {
         newItem: newItem
+      });
+      return newState;
+    case UPDATE_ENTANGLEMENT:
+      newState = Object.assign({}, state, {
+        entanglement: entanglement
       });
       return newState;
     default:

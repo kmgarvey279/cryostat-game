@@ -1,13 +1,12 @@
 div#empty{
   display: none;
   margin: 5px;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
   max-width: 105px;
   min-width: 105px;
   max-height: 105px;
   min-height: 105px;
+  border: 2px solid;
   vertical-align: top;
   display: inline-block;
   z-index: 2000;
@@ -21,9 +20,8 @@ div#empty{
 }
 div#current {
   background-color: lightblue;
+  border: solid black 2px;
   margin: 5px;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
   max-width: 105px;
   min-width: 105px;
@@ -32,15 +30,13 @@ div#current {
   vertical-align: top;
   display: inline-block;
   z-index: 2000;
-  box-shadow: 3px 3px 2px black;
   animation: current 4s infinite;
 }
 
 div#visited {
-  background-color: lightgray;
+  background-color: lightblue;
+  border: solid 2px black;
   margin: 5px;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
   max-width: 105px;
   min-width: 105px;
@@ -52,10 +48,9 @@ div#visited {
 }
 
 div#unvisited {
-  background-color: DarkSlateGray;
+  background-color: DarkSlateBlue;
+  border: solid black 2px;
   margin: 5px;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
   max-width: 105px;
   min-width: 105px;
@@ -64,5 +59,81 @@ div#unvisited {
   vertical-align: top;
   display: inline-block;
   z-index: 2000;
-  box-shadow: 3px 3px 2px black;
+}
+
+#objective {
+  padding-top: 35px;
+}
+
+#objective-with-player {
+  top: -35px;
+}
+
+#player-icon {
+  position: relative;
+  bottom: 50px;
+}
+
+#player-icon-with-objective {
+  position: relative;
+  top: -60px;
+}
+
+#door1 {
+  min-width: 20px;
+  max-width: 20px;
+  min-height: 10px;
+  max-height: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  top: -14.5px;
+}
+
+#door2 {
+  min-width: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  max-height: 20px;
+  max-width: 20px;
+  position: relative;
+  top: 23px;
+  left: 13px;
+}
+
+#door3 {
+  min-width: 20px;
+  max-width: 20px;
+  min-height: 20px;
+  max-height: 20px;
+  max-width: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  bottom: -62.3px;
+}
+
+#door4 {
+  min-width: 10px;
+  max-width: 10px;
+  min-height: 20px;
+  max-height: 20px;
+  position: relative;
+  top: -13px;
+  left: -13.5px;
+}
+
+.standard-door {
+  background-color: seagreen;
+  border: solid green;
+}
+
+.keycard1-door {
+  background-color: yellow;
+  border: solid goldenrod;
+}
+
+.keycard2-door {
+  background-color: lightskyblue;
+  border: solid lightseagreen;
 }

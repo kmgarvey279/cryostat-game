@@ -16,9 +16,9 @@ import branchDelete3 from '../../assets/images/menu/branch-delete3.png';
 
 
 function Select(props){
-  let fileOne = <File number={1} saves={props.saves} game={props.game} relation={'normal'}/>;
-  let fileTwo = <File number={2} saves={props.saves} game={props.game} relation={'normal'}/>;
-  let fileThree = <File number={3} saves={props.saves} game={props.game} relation={'normal'}/>;
+  let fileOne = <File number={1} name={props.saves[1].player.name} saves={props.saves} game={props.game} relation={'normal'}/>;
+  let fileTwo = <File number={2} name={props.saves[2].player.name} saves={props.saves} game={props.game} relation={'normal'}/>;
+  let fileThree = <File number={3} name={props.saves[3].player.name} saves={props.saves} game={props.game} relation={'normal'}/>;
   let deleteFile = "DELETE FILE";
   let copyFile = "COPY FILE";
 
@@ -66,7 +66,18 @@ function Select(props){
 
   function isSelected(option) {
     if (props.menu.selectedOption == option) {
-      return "selected";
+      if(props.menu.selectedMenu == 'delete' && option < 4) {
+        return "delete";
+      } else if(props.menu.selectedMenu === 'copy' && option < 4) {
+        return "copy";
+      } else if(props.menu.selectedMenu == 'copySelected' && option < 4) {
+        return "copyTo";
+      } else {
+        return "selected";
+      };
+    };
+    if (props.menu.selectedMenu === 'copySelected' && props.menu.gameToCopy === option) {
+      return "copy";
     } 
   }
 

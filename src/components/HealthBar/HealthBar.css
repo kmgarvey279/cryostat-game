@@ -1,15 +1,13 @@
 span.hp-full {
     display: inline-block;
-    height: 23px;
-    width: 10px;
-    border: solid black 1px;
+    height: 40px;
+    width: 16px;
 }
 span.hp-empty {
     display: inline-block;
-    height: 23px;
-    width: 10px;
+    height: 40px;
+    width: 16px;
     background: black;
-    border: solid black 1px;
     position:relative;
     z-index: 3;
 }
@@ -35,8 +33,8 @@ div.health-bar {
     }
 
 div.entanglement-bar {
-    height: 25px;
-    width: 120px;
+    height: 40px;
+    width: 160px;
     background: rgb(16,3,83);
     background: linear-gradient(90deg, rgba(16,3,83,1) 0%, rgba(43,9,215,1) 30%, rgba(7,123,232,1) 50%, rgba(0,255,219,1) 70%, rgba(226,247,244,1) 100%);
     border: solid black 1.5px;
