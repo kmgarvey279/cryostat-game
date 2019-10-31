@@ -31,12 +31,15 @@ import switchOn from './switchOn.wav';
 import switchOff from './switchOff.wav';
 import scream from './scream.mp3';
 import warp from './littlerobotsoundfactory/WarpDrive_02.mp3';
+import win from './littlerobotsoundfactory/Jingle_Win_01.mp3';
 import phone from './telephone.mp3';
 import pickUp from './phone-pick-up.wav';
 import regen from './potion-drink-regen.wav';
 import ping from './ping.mp3';
 import entangle from './ecofuture.wav';
 import merge from './krank_sounds/water/magnet_start.wav';
+import charge from './charging.ogg';
+import glitch from './glitch-computer.mp3';
 
 const effects = {
   shot: shot,
@@ -77,7 +80,10 @@ const effects = {
   regen: regen,
   ping: ping,
   entangle: entangle,
-  merge: merge
+  merge: merge,
+  charge: charge,
+  win: win,
+  glitch: glitch
 };
 
 export default effects

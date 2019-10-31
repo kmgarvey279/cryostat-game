@@ -1,4 +1,32 @@
 .error {
     background-color: black;
+    text-align: left;
+}
+
+.error h1 {
     color: red;
+    padding-left: 10px;
+}
+
+.error ul {
+    padding-left: 10px;
+}
+
+.message-show {
+    color: red;
+    list-style: none;
+}
+
+#underscore {
+    animation-name: flash;
+    animation-duration: 1000ms;
+    animation-iteration-count:infinite;
+}
+    @keyframes flash {
+      from { color: black;}
+      to   { color: red;}
+    }
+
+.message-hide {
+    color: black;
 }

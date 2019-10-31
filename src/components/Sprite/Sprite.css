@@ -6,6 +6,16 @@ div.sprite{
   break-inside: avoid;
 }
 
+div.split-player{
+  z-index: 100;
+  position: absolute;
+  bottom: 15px;
+  right: -13px;
+  break-inside: avoid;
+  opacity: 0.8;
+  filter: hue-rotate(270deg);
+}
+
 div.boss-sprite {
   z-index: 110;
   position: absolute;
@@ -27,6 +37,32 @@ div#fall{
     75%  {transform: rotate(80deg) scale(-0.5);}
   }
 
+div#transparent{
+  opacity: 0.8;
+}
+
+div#spriteFadeIn{
+  animation-name: spriteFade;
+  animation-duration: 3s;
+  opacity: 0.8;
+}
+  @keyframes spriteFade {
+    from { opacity: 0; }
+    to   { opacity: 0.8; }
+  }
+
+div#powerUp {
+  animation-name: rise;
+  animation-duration: 1500ms;
+}
+  @keyframes rise {
+    from { margin-bottom: 0;}
+    to   { margin-bottom: 30px;}
+  }
+
+div#float {
+  margin-bottom: 30px;
+}
 
 
 

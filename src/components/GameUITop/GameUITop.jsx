@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import HealthBar from '../HealthBar/HealthBar';
+import MPBar from '../MPBar/MPBar';
 import * as playerConsts from '../../redux/modules/player/playerConstants';
 import './GameUITop.css';
 import taserIcon from '../../assets/images/items/taserIcon.png';
@@ -50,7 +50,7 @@ function GameUITop(props) {
         </div>
         <div id="entangle-bar">
           <label>
-            <span id="mp"><HealthBar type={'entanglement'} magic={props.player.magic} /></span>
+            <span id="mp"><MPBar type={'entanglement'} magic={props.player.magic} /></span>
             <img id="particle-icon" src={particle} width="270" height="60"/>
             <span id="particle-percentage">{entanglement}</span>
           </label>

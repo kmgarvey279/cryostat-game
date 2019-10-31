@@ -13,7 +13,7 @@ import playerWalkSouth from '../../../assets/images/player/playerWalkSouth.gif';
 import playerWalkSouth2 from '../../../assets/images/player/playerWalkSouth2.gif';
 import playerWalkWest1 from '../../../assets/images/player/playerWalkWest.gif';
 import playerWalkWest2 from '../../../assets/images/player/playerWalkWest2.gif';
-import playerAttackNorth from '../../../assets/images/player/playerWalkEast.gif';
+import playerAttackNorth from '../../../assets/images/player/playerAttackNorth.gif';
 import playerAttackEast from '../../../assets/images/player/playerAttackEast.gif';
 import playerAttackSouth from '../../../assets/images/player/playerAttackSouth.gif';
 import playerAttackWest from '../../../assets/images/player/playerAttackWest.gif';
@@ -26,8 +26,7 @@ import playerPunchSouth from '../../../assets/images/player/playerPunchSouth.gif
 import playerPunchNorth from '../../../assets/images/player/playerPunchSouth.gif';
 import playerPunchEast from '../../../assets/images/player/playerPunchSouth.gif';
 import playerPunchWest from '../../../assets/images/player/playerPunchSouth.gif';
-
-import punchImpact from '../../../assets/images/player/punch.gif';
+import blast from '../../../assets/images/player/punch.gif';
 
 export const sprites = {
   stand: {
@@ -77,7 +76,7 @@ export const sprites = {
     south: <img id="player" src={playerParticleSouth} width="80" height="80"/>,
     west: <img id="player" src={playerParticleEast} width="80" height="80"/>
   },
-  punchImpact: <img id="player" src={punchImpact} width="80" height="80"/>,
+  blast: <img id="player" src={blast} width="80" height="80"/>,
   fall: <img id="player" src={playerStandEast} width="80" height="80"/>,
   victory: <img id="player" src={playerStandEast} width="80" height="80"/>
 };

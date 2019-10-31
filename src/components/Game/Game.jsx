@@ -8,6 +8,7 @@ import Map from '../Map/Map';
 import GameOver from '../GameOver/GameOver';
 import ItemGet from '../ItemGet/ItemGet';
 import PopUp from '../PopUp/PopUp';
+import Error from '../Error/Error';
 import './Game.css';
 import Music from '../Music/Music';
 import SFX from '../SFX/SFX';
@@ -58,6 +59,19 @@ function Game(props){
       <div id="loading">
       </div>
     );
+  } else if (props.game.gameState === 'glitch') {
+    return (
+      <div className="glitch">
+        <GameUITop player={props.player}/>
+        <div id='level'><CurrentRoom npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
+      </div>
+    );
+  } else if (props.game.gameState === 'error') {
+    return (
+      <div>
+        <Error exitSpecial={props.exitSpecial}/>
+      </div>
+    );
   } else if (props.game.gameState === 'itemGet') {
     return (
       <div className="game">
@@ -91,7 +105,8 @@ Game.propTypes = {
   boss: PropTypes.object,
   npcs: PropTypes.object,
   handleStart: PropTypes.func,
-  nullAll: PropTypes.func
+  nullAll: PropTypes.func,
+  exitSpecial: PropTypes.func
 };
 
 export default Game;

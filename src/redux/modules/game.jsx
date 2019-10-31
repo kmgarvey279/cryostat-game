@@ -10,6 +10,7 @@ export const TOGGLE_EAST = "TOGGLE_EAST";
 export const TOGGLE_NORTH = "TOGGLE_NORTH";
 export const TOGGLE_SOUTH = "TOGGLE_SOUTH";
 export const TOGGLE_FIRE = "TOGGLE_FIRE";
+export const TOGGLE_SKILL = "TOGGLE_SKILL";
 export const UPDATE_TIMERS = "UPDATE_TIMERS";
 export const CLEAR_TIMERS = "CLEAR_TIMERS";
 export const UPDATE_FILTER = "UPDATE_FILTER";
@@ -88,6 +89,13 @@ export function toggleFire(newBool) {
   }
 };
 
+export function toggleSkill(newBool) {
+  return {
+    type: TOGGLE_SKILL,
+    skill: newBool
+  }
+};
+
   export function updateTimers(newTimerArr) {
     return {
       type: UPDATE_TIMERS,
@@ -150,6 +158,7 @@ const initialState = {
   south: false,
   north: false,
   fire: false,
+  skill: false,
   filter: 'spooky',
   file: '',
   eye: 'none',
@@ -159,7 +168,7 @@ const initialState = {
 //Reducer
 const gameReducer = (state = initialState, action) => {
   let newState;
-  const { gameToLoad, gameState, roomId, respawnPoint, previousRoomId, activeText, north, east, west, south, fire, timers, filter, file, branch, eye, destination} = action;
+  const { gameToLoad, gameState, roomId, respawnPoint, previousRoomId, activeText, north, east, west, south, fire, skill, timers, filter, file, branch, eye, destination} = action;
   switch (action.type) {
     case LOAD_GAME:
       return gameToLoad;
@@ -206,6 +215,11 @@ const gameReducer = (state = initialState, action) => {
     case TOGGLE_FIRE:
       newState = Object.assign({}, state, {
         fire: fire
+      });
+      return newState;
+    case TOGGLE_SKILL:
+      newState = Object.assign({}, state, {
+        skill: skill
       });
       return newState;
     case UPDATE_TIMERS:

@@ -77,7 +77,6 @@ div#goo {
   opacity: 0.8;
 }
 
-
 div#lightning {
   z-index: 500;
   position: absolute;
@@ -92,4 +91,14 @@ div#explosion {
   display: block;
   animation-name: explode;
   animation-duration: 1500ms;
+}
+
+#clone {
+  opacity: 0.8;
+  filter: hue-rotate(180deg);
+  z-index: 100;
+  position: absolute;
+  bottom: 28px;
+  right: -13px;
+  break-inside: avoid;
 }

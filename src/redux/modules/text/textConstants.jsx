@@ -1,3 +1,5 @@
+import React from 'react';
+
 export const roomNames = ['Makeshift Recovery Room', 'Storage Room', 'Warp Lab Access', 'Warp Lab', 'Cryo Lab', 'Shipping and Receiving Room', 'Xenobiology Lab', 'Core Access', 'The Core']
 
 export const examine = {
@@ -71,8 +73,8 @@ export const examine = {
               4: ['The east wing of the Cryonic Facility, where the majority of the violations are beleived to have occured is henseforth off-limits to all unauthorised personell.'],
               5: ['Lucy ******', 'CEO, chairwoman, and president of Needle\'s Eye Inc. Captain of the Starship Needle\'s Eye']
   },
-
-  phone1: {1: ['test']},
+  phoneOff: {1: ['No response.']},
+  phone1: {1: ['You heard a familiar voice you couldn\'t quite place...']},
   sync1: {1: ['A flood of strange but familiar memories and emotions came rushing in.'],
     2: ['You felt a sense of triumpth as you finally completed a difficult puzzle involving laser beams.'],
     3: ['Entanglement increased by 5%.']},
@@ -173,9 +175,10 @@ export const dialogue = {
 export const flavorText = {
   keyCard1: ['You found a keycard!', 'It\'s labeled: "Security Clearance: Level 1". Hopefully it will at least get you into the lunchroom, you\'re starving.'],
   keyCard2: ['You found a keycard!', 'It\'s labeled: "Security Clearance: Level 2". Hopefully it will at least get you into the lunchroom, you\'re starving.'],
-  Taser: ['You found the Taser Gun!', 'A weapon designed for non-lethal self-defense that fires bolts of electricty. It can also be used to temporarily charge electronic equipment.'],
+  Taser: ['You found the TASER GUN!', 'A weapon designed for non-lethal self-defense that fires bolts of electricty. It can also be used to temporarily charge certain ELECTRONIC EQUIPMENT.'],
   Cryostat: ['You found the Cryostat!', 'A handhold device that uses the same quick-freeze technology utilized by facilty\'s the cryo chambers.'],
-  dash: ['New entanglment threshold achieved! You unlocked: Supercollider', 'Use to quickly dash in any direction.']
+  dash: ['New SPECIAL SKILL unlocked: SUPERCOLLIDER', 'Use to quickly dash in any direction. MP will automatically regenerate over time.'],
+  clone: ['New SPECIAL SKILL unlocked: SPOOKY ACTION AT A DISTANCE', 'Use to create a copy of yourself, activating it again will swap places with your copy. Max MP will be capped at 50% until you merge back with your copy.']
 }
 
 // const dialogue2 = {

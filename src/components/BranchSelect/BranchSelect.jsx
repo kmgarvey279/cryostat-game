@@ -48,14 +48,14 @@ function BranchSelect(props){
     branchEx = <img id="branch-exit" src={branchExit2} width="500" height="300"/>;
   } else if(props.game.file == 2) {
     branchEnter = <img id="branch" src={branch2} width="500" height="300"/>;
-    branchEx = <img id="branch-exit" src={branchExit1} width="500" height="300"/>;
+    branchEx = <img id="branch-exit" src={branchExit3} width="500" height="300"/>;
   } else {
     branchEnter = <img id="branch" src={branch3} width="500" height="300"/>;
     branchEx = <img id="branch-exit" src={branchExit2} width="500" height="300"/>;
   };
 
   function getPosition() {
-    if(props.game.file == 1 || props.game.file == 2) {
+    if(props.game.file == 1) {
       return "branch-connect-top"
     } else {
       return "branch-connect-bottom"

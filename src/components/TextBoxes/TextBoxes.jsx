@@ -29,8 +29,6 @@ class TextBoxes extends React.Component {
       lineToRender = paragraphToRender[this.props.text.line + 1];
     } else if (paragraphToRender[this.props.text.line] == 'results') {
       lineToRender = paragraphToRender[1][this.props.text.selectedOption];
-    } else if (paragraphToRender[this.props.text.line] == 'textInput') {
-      lineToRender = paragraphToRender[this.props.text.line + 1];
     } else {
       lineToRender = paragraphToRender[this.props.text.line];
     }
@@ -53,7 +51,7 @@ class TextBoxes extends React.Component {
           </div>
         </div>
       );
-    } else if (this.props.text.activeText.includes("phone")) {
+    } else if (this.props.game.roomId === 'special') {
       return (
         <div id="wrap">
           <div id="content" className="special">

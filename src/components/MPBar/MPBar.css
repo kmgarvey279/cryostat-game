@@ -32,9 +32,13 @@ div.health-bar {
         background: linear-gradient(0deg, rgba(5,48,4,1) 0%, rgba(10,255,0,1) 100%);
     }
 
+div.bar-container {
+    width: 160px;
+}
+
 div.entanglement-bar {
     height: 40px;
-    width: 160px;
+    width: 15%;
     background: rgb(16,3,83);
     background: linear-gradient(90deg, rgba(16,3,83,1) 0%, rgba(43,9,215,1) 30%, rgba(7,123,232,1) 50%, rgba(0,255,219,1) 70%, rgba(226,247,244,1) 100%);
     border: solid black 1.5px;
@@ -48,4 +52,16 @@ div.entanglement-bar {
     display: inline-block;
     z-index: 2;
     position: absolute;
+    left: -10px;
+}
+
+#bar-background {
+    height: 40px;
+    width: 162px;
+    background: rgb(0,0,3);
+    background: linear-gradient(0deg, rgba(0,0,3,1) 0%, rgba(51,1,69,1) 100%);
+    display: inline-block;
+    z-index: 0;
+    position: relative;
+    top: -40px;
 }
