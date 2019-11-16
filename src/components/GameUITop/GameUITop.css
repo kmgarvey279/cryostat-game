@@ -43,7 +43,7 @@ div#UI-content {
   right: 0;
   margin: auto;
   display: block;
-  margin-top: 6px;
+  margin-top: 8px;
   height: 35px;
   width: 40px;
   border-radius: 5px;
@@ -101,7 +101,7 @@ img {
 
 #mp {
   position: absolute;
-  right: 8px;
+  right: 10px;
   top: 8px;
   z-index: 0;
 }

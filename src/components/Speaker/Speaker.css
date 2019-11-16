@@ -1,7 +1,11 @@
-div#speaker {
+
+#speaker-text {
+  padding: 2px;
+  font-size: 18px;
+}
+
+.claire-speaker{
   position: relative;
-  border: solid GoldenRod    2px;
-  background-color: Gold  ;
   height: 25px;
   min-width: 50px;
   width: 120px;
@@ -10,8 +14,20 @@ div#speaker {
   top: -10px;
   left: -10px;
   opacity: 0.9;
+  border: solid purple;
+  background-color: darkorchid;
 }
 
-#speaker-text {
-  padding: 2px;
+.ghost-speaker{
+  position: relative;
+  height: 25px;
+  min-width: 50px;
+  width: 120px;
+  z-index: 2000;
+  overflow:visible;
+  top: -10px;
+  left: -10px;
+  opacity: 0.9;
+  border: solid mediumseagreen;
+  background-color: seagreen;
 }

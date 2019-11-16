@@ -45,13 +45,13 @@ function BranchSelect(props){
   let branchEx;
   if (props.game.file == 1) {
     branchEnter = <img id="branch" src={branch1} width="500" height="300"/>;
-    branchEx = <img id="branch-exit" src={branchExit2} width="500" height="300"/>;
+    branchEx = <img id="branch-exit-2" src={branchExit2} width="500" height="300"/>;
   } else if(props.game.file == 2) {
     branchEnter = <img id="branch" src={branch2} width="500" height="300"/>;
-    branchEx = <img id="branch-exit" src={branchExit3} width="500" height="300"/>;
+    branchEx = <img id="branch-exit-2" src={branchExit3} width="500" height="300"/>;
   } else {
     branchEnter = <img id="branch" src={branch3} width="500" height="300"/>;
-    branchEx = <img id="branch-exit" src={branchExit2} width="500" height="300"/>;
+    branchEx = <img id="branch-exit-2" src={branchExit2} width="500" height="300"/>;
   };
 
   function getPosition() {
@@ -64,7 +64,7 @@ function BranchSelect(props){
 
   return (
     <div className="select-wrap">
-      <div className="selectScreen">
+      <div className="selectScreen-2">
         {branchEnter}
         <img id={getPosition()} src={connect} width="300" height="100"/>
         {branchEx}

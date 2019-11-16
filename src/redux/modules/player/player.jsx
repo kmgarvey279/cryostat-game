@@ -16,6 +16,7 @@ export const UPDATE_NEW_ITEM = "UPDATE_NEW_ITEM";
 export const LOAD_PLAYER = "LOAD_PLAYER";
 export const UPDATE_ENTANGLEMENT = "UPDATE_ENTANGLEMENT";
 export const UPDATE_CLONE = "UPDATE_CLONE";
+export const SWITCH_ACTIVE_CLONE = "SWITCH_ACTIVE_CLONE";
 
 //Action Creators
 export function loadPlayer(playerToLoad) {
@@ -104,36 +105,45 @@ export function updateEntanglement(entanglement){
   }
 }
 
-export function updateClone(clone){
+export function updateClone(cloneLocation, cloneDirection){
   return {
     type: UPDATE_CLONE,
-    clone: clone
+    cloneLocation: cloneLocation,
+    cloneDirection: cloneDirection
   }
 }
 
+export function switchActiveClone(activeClone){
+  return {
+    type: SWITCH_ACTIVE_CLONE,
+    activeClone: activeClone
+  }
+}
 
 //Initial State
 const initialState = {
     name: '???',
     health: 50,
     entanglement: 0,
-    magic: 100,
+    magic: 0,
     status: 'normal',
     direction: 'north',
     location: null,
     currentWeapon: null,
     weapons: [],
-    currentSkill: 'clone',
-    skills: ['clone'],
+    currentSkill: null,
+    skills: [],
     items: [],
     newItem: null,
-    clone: null
+    cloneLocation: null,
+    cloneDirection: null,
+    activeClone: 1
   };
 
 //Reducer
 export default function playerReducer(state = initialState, action){
   let newState;
-  const { playerToLoad, name, health, magic, location, direction, currentWeapon, currentSkill, status, weapons, skills, items, newItem, entanglement, clone } = action;
+  const { playerToLoad, name, health, magic, location, direction, currentWeapon, currentSkill, status, weapons, skills, items, newItem, entanglement, cloneLocation, cloneDirection, activeClone } = action;
 
   switch (action.type) {
     case LOAD_PLAYER:
@@ -205,7 +215,13 @@ export default function playerReducer(state = initialState, action){
       return newState;
     case UPDATE_CLONE:
       newState = Object.assign({}, state, {
-        clone: clone
+        cloneLocation: cloneLocation,
+        cloneDirection: cloneDirection
+      });
+      return newState;
+    case SWITCH_ACTIVE_CLONE:
+      newState = Object.assign({}, state, {
+        activeClone: activeClone
       });
       return newState;
     default:

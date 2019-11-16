@@ -1,3 +1,5 @@
 div#selectedOption {
   background: linear-gradient(90deg, rgba(242,122,6,0) 0%, gold  70%, rgba(0,212,255,0) 100%);
+  font-weight: bold;
+  font-size: 18px;
 }

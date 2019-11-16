@@ -14,7 +14,7 @@ div#content {
   right: 300px;
   border: 3px solid GoldenRod  ; 
   width: 70%;
-  min-width: 400px;
+  min-width: 700px;
   height: 100px;
   opacity: 0.9;
   margin: 10% auto;
@@ -37,12 +37,14 @@ div.special {
 div#text {
   position: relative;
   margin-top: 25px;
+  font-size: 21px;
 }
 
 div#dialogueText {
   position: relative;
   top: -10px;
   margin-top: 10px;
+  font-size: 23px;
 }
 
 .next-button-prompt {
@@ -55,4 +57,14 @@ div#dialogueText {
   color: gold ; 
   float: right;
   top: 70px;
+}
+
+.claire-color{
+  border: solid purple !important;
+  background-color: plum !important;
+}
+
+.ghost-color{
+  border: solid mediumseagreen !important;
+  background-color: darkseagreen !important;
 }

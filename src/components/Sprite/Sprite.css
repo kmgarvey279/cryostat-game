@@ -6,14 +6,33 @@ div.sprite{
   break-inside: avoid;
 }
 
-div.split-player{
+div.dark-sprite{
+  z-index: 100;
+  position: absolute;
+  bottom: 15px;
+  right: -13px;
+  break-inside: avoid;
+  filter: hue-rotate(230deg);
+}
+
+div.split-player1{
   z-index: 100;
   position: absolute;
   bottom: 15px;
   right: -13px;
   break-inside: avoid;
   opacity: 0.8;
-  filter: hue-rotate(270deg);
+  filter: hue-rotate(300deg);
+}
+
+div.split-player2{
+  z-index: 100;
+  position: absolute;
+  bottom: 15px;
+  right: -13px;
+  break-inside: avoid;
+  opacity: 0.8;
+  filter: hue-rotate(150deg);
 }
 
 div.boss-sprite {
@@ -25,10 +44,9 @@ div.boss-sprite {
 }
 
 div#fall{
-  right: 4px;
-  bottom: 5px;
+  top: -20px; 
   animation-name: fall;
-  animation-duration: 1s;
+  animation-duration: 2s;
 }
   @keyframes fall {
     0%  {transform: rotate(20deg) scale(1.0);}

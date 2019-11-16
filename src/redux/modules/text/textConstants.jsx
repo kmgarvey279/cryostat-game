@@ -28,6 +28,7 @@ export const examine = {
          3: ['results', ['Save Canceled.','Game Saved.']]
         },
   terminalOff: {1: ['A computer terminal. It doesn\'t seem to be receaving any power.']},
+  spookyTerminal: {1: ['A computer terminal. It doesn\'t seem to be receaving any power.']},
   terminal1: {1: ['Logging in...'],
               2: ['options', 'Please input new door lock status:', ['Lock','Unlock']],
               3: ['results', ['Door Lock Engaged.','Door Lock Disengaged.']],
@@ -115,59 +116,59 @@ export const dialogue = {
     4: ['Aurora', ['Yeah, I was mostly just hoping you\'d shut up if I ignored you, but clearly *that* didn\'t work', 'Anything is better then sitting through another one of your tutorials.', 'So what are you, some evil AI or something?']],
     5: ['Strange Voice', ['What, an AI?', 'That\'s absurd.']],
     6: ['Aurora', ['Like, I don\'t care either way. Who am I to judge? I get the impression that you genuinly need me alive for some reason, so we might as well put off the part where we try to kill one another until later.']],
-    7: ['Aurora', ['Anyway, sorry to ruin your *SYMBOLISM*, but my name is actually Clare.']],
+    7: ['Aurora', ['Anyway, sorry to ruin your *SYMBOLISM*, but my name is actually Claire.']],
     8: ['Strange Voice', ['Fine, fine. I will henceforth call you by your boring, meaningless name.']],
-    9:['Clare', ['Sweet. Looks like we totally hashed out our conflicts and crap. Character arcs complete.']],
+    9:['Claire', ['Sweet. Looks like we totally hashed out our conflicts and crap. Character arcs complete.']],
     10:['Strange Voice', ['Yes, yes, quite the display of sarcasm.', 'We\'ll finish this conversation in the next room... if you can make it without my amazing hints.']]
   },
   A4: {
     1: ['Strange Voice', ['BEHOLD!', '...actually, would you mind beholding a little more to the left?', 'I have no idea what this huge thing is doing here, but it\'s really messing up my intro.']],
   },
   A5: {
-    1: ['Clare', ['Wow, way to jump to conclusions.', 'Thinking this perfectly normal ghost was actually a killer AI.', '...', '...wait, WHAT!?!']],
+    1: ['Claire', ['Wow, way to jump to conclusions.', 'Thinking this perfectly normal ghost was actually a killer AI.', '...', '...wait, WHAT!?!']],
     2: ['Strange Voice', ['I\'m honistly not sure what I am, but it is true that for just about all intents and purposes I\'m basically a ghost.', 'I\'ve been wandering through this ship for ages and you\'re the first person I\'ve ever encountered.']]
   },
   A6: {1: ['Strange', ['Hmm, it\'s not working.', 'Why don\'t you go grab that keycard while I unleash my otherworldly hacking skills on this poor sucker.']]},
   A7: {1: ['Strange', ['DONE!']]},
   A8: {
-    1: ['Clare', ['What the hell?', 'How am I supposed to solve this one?']],
+    1: ['Claire', ['What the hell?', 'How am I supposed to solve this one?']],
     2: ['Strange Voice', ['What makes you think there\'s a solution?', 'I mean, this is a decaying derelect space ship? How statistically unlikely do you think it would be if everything was perfectly calebrated for you to progess?']],
-    3: ['Clare', ['Well, I don\'t know. It seemed to all work out pretty well up until now.']],
+    3: ['Claire', ['Well, I don\'t know. It seemed to all work out pretty well up until now.']],
     4: ['Strange Voice', ['It\'s the anthropic principle in action! If it wasn\'t so precisely arranged, you couldn\'t be making this observation right now!']],
-    5: ['Clare', ['Ok, first of all, that\'s definitely not how the anthropic principle works. Secondly, can\'t I just bring another block or something in from the next room over?']],
+    5: ['Claire', ['Ok, first of all, that\'s definitely not how the anthropic principle works. Secondly, can\'t I just bring another block or something in from the next room over?']],
     6: ['Strange Voice', ['Impossible. The ship\'s security system won\'t let anything without a human bio-signiture through these doors.', 'Moreso, even your entire inventory including your clothing won\'t heavy enough to trigger the switch.']],
-    7: ['Clare', ['While I appreciate being able to skip over that particular expereiment, that still doesn\'t solve the question of how we\'re supposed to move forward.']],
+    7: ['Claire', ['While I appreciate being able to skip over that particular expereiment, that still doesn\'t solve the question of how we\'re supposed to move forward.']],
     8: ['Strange Voice', ['Simple, we don\'t move forward, we move *sideways*!', 'We\'ve likely exhausted all of our options in *this* Branch. All will be made clear in the next room.']],
   },
   A9: {
-    1: ['Clare', ['What am I looking at here?']],
+    1: ['Claire', ['What am I looking at here?']],
     2: ['Strange Voice', ['The nexis point of all possible worlds! Well, all possible states of this ship at least.', 'What if I told you that there was another world... in which the previous room had an extra block!']],
-    3: ['Clare', ['I mean, I\'d probably say something like: "Why the hell don\'t we just find a world where this ship isn\'t an inescapable death trap".']],
+    3: ['Claire', ['I mean, I\'d probably say something like: "Why the hell don\'t we just find a world where this ship isn\'t an inescapable death trap".']],
     4: ['Strange Voice', ['Moving between Branches is a costly process, the closer the Branch the easier the leap.', 'Getting to a Branch in which this ship isn\'t a rotting husk will require considerably more power then the meager amount we currently have avalable.', 'It would be a different story if we could reroute the ship\'s power supply to this room, but getting to the ship\'s core where we can do that will require the keycard.']],
-    5: ['Clare', ['Ok, so we hop to the next world over, grab the keycard, and then blast this machine with power from the ship\'s core?', 'This all sounds absolutly insaine, but I\'m waaaaay past the point of caring.']],
+    5: ['Claire', ['Ok, so we hop to the next world over, grab the keycard, and then blast this machine with power from the ship\'s core?', 'This all sounds absolutly insaine, but I\'m waaaaay past the point of caring.']],
     6: ['Strange Voice', ['Yep, that\'s pretty much sums it up. I\'ll start searching for viable Branches while you work on restoring power to the machine.']]
   },
   A10: {
-    1: ['Clare', ['So just to be clear, you\'re sure this isn\'t going to turn me into a ghost or anything, right?']],
+    1: ['Claire', ['So just to be clear, you\'re sure this isn\'t going to turn me into a ghost or anything, right?']],
     2: ['Strange Voice', ['The teleporter uses the same principle as the warp pads you\'ve been using. Just think of it as their long-distance counterpart.']],
-    3: ['Clare', ['You say that like it\'s no big deal.', 'I mean, what *is* the deal with those pads? Did I just vaperize a few dozen copies of myself to complete some dumb puzzle?']],
+    3: ['Claire', ['You say that like it\'s no big deal.', 'I mean, what *is* the deal with those pads? Did I just vaperize a few dozen copies of myself to complete some dumb puzzle?']],
     4: ['Strange Voice', ['Gotta go! Bye!']]
   },
   A11: {
     1: ['Strange Voice', ['You made it!']],
-    2: ['Clare', ['WHAT. THE. HELL. WAS. THAT.']],
+    2: ['Claire', ['WHAT. THE. HELL. WAS. THAT.']],
     3: ['Strange Voice', ['Oh yeah, did I forget to mention that humans have been reported to experence some weird side effects during the process?', 'Nothing major, just dizziness, halucinasions, and maybe a few small irreversable changes to their relationship with the very fabric of reality.']],
-    4: ['Clare', ['...', '....', '.....']],
+    4: ['Claire', ['...', '....', '.....']],
     5: ['Strange Voice', ['Hey, why don\'t we go check out that block?']]
   },
   A12: {
     1: ['Strange Voice', ['Got it! It looks like we can\'t go any further in this Branch, but it\'s easy enough to go back to the one we came from.', 'I\'ll go on ahead and get things ready.']]
   },
   A13: {
-    1: ['Clare', ['Well, let\'s get this over with. Maybe I\'ll come out the other end with the ability to shoot lazers from my eyes or the ability to punch ghosts.']]
+    1: ['Claire', ['Well, let\'s get this over with. Maybe I\'ll come out the other end with the ability to shoot lazers from my eyes or the ability to punch ghosts.']]
   },
   A14: {
-    1: ['Clare', ['Ugg, somehow I feel even worse than last time.', 'Hey ghost, what\'s the deal? Last I checked, the walls of our original Branch wern\'t covered in throbbing tenticles.', 'Ghost?']]
+    1: ['Claire', ['Ugg, somehow I feel even worse than last time.', 'Hey ghost, what\'s the deal? Last I checked, the walls of our original Branch wern\'t covered in throbbing tenticles.', 'Ghost?']]
   },
 
 }
@@ -175,7 +176,7 @@ export const dialogue = {
 export const flavorText = {
   keyCard1: ['You found a keycard!', 'It\'s labeled: "Security Clearance: Level 1". Hopefully it will at least get you into the lunchroom, you\'re starving.'],
   keyCard2: ['You found a keycard!', 'It\'s labeled: "Security Clearance: Level 2". Hopefully it will at least get you into the lunchroom, you\'re starving.'],
-  Taser: ['You found the TASER GUN!', 'A weapon designed for non-lethal self-defense that fires bolts of electricty. It can also be used to temporarily charge certain ELECTRONIC EQUIPMENT.'],
+  Taser: ['You found the TASER GUN!', 'A weapon that fires bolts of electricty. It can also be used to temporarily charge ELECTRIC GENERATORS.'],
   Cryostat: ['You found the Cryostat!', 'A handhold device that uses the same quick-freeze technology utilized by facilty\'s the cryo chambers.'],
   dash: ['New SPECIAL SKILL unlocked: SUPERCOLLIDER', 'Use to quickly dash in any direction. MP will automatically regenerate over time.'],
   clone: ['New SPECIAL SKILL unlocked: SPOOKY ACTION AT A DISTANCE', 'Use to create a copy of yourself, activating it again will swap places with your copy. Max MP will be capped at 50% until you merge back with your copy.']

@@ -1,17 +1,18 @@
 .error {
+    padding-top: 10px;
     background-color: black;
     text-align: left;
 }
 
-.error h1 {
-    color: red;
-    padding-left: 10px;
-}
-
 .error ul {
     padding-left: 10px;
+    font-size: 18px;
+    font-family: "Lucida Console", Monaco, monospace;
 }
 
+.error li {
+    padding-top: 5px;
+}
 .message-show {
     color: red;
     list-style: none;

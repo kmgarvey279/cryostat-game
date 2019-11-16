@@ -17,12 +17,14 @@ div#item-content {
   height: 150px;
   background-color:DarkOrange; 
   border: 3px solid GoldenRod; 
+  font-size: 18px;
 }
 
 div#header {
   font-weight: bold;
   margin-bottom: 5px;
   margin-top: 10px;
+  font-size: 20px;
 }
 
 #item-icon img {

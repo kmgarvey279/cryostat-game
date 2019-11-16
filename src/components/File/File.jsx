@@ -12,9 +12,11 @@ function File(props){
       fileInfo = <div><span id="file-num">File {props.number}</span> - {props.name} <br/> Cryonics Storage Facility: {text.roomNames[props.saves[props.number].game.roomId - 1]}</div>;
     };
   } else if (props.relation == 'current') {
-    fileInfo = <div><span id="file-num">File {props.number}</span> - VOID</div>
+    fileInfo = <div><span id="file-num">File {props.number}</span> - <br/> Cryonics Storage Facility: {text.roomNames[3]}</div>
   } else if (props.relation == 'new') {
-    fileInfo = <div><span id="file-num">File {props.number}</span> - {props.name} <br/> Cryonics Storage Facility: {text.roomNames[props.saves[props.number].game.roomId - 1]}</div>;
+    fileInfo = <div><span id="file-num">File {props.number}</span> - {props.name} <br/> Cryonics Storage Facility: {text.roomNames[3]}</div>;
+  } else if (props.relation == 'null') {
+    fileInfo = <div><span id="file-num">File {props.number}</span> - New Game</div>;
   };
 
     if (props.saves[props.number].fileStatus == 'active' || props.relation == 'next') {

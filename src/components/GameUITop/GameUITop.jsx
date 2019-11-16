@@ -7,6 +7,7 @@ import './GameUITop.css';
 import taserIcon from '../../assets/images/items/taserIcon.png';
 import cryoIcon from '../../assets/images/items/cryoIcon.png';
 import collider from '../../assets/images/items/collider.png';
+import clone from '../../assets/images/items/clone.png';
 import heart from '../../assets/images/items/heart.gif';
 import heartless from '../../assets/images/items/heartless.gif';
 import particle from '../../assets/images/items/entangle.gif';
@@ -26,9 +27,13 @@ function GameUITop(props) {
     entanglement = <span className="single-digit">{entanglement}</span>
   };
   let skillIcon = '';
-  if(props.player.items.includes('dash')){
+  if (props.player.currentSkill === null) {
+    skillIcon = '';
+  } else if (props.player.currentSkill === 'dash') {
     skillIcon = <img id="current-skill" src={collider} width="40" height="40"/>
-  }
+  } else if (props.player.currentSkill === 'clone') {
+    skillIcon = <img id="current-skill" src={clone} width="40" height="40"/>
+  };
   return (
     <div id="UI-wrap">
       <div id="UI-content">

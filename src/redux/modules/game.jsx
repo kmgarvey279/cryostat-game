@@ -13,12 +13,12 @@ export const TOGGLE_FIRE = "TOGGLE_FIRE";
 export const TOGGLE_SKILL = "TOGGLE_SKILL";
 export const UPDATE_TIMERS = "UPDATE_TIMERS";
 export const CLEAR_TIMERS = "CLEAR_TIMERS";
-export const UPDATE_FILTER = "UPDATE_FILTER";
 export const LOAD_GAME = "LOAD_GAME";
 export const SET_FILE = "SET_FILE";
 export const SET_BRANCH = "SET_BRANCH";
 export const SET_EYE = "SET_EYE";
 export const CHANGE_DESTINATION = "CHANGE_DESTINATION";
+export const TOGGLE_LIGHTS = "TOGGLE_LIGHTS";
 
 
 //Action Creators
@@ -102,13 +102,6 @@ export function toggleSkill(newBool) {
       timers: newTimerArr
     }
   };
-  
-  export function updateFilter(newFilter) {
-    return {
-      type: UPDATE_FILTER,
-      filter: newFilter
-    }
-  };
 
   export function clearTimers() {
     return {
@@ -145,6 +138,13 @@ export function toggleSkill(newBool) {
     }
   }
 
+  export function toggleLights(lightState) {
+    return {
+      type: TOGGLE_LIGHTS,
+      lights: lightState
+    }
+  }
+
 //Initial State
 const initialState = {
   branch: 1,
@@ -159,16 +159,16 @@ const initialState = {
   north: false,
   fire: false,
   skill: false,
-  filter: 'spooky',
   file: '',
   eye: 'none',
+  lights: 'off',
   destination: ''
 }
 
 //Reducer
 const gameReducer = (state = initialState, action) => {
   let newState;
-  const { gameToLoad, gameState, roomId, respawnPoint, previousRoomId, activeText, north, east, west, south, fire, skill, timers, filter, file, branch, eye, destination} = action;
+  const { gameToLoad, gameState, roomId, respawnPoint, previousRoomId, activeText, north, east, west, south, fire, skill, timers, filter, file, branch, eye, destination, lights} = action;
   switch (action.type) {
     case LOAD_GAME:
       return gameToLoad;
@@ -232,17 +232,11 @@ const gameReducer = (state = initialState, action) => {
         timers: []
       });
       return newState;
-    case UPDATE_FILTER:
+    case SET_FILE:
       newState = Object.assign({}, state, {
-        filter: filter
+        file: file
       });
       return newState;
-      case UPDATE_FILTER:
-    case SET_FILE:
-    newState = Object.assign({}, state, {
-      file: file
-    });
-    return newState;
     case SET_BRANCH:
       newState = Object.assign({}, state, {
         branch: branch
@@ -256,6 +250,11 @@ const gameReducer = (state = initialState, action) => {
     case CHANGE_DESTINATION:
       newState = Object.assign({}, state, {
         destination: destination
+      });
+        return newState;
+    case TOGGLE_LIGHTS:
+      newState = Object.assign({}, state, {
+        lights: lights
       });
         return newState;
   default:

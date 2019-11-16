@@ -11,7 +11,7 @@ div.boss-ui-wrap {
   div#boss-name {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 80px;
+    margin-top: 10px;
     font-size: 60px;
     color: white;  
   }
@@ -44,19 +44,19 @@ div.boss-ui-wrap {
   }
   
   div.boss-health-bar {
-      height: 51px;
+      height: 30px;
       width: 600px;
       border: solid black 1.5px;
       border-radius: 10px;
       margin-left: auto;
       margin-right: auto;
-      margin-top: 666px;
+      margin-top: 75px;
   }
 
   #boss-icon {
     z-index: 1;
     position: relative;
-    top: -5px;
+    top: -4px;
   }
 
       div#low.boss-health-bar {

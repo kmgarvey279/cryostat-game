@@ -77,15 +77,9 @@ class TitleContainer extends React.Component {
           this.props.handleLoad();
           this.props.history.push('/game');
         } else if (selectNum == nextFile) {
-          this.props.dispatch(gameModule.setBranch(this.props.game.branch + 1));
-          if(this.props.game.branch === 3) {
-            this.props.dispatch(soundsModule.changeMusic('spookyTitle'));
-            this.props.dispatch(menuModule.changeMenu('error'));
-          } else {
-            this.props.handleStart();
-            this.props.dispatch(menuModule.changeOption(1));
-            this.props.history.push('/game');
-          };
+          this.props.handleStart();
+          this.props.dispatch(menuModule.changeOption(1));
+          this.props.history.push('/game');
         } else {
           this.props.dispatch(soundsModule.changeEffect('doorLocked'));
         };

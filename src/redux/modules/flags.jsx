@@ -30,7 +30,15 @@ const initialState = {
   9: {triggered: false},
   10: {triggered: false},
   11: {triggered: false},
-  12: {triggered: false}
+  12: {triggered: false},
+  13: {triggered: false},
+  14: {triggered: false},
+  15: {triggered: false},
+  16: {triggered: false},
+  17: {triggered: false},
+  18: {triggered: false},
+  19: {triggered: false},
+  20: {triggered: false}
 }
 
 //Reducer

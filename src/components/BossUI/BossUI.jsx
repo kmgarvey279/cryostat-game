@@ -13,27 +13,26 @@ function BossUI(props){
     } else {
       barColor = 'high';
     };
+    let name;
+    if(props.boss.name){
+        name = <div>
+            <div id="boss-name">{props.boss.name}</div>
+            <div id="boss-titles">
+                <ul>
+                    {titles.map(function(title) {
+                        return (
+                            <li>{title}<br /></li>
+                        )
+                    })};
+                </ul>
+            </div>
+        </div>
+    };
     if (props.boss.status === 'alive'){
-        if(props.boss.name){
-            return (
-                <div className="boss-ui-wrap">
-                    <div id="boss-name">{props.boss.name}</div>
-                    <div id="boss-titles">
-                        <ul>
-                            {titles.map(function(title) {
-                                return (
-                                    <li>{title}<br /></li>
-                                )
-                            })};
-                        </ul>
-                    </div>
-                </div>
-            )
-        } else {
             return (
                 <div className="boss-ui-wrap">
                     <div className="boss-health-bar" id={barColor}>
-                        <img id="boss-icon" src={bossBar} width="605" height="60"/>
+                        <img id="boss-icon" src={bossBar} width="605" height="38"/>
                         <span className={props.boss.health >= 10 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-10"></span>
                         <span className={props.boss.health >= 20 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-20"></span>
                         <span className={props.boss.health >= 30 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-30"></span>
@@ -45,9 +44,9 @@ function BossUI(props){
                         <span className={props.boss.health >= 90 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-90"></span>
                         <span className={props.boss.health >= 100 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-100"></span>
                     </div>
+                    {name}
                 </div>
             );
-        }
     } else {
         return null
     };

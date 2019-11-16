@@ -17,9 +17,15 @@ class TextBoxes extends React.Component {
   render(){
     let paragraphToRender;
     let activeSpeaker;
+    let speakerColor;
     //get paragraph and speaker (if applicable)
     if (this.props.text.activeTextType == 'dialogue') {
       activeSpeaker = textConsts.dialogue[this.props.text.activeText][this.props.text.paragraph][0];
+      if(activeSpeaker === 'Strange Voice') {
+        speakerColor = 'ghost-color';
+      } else if (activeSpeaker === 'Confused Girl' || activeSpeaker === 'Aurora' || activeSpeaker === 'Claire') {
+        speakerColor = 'claire-color';
+      };
       paragraphToRender = textConsts.dialogue[this.props.text.activeText][this.props.text.paragraph][1];
     } else {
       paragraphToRender = textConsts.examine[this.props.text.activeText][this.props.text.paragraph];
@@ -31,7 +37,7 @@ class TextBoxes extends React.Component {
       lineToRender = paragraphToRender[1][this.props.text.selectedOption];
     } else {
       lineToRender = paragraphToRender[this.props.text.line];
-    }
+    };
   
   if (this.props.text.options.length > 1) {
       return (
@@ -45,7 +51,7 @@ class TextBoxes extends React.Component {
     } else if (this.props.text.activeTextType == 'dialogue') {
       return (
         <div id="wrap">
-          <div id="content">
+          <div className={speakerColor} id="content">
             <Speaker speaker={activeSpeaker}/>
             <div id="dialogueText">{lineToRender}</div>
           </div>

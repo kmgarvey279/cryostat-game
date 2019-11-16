@@ -14,16 +14,15 @@ export const weapons = {
     name: 'Taser',
     range: 4,
     sprites: {
-      projectile: <img src={taser} width="70" height="70"/>,
-      burst: <img src={taserBurst} width="70" height="70"/>
+      projectile: <img src={taser} width="60" height="60"/>
     }
   },
   Cryostat: {
     name: 'Cryostat',
     range: 3,
     sprites: {
-      projectileNS: <img src={cryostat} width="70" height="70"/>,
-      projectileEW: <img src={cryostat} width="70" height="70"/>
+      projectileNS: <img src={cryostat} width="60" height="60"/>,
+      projectileEW: <img src={cryostat} width="60" height="60"/>
     }
   }
 };

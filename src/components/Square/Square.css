@@ -62,10 +62,39 @@ div#lava {
   width: 50px;
   height: 50px;
   top: -10px;
-  background-color: DarkOrange;
+  background-color: orange;
   animation-iteration-count:infinite;
   animation-name: heat;
   animation-duration: 5s;
+}
+
+div#lava-cool {
+  z-index: 10;
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 50px;
+  opacity: 0.9;
+}
+
+div.special-tile {
+  z-index: 10;
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 40px;
+  background-color: white;
+  animation-iteration-count:infinite;
+  animation-name: special;
+  animation-duration: 5s;
+}
+
+@keyframes special {
+  0%  {opacity: 0.6;}
+  25%  {opacity: 0.9;}
+  50%  {opacity: 0.6;}
+  75%  {opacity: 0.9;}
+  100%  {opacity: 0.6;}
 }
 
 div#goo {
@@ -93,12 +122,23 @@ div#explosion {
   animation-duration: 1500ms;
 }
 
-#clone {
+#clone2 {
   opacity: 0.8;
-  filter: hue-rotate(180deg);
+  filter: hue-rotate(150deg);
   z-index: 100;
   position: absolute;
-  bottom: 28px;
+  bottom: 15px;
   right: -13px;
   break-inside: avoid;
 }
+
+#clone1 {
+  opacity: 0.8;
+  filter: hue-rotate(300deg);
+  z-index: 100;
+  position: absolute;
+  bottom: 15px;
+  right: -13px;
+  break-inside: avoid;
+}
+

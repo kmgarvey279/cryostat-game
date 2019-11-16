@@ -6,6 +6,7 @@ export const UPDATE_BOSS_STATUS = "UPDATE_BOSS_STATUS";
 export const UPDATE_BOSS_LOCATION = "UPDATE_ENEMY_LOCATION";
 export const UPDATE_BOSS_HEALTH = "UPDATE_ENEMY_HEALTH";
 export const UPDATE_TILE_ARRAY = "UPDATE_TILE_ARRAY";
+export const UPDATE_BOSS_ATTACK = "UPDATE_BOSS_ATTACK";
 
 //Action Creators
 export function updateBossName(newName) {
@@ -49,6 +50,13 @@ export function updateTileArray(newArray) {
       tileArr: newArray
     }
   }
+
+  export function updateBossAttack(attackStatus) {
+    return {
+      type: UPDATE_BOSS_ATTACK,
+      attack: attackStatus
+    }
+  }
   
 
 
@@ -57,15 +65,16 @@ const initialState = {
     status: 'none',
     location: 0,
     health: 100,
-    tileArr: [57, 58, 70, 71, 83, 84, 96, 97, 109, 110],
+    tileArr: [45, 46, 58, 59, 71, 72, 84, 85, 97, 98],
     name: '',
-    titles: []
+    titles: [],
+    attack: false
 }
 
 //Reducer
 const bossReducer = (state = initialState, action) => {
   let newState;
-  const { name, titles, status, location, health, tileArr} = action;
+  const { name, titles, status, location, health, tileArr, attack} = action;
   switch (action.type) {
         case UPDATE_BOSS_NAME:
             newState = Object.assign({}, state, {
@@ -97,6 +106,11 @@ const bossReducer = (state = initialState, action) => {
                 tileArr: tileArr
             });
             return newState;
+        case UPDATE_BOSS_ATTACK:
+          newState = Object.assign({}, state, {
+              attack: attack
+          });
+          return newState;
         default:
             return state;
           }
