@@ -34,7 +34,7 @@ class TextBoxes extends React.Component {
     if (paragraphToRender[this.props.text.line] == 'options') {
       lineToRender = paragraphToRender[this.props.text.line + 1];
     } else if (paragraphToRender[this.props.text.line] == 'results') {
-      lineToRender = paragraphToRender[1][this.props.text.selectedOption];
+      lineToRender = paragraphToRender[1][this.props.text.selectedOption -1];
     } else {
       lineToRender = paragraphToRender[this.props.text.line];
     };
@@ -42,7 +42,7 @@ class TextBoxes extends React.Component {
   if (this.props.text.options.length > 1) {
       return (
         <div id="wrap">
-          <div id="content">
+          <div id="box-content">
             <div id="text">{lineToRender}</div>
             <Options text={this.props.text} menu={this.props.menu}/>
           </div>
@@ -51,7 +51,7 @@ class TextBoxes extends React.Component {
     } else if (this.props.text.activeTextType == 'dialogue') {
       return (
         <div id="wrap">
-          <div className={speakerColor} id="content">
+          <div className={speakerColor} id="box-content">
             <Speaker speaker={activeSpeaker}/>
             <div id="dialogueText">{lineToRender}</div>
           </div>
@@ -60,7 +60,7 @@ class TextBoxes extends React.Component {
     } else if (this.props.game.roomId === 'special') {
       return (
         <div id="wrap">
-          <div id="content" className="special">
+          <div id="box-content" className="special">
             <div id="text">{lineToRender}</div>
           </div>
         </div>
@@ -68,7 +68,7 @@ class TextBoxes extends React.Component {
     } else {
       return (
         <div id="wrap">
-          <div id="content">
+          <div id="box-content">
             <div id="text">{lineToRender}</div>
           </div>
         </div>

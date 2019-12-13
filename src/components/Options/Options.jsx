@@ -32,7 +32,7 @@ class Options extends React.Component {
       } else if(this.props.text.activeText === 'save') {
         this.props.dispatch(soundsModule.changeEffect('merge'));
       };
-      this.props.dispatch(textModule.selectOption(this.props.menu.selectedOption - 1));
+      this.props.dispatch(textModule.selectOption(this.props.menu.selectedOption));
       this.props.dispatch(textModule.setParagraph(this.props.text.paragraph + 1));
       this.props.dispatch(textModule.setLine(0));
       this.props.dispatch(textModule.setOptions([]));

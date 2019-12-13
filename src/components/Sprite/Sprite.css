@@ -39,9 +39,29 @@ div.boss-sprite {
   z-index: 110;
   position: absolute;
   break-inside: avoid;
-  bottom: -55px;
+  bottom: -50px;
   right: -8px;
 }
+
+div.hurt-boss-sprite {
+  z-index: 110;
+  position: absolute;
+  break-inside: avoid;
+  bottom: -50px;
+  right: -8px;
+  animation-name: hurt;
+  animation-duration: 2s;
+}
+  @keyframes hurt {
+    0%  {filter: hue-rotate(150deg);}
+    15%  {filter: hue-rotate(0deg);}
+    30%  {filter: hue-rotate(150deg);}
+    45%  {filter: hue-rotate(0deg);}
+    60%  {filter: hue-rotate(150deg)}
+    70%  {filter: hue-rotate(0deg)}
+    85%  {filter: hue-rotate(150deg);}
+    100%  {filter: hue-rotate(0deg);}
+  }
 
 div#fall{
   top: -20px; 
@@ -76,6 +96,15 @@ div#powerUp {
   @keyframes rise {
     from { margin-bottom: 0;}
     to   { margin-bottom: 30px;}
+  }
+
+div#powerDown {
+  animation-name: sink;
+  animation-duration: 1500ms;
+}
+  @keyframes sink {
+    from { margin-bottom: 30px;}
+    to   { margin-bottom: 0;}
   }
 
 div#float {

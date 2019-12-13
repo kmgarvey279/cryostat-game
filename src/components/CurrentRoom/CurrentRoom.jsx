@@ -7,7 +7,7 @@ import './CurrentRoom.css';
 function CurrentRoom(props){
   return (
     <div id="outer">
-      <Filter branch={props.game.branch}/>
+      <Filter branch={props.game.branch} filter={props.game.filter}/>
       {Object.keys(props.currentRoom).map(function(squareId) {
         var square = props.currentRoom[squareId];
         return <div id="inner"><Square value={square.value}
@@ -21,6 +21,7 @@ function CurrentRoom(props){
           explosion={square.explosion}
           warning={square.warning}
           player={props.player}
+          boss={props.boss}
           doors={props.doors}
           eye={props.game.eye}
           npcs={props.npcs}
@@ -35,6 +36,7 @@ CurrentRoom.propTypes = {
   game: PropTypes.object.isRequired,
   currentRoom: PropTypes.object.isRequired,
   player: PropTypes.object,
+  boss: PropTypes.object,
   doors: PropTypes.object,
   npcs: PropTypes.object
 };

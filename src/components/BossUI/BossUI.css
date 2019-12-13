@@ -11,7 +11,8 @@ div.boss-ui-wrap {
   div#boss-name {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10px;
+    position: relative;
+    top: -10px;
     font-size: 60px;
     color: white;  
   }
@@ -20,6 +21,8 @@ div.boss-ui-wrap {
     div#boss-titles ul {
         list-style: none;
         padding: 0;
+        position: relative;
+        top: -30px;
     }
     div#boss-titles li {
         margin-left: auto;
@@ -28,29 +31,47 @@ div.boss-ui-wrap {
         color: white;  
     }
 
+  div.boss-health-container {
+    width: 600px;
+    margin-top: 75px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-  span.boss-hp-full {
-    display: inline-block;
-    height: 51px;
-    width: 50px;
-  }
-  span.boss-hp-empty {
-      display: inline-block;
-      height: 45px;
-      width: 50px;
-      background: black;
-      position:relative;
-      z-index: 3;
-  }
+  div.bar-background {
+    height: 30px;
+    width: 600px;
+    background: black;
+    border: solid black 2px;
+    border-radius: 10px;
+    position: relative;
+    z-index: 1;
+}
   
   div.boss-health-bar {
       height: 30px;
-      width: 600px;
-      border: solid black 1.5px;
+      width: 15%;
+      border: solid black 2px;
       border-radius: 10px;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 75px;
+      overflow: hidden;
+      top: -35px;
+      position: relative;
+      z-index: 1;
+  }
+
+  #highHealth {
+    background: rgb(15,87,13);
+    background: linear-gradient(0deg, rgba(15,87,13,1) 0%, rgba(58,255,0,1) 100%);
+  }
+
+  #midHealth {
+    background: rgb(255,153,0);
+    background: linear-gradient(0deg, rgba(255,153,0,1) 0%, rgba(255,252,0,1) 100%);
+  }
+
+  #lowHealth {
+    background: rgb(99,4,4);
+    background: linear-gradient(0deg, rgba(99,4,4,1) 0%, rgba(255,0,0,1) 100%);
   }
 
   #boss-icon {

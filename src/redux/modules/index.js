@@ -13,7 +13,7 @@ import flagReducer from './flags';
 import soundsReducer from './sounds';
 import savesReducer from './save-data';
 import bossReducer from './boss/boss';
-import npcsReducer from './npcs';
+import npcsReducer from './npcs/npcs';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({

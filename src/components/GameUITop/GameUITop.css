@@ -6,7 +6,6 @@ div#UI-content {
   z-index: 10;
   display: inline-block;
   width: 600px;
-
   border-radius: 5px;
   height: 60px;
   position: absolute;
@@ -99,15 +98,28 @@ img {
   font-weight: bold;
 }
 
+.core {
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 70px;
+  margin: auto;
+}
+
 #mp {
   position: absolute;
-  right: 10px;
+  right: 8px;
   top: 8px;
   z-index: 0;
 }
 
 .single-digit {
   padding-left: 4px;
+}
+
+div#UI-wrap {
+  min-width: 1000px;
 }
 
 

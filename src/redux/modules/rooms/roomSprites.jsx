@@ -7,7 +7,6 @@ import tentaHurt from '../../../assets/images/room/tenta-damage.gif';
 import ice from '../../../assets/images/room/ice.png';
 import lava from '../../../assets/images/room/lava.gif';
 import lavaCovered from '../../../assets/images/room/lava-covered.png';
-import coin from '../../../assets/images/coin.png';
 import wall from '../../../assets/images/room/wall-inner-horizontal.png';
 import tile from '../../../assets/images/room/tile.png';
 import tile2 from '../../../assets/images/room/tile2.png';
@@ -15,6 +14,7 @@ import spookyTile from '../../../assets/images/room/spooky-tile.png';
 import spookyTile2 from '../../../assets/images/room/spooky-tile2.png';
 import goo from '../../../assets/images/room/goo.png';
 import pit from '../../../assets/images/room/pit.png';
+import wire from '../../../assets/images/room/wire.png';
 import beltNorth from '../../../assets/images/room/belt-north.gif';
 import beltEast from '../../../assets/images/room/belt-east.gif';
 import beltSouth from '../../../assets/images/room/belt-south.gif';
@@ -26,6 +26,7 @@ import warpPurple from '../../../assets/images/room/warpPurple.gif';
 import warpGreen from '../../../assets/images/room/warpGreen.gif';
 import warpYellow from '../../../assets/images/room/warpYellow.gif';
 
+import core from '../../../assets/images/room/core.png';
 import terminal from '../../../assets/images/room/terminal.gif';
 import terminalOff from '../../../assets/images/room/terminal-off.png';
 import spookyTerminal from '../../../assets/images/room/spooky-terminal.png';
@@ -34,6 +35,8 @@ import tank1 from '../../../assets/images/room/cryoTank1.gif';
 import tank2 from '../../../assets/images/room/cryoTank2.gif';
 import tankE1 from '../../../assets/images/room/cryoTankE1.gif';
 import tankE2 from '../../../assets/images/room/cryoTankE2.gif';
+import tankD1 from '../../../assets/images/room/cryoTankD1.png';
+import tankD2 from '../../../assets/images/room/cryoTankD2.png';
 import uglyBed1 from '../../../assets/images/room/uglyBed1.png';
 import uglyBed2 from '../../../assets/images/room/uglyBed2.png';
 import shelf from '../../../assets/images/room/shelf.png';
@@ -44,6 +47,7 @@ import theMachineOn from '../../../assets/images/room/theMachineOn.gif';
 import machineLeft from '../../../assets/images/room/machine-left.png';
 import machineRight from '../../../assets/images/room/machine-right.png';
 import lightningRight from '../../../assets/images/room/lightningRight.gif';
+import lightningRed from '../../../assets/images/room/lightningRed.gif';
 import explosion from '../../../assets/images/room/explode.png';
 import tube from '../../../assets/images/room/tube-monster1.gif';
 import bigTube1 from '../../../assets/images/room/big-tube1.png';
@@ -137,15 +141,16 @@ import openingKey2West from '../../../assets/images/room/door-open-west-keycard2
 import closingKey2West from '../../../assets/images/room/door-close-west-keycard2.gif';
 
 const sprites = {
+  core: <img src={core} width="1200" height="300"/>,
   eyeball: <img src={eyeball} width="50" height="50"/>,
   eyeballHurt: <img src={eyeballHurt} width="50" height="50"/>,
   tenta: <img src={tenta} width="50" height="50"/>,
   tentaHurt: <img src={tentaHurt} width="50" height="50"/>,
+  wire: <img src={wire} width="50" height="50"/>,
   pit: <img src={pit} width="50" height="50"/>,
   ice: <img src={ice} width="50" height="50"/>,
   lava: <img src={lava} width="50" height="50"/>,
   lavaCovered: <img src={lavaCovered} width="50" height="50"/>,
-  coin: <img src={coin} width="50" height="50"/>,
   wall: <img src={wall} width="50" height="50"/>,
   tile: <img src={tile} width="50" height="50"/>,
   tile2: <img src={tile2} width="50" height="50"/>,
@@ -166,10 +171,12 @@ const sprites = {
   terminalOff: <img src={terminalOff} width="50" height="50"/>,
   terminalShock: <img src={terminalShock} width="50" height="50"/>,
   spookyTerminal: <img src={spookyTerminal} width="50" height="50"/>,
-  tank1: <img src={tank1} width="65" height="90" />,
-  tank2: <img src={tank2} width="65" height="90" />,
-  tankE1: <img src={tankE1} width="65" height="90" />,
-  tankE2: <img src={tankE2} width="65" height="90" />,
+  tank1: <img src={tank1} width="60" height="90" />,
+  tank2: <img src={tank2} width="63" height="90" />,
+  tankE1: <img src={tankE1} width="60" height="90" />,
+  tankE2: <img src={tankE2} width="63" height="90" />,
+  tankD1: <img src={tankD1} width="60" height="90" />,
+  tankD2: <img src={tankD2} width="63" height="90" />,
   shelf: <img src={shelf} width="55" height="90"/>,
   uglyBed1: <img src={uglyBed1} width="70" height="90"/>,
   uglyBed2: <img src={uglyBed2} width="70" height="90"/>,
@@ -181,6 +188,7 @@ const sprites = {
   machineRight: <img src={machineRight} width="50" height="50"/>,
   save: <img src={save} width="50" height="50"/>,
   lightningRight: <img src={lightningRight} width="65" height="70"/>,
+  lightningRed: <img src={lightningRed} width="65" height="70"/>,
   explosion: <img src={explosion} width="50" height="50"/>,
   tube: <img src={tube} width="70" height="70"/>,
   phone: <img src={phone} width="70" height="70"/>,

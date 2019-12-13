@@ -7,6 +7,7 @@ import health from '../../../assets/images/items/health.png';
 import keyCard1 from '../../../assets/images/items/key.png';
 import keyCard2 from '../../../assets/images/items/key2.png';
 import dash from '../../../assets/images/items/collider.png';
+import clone from '../../../assets/images/items/cloneOrb.gif';
 import React from 'react';
 
 export const weapons = {
@@ -33,5 +34,6 @@ export const sprites = {
   health: <img src={health} width="50" height="50"/>,
   keyCard1: <img src={keyCard1} width="50" height="50"/>,
   keyCard2: <img src={keyCard2} width="50" height="50"/>,
-  dash: <img src={dash} width="50" height="50"/>
+  dash: <img src={dash} width="50" height="50"/>,
+  clone: <img src={clone} width="50" height="50"/>
 }

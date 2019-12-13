@@ -33,6 +33,7 @@ div#current {
   animation: current 4s infinite;
 }
 
+
 div#visited {
   background-color: lightblue;
   border: solid 2px black;
@@ -59,6 +60,11 @@ div#unvisited {
   vertical-align: top;
   display: inline-block;
   z-index: 2000;
+  background-image: repeating-linear-gradient(-45deg,
+  transparent,
+  transparent 3px,
+  black 3px,
+  black 5px);
 }
 
 #objective {

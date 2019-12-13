@@ -27,18 +27,20 @@ import * as soundsModule from '../../redux/modules/sounds';
 import * as savesModule from '../../redux/modules/save-data';
 import * as bossModule from '../../redux/modules/boss/boss';
 import * as menuModule from '../../redux/modules/menu';
-import * as npcsModule from '../../redux/modules/npcs';
+import * as npcsModule from '../../redux/modules/npcs/npcs';
 //resources
 import * as playerConsts from '../../redux/modules/player/playerConstants';
 import * as enemyConsts from '../../redux/modules/enemies/enemyConstants';
 import * as roomConsts  from '../../redux/modules/rooms/roomConstants';
 import * as itemConsts from '../../redux/modules/rooms/itemConstants';
 import * as textConsts from '../../redux/modules/text/textConstants';
+import npcSprites from '../../redux/modules/npcs/npcSprites';
 import bossShot from '../../assets/images/items/boss-shot.gif';
 import bossBeam from '../../assets/images/items/boss-beam.gif';
 import cryostat from '../../assets/images/items/cryostatNS.gif';
 import boss from '../../assets/images/enemies/boss1.gif';
 import darkBoss from '../../assets/images/enemies/boss1-dark.gif';
+import bossSink from '../../assets/images/enemies/bossSink.gif';
 //stateless functions
 import * as helpers from './helperFunctions';
 
@@ -232,16 +234,20 @@ class App extends React.Component {
   startGame(){
     //start game
     if(this.props.game.gameState == 'postExitBranch') {
-      this.generateSpecialRoom();
-      this.props.dispatch(gameModule.changeGameState("enterBranch"));
-      setTimeout(() =>
-        this.handleChangeGameState('active'),
-        3000
-      );
-      setTimeout(() => {
-        this.props.dispatch(soundsModule.changeEffect('phone'));
-        this.props.dispatch(roomModule.updateContent(71, [['interact', 'phone1']]));
-      }, 8000);
+      if(this.props.game.branch === 3) {
+        this.exitSpecial();
+      } else {
+        this.generateSpecialRoom();
+        this.props.dispatch(gameModule.changeGameState("enterBranch"));
+        setTimeout(() =>
+          this.handleChangeGameState('active'),
+          3000
+        );
+        setTimeout(() => {
+          this.props.dispatch(soundsModule.changeEffect('phone'));
+          this.props.dispatch(roomModule.updateContent(71, [['interact', 'phone1']]));
+        }, 8000);
+      };
     } else {
       this.generateRoomFromTemplate();
     };
@@ -281,7 +287,7 @@ class App extends React.Component {
     };
     setInterval(() =>
       this.gameLoop(),
-    100
+    30
     );
   }
 
@@ -361,8 +367,8 @@ class App extends React.Component {
       this.props.dispatch(roomModule.updateSprite(133, roomConsts.sprites['theMachineOn']));
       this.props.dispatch(roomModule.updateValue(109, '%', roomConsts.sprites['warp']));
     };
-    if(this.props.game.roomId === 10 && this.props.game.branch === 3){
-      this.createBoss();
+    if(this.props.game.roomId === 8 && this.props.game.branch === 3){
+      this.props.dispatch(gameModule.toggleLights('off'));
     };
   }
 
@@ -430,21 +436,41 @@ class App extends React.Component {
       });
       let door = this.props.doors[doorArr[1]];
       if (door.direction == 'north') {
+        //front
         let contentArr = this.props.currentRoom[square.squareId + 1].content;
         contentArr.push(['doorTrigger', door.doorId]);
         this.props.dispatch(roomModule.updateContent(square.squareId + 1, contentArr));
+        //back
+        contentArr = this.props.currentRoom[square.squareId - 1].content;
+        contentArr.push(['doorTrigger', door.doorId]);
+        this.props.dispatch(roomModule.updateContent(square.squareId - 1, contentArr));
       } else if (door.direction == 'east') {
+        //front
         let contentArr = this.props.currentRoom[square.squareId - 13].content;
         contentArr.push(['doorTrigger', door.doorId]);
         this.props.dispatch(roomModule.updateContent(square.squareId - 13, contentArr));
+        //back
+        contentArr = this.props.currentRoom[square.squareId + 13].content;
+        contentArr.push(['doorTrigger', door.doorId]);
+        this.props.dispatch(roomModule.updateContent(square.squareId + 13, contentArr));
       } else if (door.direction == 'south') {
+        //front
         let contentArr = this.props.currentRoom[square.squareId - 1].content;
         contentArr.push(['doorTrigger', door.doorId]);
         this.props.dispatch(roomModule.updateContent(square.squareId - 1, contentArr));
+        //back
+        contentArr = this.props.currentRoom[square.squareId + 1].content;
+        contentArr.push(['doorTrigger', door.doorId]);
+        this.props.dispatch(roomModule.updateContent(square.squareId + 1, contentArr));
       } else if (door.direction == 'west') {
+        //front
         let contentArr = this.props.currentRoom[square.squareId + 13].content;
         contentArr.push(['doorTrigger', door.doorId]);
         this.props.dispatch(roomModule.updateContent(square.squareId + 13, contentArr));
+        //back
+        contentArr = this.props.currentRoom[square.squareId - 13].content;
+        contentArr.push(['doorTrigger', door.doorId]);
+        this.props.dispatch(roomModule.updateContent(square.squareId - 13, contentArr));
       };
     });
   }
@@ -517,7 +543,7 @@ class App extends React.Component {
     } else if (squareValue == 'i') {
       this.props.dispatch(gameModule.setEye('alive'));
     //create pit
-    } else if (squareValue == 'P') {
+    } else if (squareValue == 'P' || (squareValue === '%' && this.props.game.roomId !== 4)) {
       if (this.props.currentRoom[thisSquareId - 1].value !== 'P' && this.props.currentRoom[thisSquareId - 1].value !== 'V'){
         squareImage = roomConsts.sprites['pit'];
       } else {
@@ -747,13 +773,17 @@ class App extends React.Component {
               this.props.dispatch(roomModule.updateSprite(133, roomConsts.sprites['theMachine']));
               this.props.dispatch(roomModule.updateValue(109, '%off', roomConsts.sprites['warp']));
             };
+            if(this.props.game.roomId === 8 && this.props.game.branch === 3 && this.props.boss.status === 'none'){
+              this.props.dispatch(doorsModule.updateDoorLock('8-A', true));
+              this.createBoss();
+            };
             if(squareCheck == 'slide') {
               this.move(this.props.player.direction, this.props.player.location);
               this.props.dispatch(playerModule.updatePlayerStatus('sliding'));
             } else {
               this.props.dispatch(playerModule.updatePlayerStatus('normal'));
             }},
-            100
+            30
           );
         } else if (squareCheck == 'stopped') {
           this.props.dispatch(playerModule.updatePlayerStatus('normal'));
@@ -897,14 +927,21 @@ class App extends React.Component {
 
 
   attack() {
-    this.props.dispatch(playerModule.updatePlayerStatus('cooldown'));
-    let newSprite = playerConsts.sprites.attack[this.props.player.direction];
-    this.props.dispatch(roomModule.updateSprite(this.props.player.location, newSprite));
     let direction = this.props.player.direction;
     let playerLocation = this.props.player.location;
     let name = this.props.player.currentWeapon;
     let range = itemConsts.weapons[this.props.player.currentWeapon].range;
     let startPoint = this.attemptMove(direction, playerLocation);
+    this.props.dispatch(playerModule.updatePlayerStatus('cooldown'));
+    if (name == 'Taser') {
+      this.props.dispatch(soundsModule.changeEffect(''));
+      this.props.dispatch(soundsModule.changeEffect('taser'));
+    } else {
+      this.props.dispatch(soundsModule.changeEffect(''));
+      this.props.dispatch(soundsModule.changeEffect('cryo'));
+    };
+    let newSprite = playerConsts.sprites.attack[this.props.player.direction];
+    this.props.dispatch(roomModule.updateSprite(this.props.player.location, newSprite));
     let hasEnemy = this.props.currentRoom[startPoint].content.find(function(content) {
       return content[0] == 'enemy';
     });
@@ -914,6 +951,8 @@ class App extends React.Component {
     if (startPoint !== playerLocation && this.props.currentRoom[startPoint].value !== 'D') {
       if (hasEnemy !== undefined) {
         this.handleEnemyDamage(name, direction, hasEnemy[1]);
+      } else if ((name == 'Taser' || name == 'Cryostat') && this.props.currentRoom[startPoint].value == 'boss'){
+        this.handleBossDamage();
       } else if (name == 'Taser' && hasElecSwitch !== undefined) {
         this.handleSwitch(hasElecSwitch[1]);
       } else if (name == 'Cryostat' && this.props.currentRoom[startPoint].value === 'L') {
@@ -927,11 +966,8 @@ class App extends React.Component {
       } else {
         let newSprite;
         if (name == 'Taser') {
-          this.props.dispatch(soundsModule.changeEffect(''));
-          this.props.dispatch(soundsModule.changeEffect('taser'));
           newSprite = itemConsts.weapons[this.props.player.currentWeapon].sprites['projectile'];
         } else {
-          this.props.dispatch(soundsModule.changeEffect('cryo'));
           if (direction == 'north' || direction == 'south') {
             newSprite = itemConsts.weapons[this.props.player.currentWeapon].sprites['projectileNS'];
           } else {
@@ -1000,7 +1036,7 @@ class App extends React.Component {
           };
         }
         //recheck if player can move
-        if (canMove !== originalLocation && this.props.currentRoom[canMove].value !== 'L') {
+        if (canMove !== originalLocation && this.props.currentRoom[canMove].value !== 'L' && this.props.currentRoom[canMove].value !== 'boss') {
           let squareCheck = this.playerSquareCheck(canMove, direction);
           if (squareCheck === 'moved' || squareCheck === 'slide'){
             this.handleUpdatePlayerLocation(originalLocation, canMove);
@@ -1018,16 +1054,16 @@ class App extends React.Component {
               );
             } else if (squareCheck !== 'fall') {
               this.props.dispatch(roomModule.updateSprite(this.props.player.location, playerConsts.sprites.knockback[direction]));
-            }
+            };
           } else {
           this.handleUpdateSprite(this.props.player.location, playerConsts.sprites.knockback[direction]);
           setTimeout(() => {
           this.handleUpdateSprite(this.props.player.location, playerConsts.sprites.stand[direction], '');
           this.props.dispatch(playerModule.updatePlayerStatus('normal'));},
           400);
-          }
-        }
-      }
+          };
+        };
+      };
     }
 
   handleUpdatePlayerLocation(originalLocation, newLocation) {
@@ -1049,7 +1085,7 @@ class App extends React.Component {
     });
     //if new spot isn't a door, but previous was a trigger, close door
     if (trigger !== undefined && door == undefined){
-      if (this.props.doors[trigger[1]].status !== 'closed') {
+      if (this.props.doors[trigger[1]].status !== 'closed' && this.checkForClone(this.props.doors[trigger[1]]) === false) {
         this.closeDoor(trigger[1]);
       };
       //trigger first event flag
@@ -1067,6 +1103,24 @@ class App extends React.Component {
     if (hasSwitch !== undefined) {
       this.startSwitchCountdown(hasSwitch[1]);
     };
+  }
+
+  checkForClone(door){
+    let doorLocation = door.location;
+    let doorFront;
+    let doorBack;
+    if(door.direction === 'north' || door.direction === 'south'){
+      doorFront = doorLocation + 1;
+      doorBack = doorLocation - 1;
+    } else if (door.direction === 'east' || door.direction === 'west'){
+      doorFront = doorLocation + 13;
+      doorBack = doorLocation - 13;
+    };
+    if(this.props.player.cloneLocation === doorLocation || this.props.player.cloneLocation === doorFront || this.props.player.cloneLocation === doorBack){
+      return true;
+    } else {
+      return false;
+    }
   }
 
   handleUpdateSprite(location, sprite, direction) {
@@ -1256,6 +1310,7 @@ class App extends React.Component {
     });
     if (hasBlock == undefined
     && this.props.currentRoom[newLocation].value !== 'D'
+    && this.props.currentRoom[newLocation].value !== 'V'
     && this.props.currentRoom[newLocation].value !== 'W'
     && this.props.currentRoom[newLocation].value !== 'T') {
       return newLocation;
@@ -1266,7 +1321,7 @@ class App extends React.Component {
 
   projectileLoop(i, name, direction, location, range, sprite) {
       let that = this;
-      let canMove = this.projectileMove(direction, location);
+      let canMove = this.projectileMove(direction, location);                                                                                                                                                                                                                                                                                                                                              
       let enemyId;
       this.props.currentRoom[canMove].content.forEach(function(content) {
         if (content.includes('enemy')){
@@ -1280,6 +1335,8 @@ class App extends React.Component {
       if (location === canMove) {
         this.handleUpdateSprite(location, '', '');
         //damage enemy and void projectile if it hits
+      } else if((name == 'Taser' || name == 'Cryostat') && this.props.currentRoom[canMove].value === 'boss'){
+        this.handleBossDamage()
       } else if (enemyId !== undefined) {
         this.handleEnemyDamage(name, direction, enemyId);
         this.handleUpdateSprite(location, '', '');
@@ -1319,9 +1376,11 @@ class App extends React.Component {
   coolLava(tileNum){
     this.props.dispatch(roomModule.updateValue(tileNum, 'LC', roomConsts.sprites['lava']));
     setTimeout(() => {
-      this.props.dispatch(roomModule.updateValue(tileNum, 'L', roomConsts.sprites['lava']));
-      if(this.props.player.location === tileNum){
-        this.fall(tileNum);
+      if(this.props.currentRoom[tileNum].value === 'LC'){
+        this.props.dispatch(roomModule.updateValue(tileNum, 'L', roomConsts.sprites['lava']));
+        if(this.props.player.location === tileNum){
+          this.fall(tileNum);
+        };
       };
     }, 5000);
   }
@@ -1398,39 +1457,43 @@ class App extends React.Component {
     let difference = helpers.getDifference(direction);
     //and new square id #
     let newLocation = originalLocation + difference;
-    //check for pushable block
-    let content = this.props.currentRoom[newLocation].content;
-    let hasBlock = content.find(function(content) {
+    if(newLocation > 0 && newLocation <= 156){
+      //check for pushable block
+      let content = this.props.currentRoom[newLocation].content;
+      let hasBlock = content.find(function(content) {
       return content[0] == 'block';
-    });
-    let hasElec = this.props.currentRoom[newLocation].content.find(function(content) {
-      return content[0] == 'elecSwitch';
-    });
-    let hasDoor = this.props.currentRoom[newLocation].content.find(function(content) {
-      return content[0] == 'door';
-    });
-    let doorStatus = 'none';
-    if(hasDoor !== undefined) {
-      doorStatus = this.props.doors[hasDoor[1]].status;
-    };
-      if (hasBlock !== undefined && originalLocation === this.props.player.location){
-      let blockMove = this.attemptMove(direction, newLocation);
-      if (blockMove !== newLocation) {
-        this.moveBlock(hasBlock[1], direction, newLocation, newLocation + difference);
+      });
+      let hasElec = this.props.currentRoom[newLocation].content.find(function(content) {
+        return content[0] == 'elecSwitch';
+      });
+      let hasDoor = this.props.currentRoom[newLocation].content.find(function(content) {
+        return content[0] == 'door';
+      });
+      let doorStatus = 'none';
+      if(hasDoor !== undefined) {
+        doorStatus = this.props.doors[hasDoor[1]].status;
+      };
+        if (hasBlock !== undefined && originalLocation === this.props.player.location){
+        let blockMove = this.attemptMove(direction, newLocation);
+        if (blockMove !== newLocation) {
+          this.moveBlock(hasBlock[1], direction, newLocation, newLocation + difference);
+          return newLocation;
+        } else {
+          return originalLocation
+        };
+      //check if move is possible
+      } else if (hasBlock == undefined
+      && hasElec == undefined 
+      && doorStatus !== 'closed'
+      && this.props.currentRoom[newLocation].value !== 'W'
+      && this.props.currentRoom[newLocation].value !== 'T') {
         return newLocation;
       } else {
-        return originalLocation
+        return originalLocation;
       };
-    //check if move is possible
-    } else if (hasBlock == undefined
-    && hasElec == undefined 
-    && doorStatus !== 'closed'
-    && this.props.currentRoom[newLocation].value !== 'W'
-    && this.props.currentRoom[newLocation].value !== 'T') {
-      return newLocation;
     } else {
       return originalLocation;
-    };
+    }
   }
 
   //check for effects caused by landing on square
@@ -1571,6 +1634,9 @@ class App extends React.Component {
   closeDoor(doorId){
     this.props.dispatch(soundsModule.changeEffect('doorClose'));
     this.props.dispatch(doorsModule.updateDoorStatus(doorId, 'closing'));
+    if(this.props.player.cloneLocation === this.props.doors[doorId].location){
+      this.merge();
+    };
     let doorTimer = setTimeout(() =>
       this.props.dispatch(doorsModule.updateDoorStatus(doorId, 'closed')),
       600
@@ -1630,7 +1696,7 @@ class App extends React.Component {
     let file = this.props.game.file;
     if (this.props.saves[file].fileStatus == 'empty') {
       this.props.dispatch(savesModule.changeStatus(file, 'active'));
-    }
+    };
     let player = this.props.player;
     let flags = this.props.flags;
     let game = this.props.game;
@@ -1641,9 +1707,15 @@ class App extends React.Component {
 
   //text
   getItem(square){
-    this.props.dispatch(roomModule.updateValue(square.squareId, '0', roomConsts.sprites['tile']));
+    let emptyTile;
+    if(this.props.game.branch === 3){
+      emptyTile = 'spookyTile';
+    } else {
+      emptyTile = 'tile';
+    }
+    this.props.dispatch(roomModule.updateValue(square.squareId, '0', roomConsts.sprites[emptyTile]));
     let itemArr = square.content.find(function(content) {
-      return content[0] == "weapon" || content[0] == "item";
+      return content[0] == "weapon" || content[0] == "item" || content[0] == "skill";
     });
     if (itemArr[0] == "weapon"){
       let weaponArr = this.props.player.weapons;
@@ -1653,6 +1725,10 @@ class App extends React.Component {
       this.props.dispatch(playerModule.changeCurrentWeapon(itemArr[1]));
       this.props.dispatch(playerModule.updateNewItem(itemArr[1]));
       this.props.dispatch(gameModule.changeGameState("itemGet"));
+    } else if (itemArr[0] === 'skill'){
+      setTimeout(() =>
+        this.powerUp(itemArr[1]),
+      500);
     } else {
       if (itemArr[1] == 'health') {
         this.props.dispatch(soundsModule.changeEffect('regen'));
@@ -1668,7 +1744,7 @@ class App extends React.Component {
       };
     };
     let newContent = square.content.filter(function(content) {
-      return content[0] !== "weapon" || content[0] !== "item";
+      return content[0] !== "weapon" || content[0] !== "item" || content[0] == "skill";
     });
     this.props.dispatch(roomModule.updateContent(square.squareId, newContent));
   }
@@ -1683,6 +1759,8 @@ class App extends React.Component {
       this.triggerPopUp(3) 
     } else if (item === 'dash') {
       this.exitSpecial();
+    } else if (item === 'clone') {
+      this.powerDown();
     };
     if(item === 'keyCard2'){
       this.triggerEvent(12, 'A');
@@ -1691,9 +1769,14 @@ class App extends React.Component {
 
   exitSpecial() {
     this.props.dispatch(gameModule.changeGameState('postSpecialRoom'));
-    let newBranch = this.props.game.branch + 1;
-    this.props.dispatch(gameModule.setBranch(newBranch));
     this.props.dispatch(gameModule.setRoomId(4));
+    let newBranch; 
+    if(this.props.game.branch !== 3) {
+      newBranch = this.props.game.branch + 1;
+    } else {
+      newBranch = 1;
+    };
+    this.props.dispatch(gameModule.setBranch(newBranch));
     this.props.dispatch(playerModule.updatePlayerHealth(50));
     this.nullAll();
     this.startGame();
@@ -1819,6 +1902,7 @@ class App extends React.Component {
   }
 
   powerUp(newSkill) {
+    this.props.dispatch(gameModule.changeGameState('cutscene'));
     this.handleUpdateSprite(this.props.player.location, playerConsts.sprites.dash.south, 'powerUp');
     this.props.dispatch(soundsModule.changeEffect('charge'));
     setTimeout(() => {
@@ -1835,6 +1919,39 @@ class App extends React.Component {
       this.props.dispatch(gameModule.changeGameState("itemGet"));
     }, 2500);
     this.props.dispatch(playerModule.updatePlayerMagic(100));
+  }
+
+  powerDown(){
+    this.props.dispatch(gameModule.changeGameState('cutscene'));
+    this.handleUpdateSprite(this.props.player.location, playerConsts.sprites.dash.south, 'powerDown');
+    setTimeout(() => {
+      this.handleUpdateSprite(this.props.player.location, playerConsts.sprites.stand.south, '');
+      if(this.props.game.branch === 3){
+        this.blaineIntro();
+      } else {
+        this.props.dispatch(gameModule.changeGameState('active'));
+      };
+    }, 1500);
+  }
+
+  blaineIntro(){
+    setTimeout(() => {
+      this.move('south', this.props.player.location);
+      this.props.dispatch(roomModule.updateSprite(70, playerConsts.sprites.blast));
+      this.props.dispatch(soundsModule.changeEffect('warp'));
+    }, 1500);
+    setTimeout(() => {
+      this.props.dispatch(roomModule.updateSprite(this.props.player.location, playerConsts.sprites.stand.north));
+      this.props.dispatch(roomModule.toggleAlert(this.props.player.location, true));
+    }, 3000); 
+    setTimeout(() => {
+      this.props.dispatch(roomModule.toggleAlert(this.props.player.location, false));
+      this.props.dispatch(roomModule.updateSprite(70, npcSprites.blaine.warp));
+      this.props.dispatch(soundsModule.changeMusic('blaine'));
+    }, 4500); 
+    setTimeout(() => {
+      this.switchBranch(this.props.player.location)
+    }, 8500); 
   }
 
   handlePlayerChoice(){
@@ -1855,6 +1972,53 @@ class App extends React.Component {
       } else {
         this.props.dispatch(doorsModule.updateDoorLock('1-A', true));
       };
+    } else if (this.props.text.activeText == 'terminal9a'){
+      if (this.props.text.selectedOption == 1) {
+        //lock doors
+        this.closeDoor('9-A');
+        this.props.dispatch(doorsModule.updateDoorLock('9-A', true));
+        this.closeDoor('9-B');
+        this.props.dispatch(doorsModule.updateDoorLock('9-B', true));
+        this.closeDoor('9-C');
+        this.props.dispatch(doorsModule.updateDoorLock('9-C', true));
+        //trigger alert filter
+        this.props.dispatch(gameModule.changeFilter('core'));
+        //activate terminal
+        setTimeout(() => {
+          this.props.dispatch(soundsModule.changeEffect('ping'));
+          this.props.dispatch(roomModule.updateValue(84, 'T', roomConsts.sprites['terminal']));
+          this.props.dispatch(roomModule.updateContent(85, [['interact', 'terminal9b']]));
+        }, 1000);
+        //move platforms
+        this.platformMove('9-A');
+        this.platformMove('9-B');
+        //toggle electricity
+        this.props.dispatch(roomModule.updateValue(29, 'P', roomConsts.sprites['pit']));
+        this.props.dispatch(roomModule.updateValue(120, 'P', roomConsts.sprites['pit']));
+        //change core sprite?
+        } else {
+          //unlock doors
+          this.props.dispatch(doorsModule.updateDoorLock('9-A', false));
+          this.props.dispatch(doorsModule.updateDoorLock('9-B', false));
+          this.props.dispatch(doorsModule.updateDoorLock('9-C', false));
+          //return platforms
+          this.platformReturn('9-A');
+          this.platformReturn('9-B');
+          //trigger alert filter
+          this.props.dispatch(gameModule.changeFilter(''));
+          //deactivate terminal
+          this.props.dispatch(soundsModule.changeEffect('shutdown'));
+          this.props.dispatch(roomModule.updateValue(84, 'T', roomConsts.sprites['terminalOff']));
+          this.props.dispatch(roomModule.updateContent(85, [['interact', 'terminalOff']]));
+          //change core sprite?
+          this.props.dispatch(roomModule.updateValue(29, '%', roomConsts.sprites['pit']));
+          this.props.dispatch(roomModule.updateValue(120, '%', roomConsts.sprites['pit']));
+        };
+    } else if (this.props.text.activeText == 'terminal9b'){
+      if (this.props.text.selectedOption == 1) {
+        this.props.dispatch(roomModule.updateSprite(120, roomConsts.sprites['lightningRed']));
+      } else {
+      }
     } else if (this.props.text.activeText === 'save'){
       if(this.props.text.selectedOption === 1){
         this.handleSaveGame();
@@ -2165,32 +2329,43 @@ class App extends React.Component {
   }
 
   createBoss(){
-    let sprite = <img src={darkBoss} width="250" height="220"/>;
-    this.props.dispatch(roomModule.updateSprite(98, sprite)); 
-    this.props.dispatch(bossModule.updateBossStatus('alive'));
-    this.props.dispatch(gameModule.toggleLights('off'));
-    this.props.dispatch(gameModule.setEye('alive'));
+    this.closeDoor('8-A');
+    this.props.dispatch(doorsModule.updateDoorLock('8-A', true));
+    this.props.dispatch(gameModule.changeGameState('cutscene'));
     this.props.dispatch(soundsModule.changeMusic('bossIntro'));
+    this.props.dispatch(soundsModule.changeEffect('scream'));
+    setTimeout(() => {
+      let sprite = <img src={darkBoss} width="250" height="220"/>;
+      this.props.dispatch(roomModule.updateSprite(98, sprite)); 
+      this.props.dispatch(bossModule.updateBossStatus('normal'));
+      this.props.dispatch(gameModule.setEye('alive'));},
+      4000
+    );
+    setTimeout(() => {
+      let sprite = <img src={boss} width="250" height="220"/>;
+      this.props.dispatch(roomModule.updateSprite(98, sprite));},
+      7000
+    );
     setTimeout(() => {
       this.props.dispatch(gameModule.toggleLights('on'))},
-      2000
+      7200
     );
-    let titles = this.props.boss.titles;
     setTimeout(() => {
       this.props.dispatch(soundsModule.changeEffect(''));
       this.props.dispatch(soundsModule.changeEffect('whoosh'));
-      this.props.dispatch(bossModule.updateBossName('Chalazon'));
-      titles.push('Abyssinal Cyst');
+      this.props.dispatch(bossModule.updateBossName('Chalazon'));},
+      8500
+    );
+    setTimeout(() => {
+      let titles = this.props.boss.titles;
+      titles.push('- Abyssal Cyst -');
       this.props.dispatch(bossModule.updateBossTitles(titles));},
-      2500
+      11000
     );
     setTimeout(() => {
-      this.props.dispatch(soundsModule.changeEffect('scream'));},
-      4500
-    );
-    setTimeout(() => {
+      this.props.dispatch(gameModule.changeGameState('active'));
       this.startBossFight();},
-      7000
+      15000
     );
   }
 
@@ -2200,14 +2375,51 @@ class App extends React.Component {
     this.props.dispatch(soundsModule.changeMusic('boss'));
     let bossTimer = setInterval(() =>
       {let rng = Math.floor(Math.random() * 3);
-        if (rng === 1){
+        if (rng === 1 && this.props.game.gameState === 'active' && this.props.boss.status === 'normal'){
           this.bossAttack();
-        } else {
+        } else if (this.props.game.gameState === 'active' && this.props.boss.status === 'normal') {
           this.bossMove();
         };
       },
       1000
     );
+  }
+
+  handleBossDamage(){
+    if(this.props.boss.status === 'normal'){
+      let bossHealth = this.props.boss.health - 50;
+      this.props.dispatch(bossModule.updateBossHealth(bossHealth));
+      this.props.dispatch(bossModule.updateBossStatus('hurt'));
+      this.props.dispatch(soundsModule.changeEffect('enemyHurt'));
+      setTimeout(() => {
+        this.props.dispatch(bossModule.updateBossStatus('normal'));
+      }, 600);
+      if(bossHealth >= 0){
+        this.killBoss();
+      };
+    };
+  }
+
+  killBoss(){
+    this.props.dispatch(soundsModule.changeMusic(''));
+    this.props.dispatch(soundsModule.changeEffect('scream'));
+    this.props.dispatch(gameModule.changeGameState('cutscene'));
+    let sprite = <img src={bossSink} width="250" height="220"/>;
+    this.props.dispatch(roomModule.updateSprite(this.props.boss.tileArr[9], sprite));
+    setTimeout(() => {
+      this.props.dispatch(roomModule.updateSprite(this.props.boss.tileArr[9], ''));
+      this.props.dispatch(bossModule.updateBossStatus('dead'));
+      let bossSpaces = this.props.boss.tileArr;
+      bossSpaces.forEach(bossSpace => {
+        this.props.dispatch(roomModule.updateValue(bossSpace, '0', roomConsts.sprites['spookyTile']));
+        let content = this.props.currentRoom[72].content;
+        content.push(['skill', 'clone']);
+        this.props.dispatch(roomModule.updateContent(content));
+        this.props.dispatch(roomModule.updateValue(72, '$', roomConsts.sprites['spookyTile'])); 
+        this.props.dispatch(soundsModule.changeEffect('ping'));
+      });
+      this.props.dispatch(gameModule.changeGameState('active'));
+    }, 4000);
   }
 
   bossAttack(){
@@ -2219,26 +2431,68 @@ class App extends React.Component {
       this.props.dispatch(bossModule.updateBossAttack(true));
       setTimeout(() => {
       //fire projectile
-      this.handleProjectile('Taser', 'north', this.props.boss.tileArr[5], 8, <img src={bossShot} width="60" height="60"/>)
-      this.handleProjectile('Taser', 'south', this.props.boss.tileArr[4], 8, <img src={bossShot} width="60" height="60"/>)
-      this.handleProjectile('Taser', 'east', this.props.boss.tileArr[8] - 13, 8, <img src={bossShot} width="60" height="60"/>)
-      this.handleProjectile('Taser', 'west', this.props.boss.tileArr[0] + 13, 8, <img src={bossShot} width="60" height="60"/>)
-      this.props.dispatch(bossModule.updateBossAttack(false));
+      this.handleProjectile('Boss', 'north', this.props.boss.tileArr[5], 8, <img src={bossShot} width="60" height="60"/>)
+      this.handleProjectile('Boss', 'south', this.props.boss.tileArr[4], 8, <img src={bossShot} width="60" height="60"/>)
+      this.handleProjectile('Boss', 'east', this.props.boss.tileArr[6], 8, <img src={bossShot} width="60" height="60"/>)
+      this.handleProjectile('Boss', 'west', this.props.boss.tileArr[2], 8, <img src={bossShot} width="60" height="60"/>)
+      if(this.props.boss.health >= 400){
+        setTimeout(() => {
+          this.handleProjectile('Boss', 'northWest', this.props.boss.tileArr[6], 8, <img src={bossShot} width="60" height="60"/>)
+          this.handleProjectile('Boss', 'northEast', this.props.boss.tileArr[4], 8, <img src={bossShot} width="60" height="60"/>)
+          this.handleProjectile('Boss', 'southWest', this.props.boss.tileArr[3], 8, <img src={bossShot} width="60" height="60"/>)
+          this.handleProjectile('Boss', 'southEast', this.props.boss.tileArr[7], 8, <img src={bossShot} width="60" height="60"/>)
+          this.props.dispatch(bossModule.updateBossAttack(false));
+        }, 1000);
+      } else {
+        this.props.dispatch(bossModule.updateBossAttack(false));
+      };
       }, 2000);
     } else if (rng === 1){
-      //summon tentacle
-      rng = Math.floor(Math.random() * 140);
-      if(this.props.currentRoom[rng].value === '0') {
-        this.props.dispatch(roomModule.setWarning(rng, true));
+    //summon tentacle
+      let target = this.props.player.location;
+      if(this.props.boss.health > 400){
+      //target single square
+        this.props.dispatch(roomModule.setWarning(target, true));
         setTimeout(() => 
-          {this.props.dispatch(roomModule.setWarning(rng, false));
-          this.props.dispatch(roomModule.updateValue(rng, '~', roomConsts.sprites['spookyTile']));},
+          {this.props.dispatch(roomModule.setWarning(target, false));
+          this.props.dispatch(roomModule.updateValue(target, '~', roomConsts.sprites['spookyTile']));
+          if(this.props.player.location === target){
+            this.knockBack(this.getRandomDirection());
+          };},
           3000);
         setTimeout(() => 
-          {if(this.props.currentRoom[rng].value === '~') {
-            this.props.dispatch(roomModule.updateValue(rng, '0', roomConsts.sprites['spookyTile']));
+          {if(this.props.currentRoom[target].value === '~') {
+            this.props.dispatch(roomModule.updateValue(target, '0', roomConsts.sprites['spookyTile']));
           }},
           9000);
+      } else {
+      //target multiple squares
+        let targets = [target];
+        let surrounding = this.getSurroundingTiles(target);
+        surrounding.forEach(tile => {
+          if(this.props.currentRoom[tile].value === '0'){
+            targets.push(tile);
+          };
+        });
+        targets.forEach(tile => {
+          this.props.dispatch(roomModule.setWarning(tile, true));
+        });
+        setTimeout(() => {        
+          targets.forEach(tile => {
+            this.props.dispatch(roomModule.setWarning(tile, false));
+            this.props.dispatch(roomModule.updateValue(tile, '~', roomConsts.sprites['spookyTile']));
+          });
+          if(targets.includes(this.props.player.location)){
+            this.knockBack(this.getRandomDirection());
+          };
+        }, 3000);
+        setTimeout(() => {
+          targets.forEach(tile => {
+            if(this.props.currentRoom[tile].value === '~') {
+              this.props.dispatch(roomModule.updateValue(tile, '0', roomConsts.sprites['spookyTile']));
+            };
+          });
+        }, 9000);
       };
     } else if (rng === 2 && this.props.boss.attack === false){
       this.props.dispatch(bossModule.updateBossAttack(true));
@@ -2311,6 +2565,9 @@ class App extends React.Component {
       setTimeout(() => {
         tentacleArr.forEach(tile => {
           this.props.dispatch(roomModule.updateValue(tile, '~', roomConsts.sprites['spookyTile']));
+          if(this.props.player.location === tile){
+            this.knockBack(this.getRandomDirection());
+          };
         }); 
       }, 600);
       setTimeout(() => {
@@ -2324,13 +2581,14 @@ class App extends React.Component {
   }
 
   aoeAttack(tile) {
-      this.props.dispatch(roomModule.updateSprite(tile, <img src={bossBeam} width="50" height="100"/>));
       setTimeout(() => {
-        this.props.dispatch(roomModule.setExplosion(tile, true));},
+        this.props.dispatch(roomModule.setExplosion(tile, true));
+        if(this.props.player.location === tile) {
+          this.knockBack(this.getRandomDirection());
+        };},
         200
       );
       setTimeout(() => {
-        this.props.dispatch(roomModule.updateSprite(tile, ''));
         this.props.dispatch(roomModule.setWarning(tile, false));
         this.props.dispatch(roomModule.setExplosion(tile, false));},
         600
@@ -2360,13 +2618,27 @@ shuffleArray(array) {
     };
   }
 
+  getSurroundingTiles(tile) {
+    let tiles = [];
+    tiles.push(tile - 1);
+    tiles.push(tile + 13);
+    tiles.push(tile + 1);
+    tiles.push(tile - 13);
+    return tiles;
+  }
+
   bossMove() {
     let direction = this.getRandomDirection();
     let bossArr = this.props.boss.tileArr;
     let canMove = true;
     if(this.props.boss.attack === false){
       bossArr.forEach(bossSpace => {
-        if(this.attemptMove(direction, bossSpace) === bossSpace){
+        let attemptMove = this.attemptMove(direction, bossSpace);
+        if(attemptMove === bossSpace || this.props.currentRoom[attemptMove].value !== '0'){
+          canMove = false;
+        };
+        if(attemptMove === this.props.player.location){
+          this.knockBack(direction);
           canMove = false;
         };
       });

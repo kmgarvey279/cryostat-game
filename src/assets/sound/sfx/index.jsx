@@ -9,6 +9,7 @@ import cryo from './littlerobotsoundfactory/Laser_08.mp3'
 import confirm from './littlerobotsoundfactory/Menu_Select_00.mp3'
 import bootUp from './krank_sounds/menu/exit.wav';
 import recordScratch from './krank_sounds/space/magnet_off.wav';
+import enemyHurt from './krank_sounds/industry/magnet_off.wav';
 import jingle1 from './krank_sounds/summer/anchor_action.wav';
 import jingle2 from './krank_sounds/water/exit.wav'
 import bootDown from './krank_sounds/summer/exit.wav';
@@ -40,6 +41,7 @@ import entangle from './ecofuture.wav';
 import merge from './krank_sounds/water/magnet_start.wav';
 import charge from './charging.ogg';
 import glitch from './glitch-computer.mp3';
+import noMP from './krank_sounds/industry/magnet_start.wav';
 
 const effects = {
   shot: shot,
@@ -59,6 +61,7 @@ const effects = {
   bootUp: bootUp,
   bootDown: bootDown,
   recordScratch: recordScratch,
+  enemyHurt: enemyHurt,
   jingle1: jingle1,
   jingle2: jingle2,
   suspense: suspense,
@@ -83,7 +86,8 @@ const effects = {
   merge: merge,
   charge: charge,
   win: win,
-  glitch: glitch
+  glitch: glitch,
+  noMPL: noMP
 };
 
 export default effects

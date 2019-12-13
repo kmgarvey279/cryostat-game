@@ -19,6 +19,7 @@ export const SET_BRANCH = "SET_BRANCH";
 export const SET_EYE = "SET_EYE";
 export const CHANGE_DESTINATION = "CHANGE_DESTINATION";
 export const TOGGLE_LIGHTS = "TOGGLE_LIGHTS";
+export const CHANGE_FILTER = "CHANGE_FILTER";
 
 
 //Action Creators
@@ -145,11 +146,18 @@ export function toggleSkill(newBool) {
     }
   }
 
+  export function changeFilter(filter) {
+    return {
+      type: CHANGE_FILTER,
+      filter: filter
+    }
+  }
+
 //Initial State
 const initialState = {
   branch: 1,
-  roomId: 1,
-  previousRoomId: null,
+  roomId: 9,
+  previousRoomId: 8,
   gameState: 'title',
   respawnPoint: '',
   timers: [],
@@ -161,7 +169,8 @@ const initialState = {
   skill: false,
   file: '',
   eye: 'none',
-  lights: 'off',
+  lights: 'on',
+  filter: '',
   destination: ''
 }
 
@@ -255,6 +264,11 @@ const gameReducer = (state = initialState, action) => {
     case TOGGLE_LIGHTS:
       newState = Object.assign({}, state, {
         lights: lights
+      });
+        return newState;
+    case CHANGE_FILTER:
+      newState = Object.assign({}, state, {
+        filter: filter
       });
         return newState;
   default:

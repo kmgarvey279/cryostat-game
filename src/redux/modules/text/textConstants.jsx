@@ -73,7 +73,36 @@ export const examine = {
               3: ['We cannot conform the deatils of all of Dr\'s numerous ethical and scientfiic violations at this time, nor can we provide infomation regarding other personel suspected and confirmed to have acted alongside him.'],
               4: ['The east wing of the Cryonic Facility, where the majority of the violations are beleived to have occured is henseforth off-limits to all unauthorised personell.'],
               5: ['Lucy ******', 'CEO, chairwoman, and president of Needle\'s Eye Inc. Captain of the Starship Needle\'s Eye']
-  },
+            },
+  terminal9a: {1: ['Logging in...'],
+              2: ['Core Status: Output - Low, Configuration - Basic Ship Functions'],
+              3: ['options', 'Initiate Core Override Process?', ['Yes','No']],
+              4: ['results', ['Override Process Initiated.','Override Process Aborted.']],
+              5: ['Logging Out...']
+              },
+  terminal9b: {1: ['Logging in...'],
+              2: ['WARNING: Unable to reconfigure core output due to irreversable system damage. A manual override must be performed.'],
+              3: ['options', 'Initiate Core Override Process?', ['Yes','No']],
+              4: ['results', ['Manual Override Initiated.','Manual Override Aborted.']],
+              5: ['Logging Out...']
+              },
+  terminal9c: {1: ['Logging in...'],
+              2: ['options', 'Activate manual override?', ['Yes','No']],
+              3: ['results', ['Manual Override Initiated.','Manual Override Aborted.']],
+              4: ['Logging Out...']
+              },
+  terminal9d: {1: ['Logging in...'],
+              2: ['WARNING: Unable to reconfigure core output due to irreversable system damage. A manual override must be performed.'],
+              3: ['options', 'Initiate Core Override Process?', ['Yes','No']],
+              4: ['results', ['Manual Override Initiated.','Manual Override Aborted.']],
+              5: ['Logging Out...']
+              },
+  terminal9e: {1:['Logging in...'],
+              2: ['Manual overrides confirmed. System primed for reconfiguration. WARNING: extreme radiation.'],
+              3: ['options', 'Core Setting:', ['Full Power','Energy Saving']],
+              4: ['results', ['Switching to Full Power Mode.','Remaining in Power Saving Mode.']],
+              5: ['Logging Out...']
+              },
   phoneOff: {1: ['No response.']},
   phone1: {1: ['You heard a familiar voice you couldn\'t quite place...']},
   sync1: {1: ['A flood of strange but familiar memories and emotions came rushing in.'],

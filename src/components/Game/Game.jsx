@@ -18,8 +18,8 @@ function Game(props){
     return (
       <div className="game">
         <Map maps={props.maps} game={props.game} />
-        <GameUITop player={props.player}/>
-        <div id='pause'><CurrentRoom npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
+        <GameUITop player={props.player} game={props.game}/>
+        <div id='pause'><CurrentRoom boss={props.boss} npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
       </div>
     );
   } else if (props.game.gameState === 'gameOver') {
@@ -29,27 +29,28 @@ function Game(props){
       menu={props.menu}
       player={props.player}
       handleStart={props.handleStart}
+      handleLoad={props.handleLoad}
       nullAll={props.nullAll}/>
       </div>
     );
   } else if (props.game.gameState === 'exitBranch') {
     return (
       <div className="game" id="exit">
-        <GameUITop player={props.player}/>
+        <GameUITop player={props.player} game={props.game}/>
         <div id='level'><CurrentRoom npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
       </div>
     );
   } else if (props.game.gameState === 'enterBranch') {
     return (
       <div className="game" id="enter">
-        <GameUITop player={props.player}/>
+        <GameUITop player={props.player} game={props.game}/>
         <div id='level'><CurrentRoom npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
       </div>
     );
   } else if (props.game.gameState === 'dialogue') {
     return (
       <div className="game">
-        <GameUITop player={props.player}/>
+        <GameUITop player={props.player} game={props.game}/>
         <div id='level'><CurrentRoom npcs={props.npcs} game={props.game} currentRoom={props.currentRoom} player={props.player} doors={props.doors}/></div>
         <TextBoxes text={props.text} game={props.game} menu={props.menu}/>
       </div>
@@ -62,7 +63,7 @@ function Game(props){
   } else if (props.game.gameState === 'glitch') {
     return (
       <div className="glitch">
-        <GameUITop player={props.player}/>
+        <GameUITop player={props.player} game={props.game}/>
         <div id='level'><CurrentRoom npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
       </div>
     );
@@ -75,18 +76,18 @@ function Game(props){
   } else if (props.game.gameState === 'itemGet') {
     return (
       <div className="game">
-      <GameUITop player={props.player}/>
-      <div id='level'><CurrentRoom npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
-      <ItemGet newItem={props.player.newItem}/>
+        <GameUITop player={props.player} game={props.game}/>
+        <div id='level'><CurrentRoom npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
+        <ItemGet newItem={props.player.newItem}/>
       </div>
     );
   } else {
     return (
       <div className="game">
         <PopUp popUp={props.popUp} />
-        <GameUITop player={props.player}/>
+        <GameUITop player={props.player} game={props.game}/>
         <BossUI boss={props.boss}/> 
-        <div id='level'><CurrentRoom npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
+        <div id='level'><CurrentRoom boss={props.boss} npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
       </div>
     );
   }

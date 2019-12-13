@@ -12,6 +12,7 @@ import heart from '../../assets/images/items/heart.gif';
 import heartless from '../../assets/images/items/heartless.gif';
 import particle from '../../assets/images/items/entangle.gif';
 import selected from '../../assets/images/items/selected-items.png';
+import coreSprite from '../../assets/images/room/core.gif';
 
 function GameUITop(props) {
   let weaponIcon;
@@ -34,6 +35,10 @@ function GameUITop(props) {
   } else if (props.player.currentSkill === 'clone') {
     skillIcon = <img id="current-skill" src={clone} width="40" height="40"/>
   };
+  let core = null;
+  if(props.game.roomId === 9){
+    core = <div className="core"><img id="current-skill" src={coreSprite} width="400" height="200"/></div>
+  }
   return (
     <div id="UI-wrap">
       <div id="UI-content">
@@ -61,6 +66,7 @@ function GameUITop(props) {
           </label>
         </div>
       </div>
+      {core}
     </div>
   );
 }

@@ -3,7 +3,7 @@ import inRooms from './roomTemplates.jsx';
 
 export const maps = {
   1: [9, 8, -2, -3,
-      -1, 7, 6, 5,
+      'hallway1', 7, 6, 5,
       4, 3, 2, 1]
 };
 export const sprites = inSprites;

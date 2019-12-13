@@ -28,21 +28,22 @@ function BossUI(props){
             </div>
         </div>
     };
-    if (props.boss.status === 'alive'){
+    if (props.boss.status === 'normal' || props.boss.status === 'hurt'){
+        let health = props.boss.health;
+        let barColor;
+        if(props.boss.health > 400){
+            barColor = 'highHealth';
+        } else if (props.boss.health > 200) {
+            barColor = 'midHealth';
+        } else {
+            barColor = 'lowHealth';
+        };
             return (
                 <div className="boss-ui-wrap">
-                    <div className="boss-health-bar" id={barColor}>
-                        <img id="boss-icon" src={bossBar} width="605" height="38"/>
-                        <span className={props.boss.health >= 10 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-10"></span>
-                        <span className={props.boss.health >= 20 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-20"></span>
-                        <span className={props.boss.health >= 30 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-30"></span>
-                        <span className={props.boss.health >= 40 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-40"></span>
-                        <span className={props.boss.health >= 50 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-50"></span>
-                        <span className={props.boss.health >= 60 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-60"></span>
-                        <span className={props.boss.health >= 70 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-70"></span>
-                        <span className={props.boss.health >= 80 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-80"></span>
-                        <span className={props.boss.health >= 90 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-90"></span>
-                        <span className={props.boss.health >= 100 ? 'boss-hp-full' : 'boss-hp-empty'} id="boss-hp-100"></span>
+                    <div className="boss-health-container">
+                        <div className="bar-background"></div>
+                        <div className="boss-health-bar" id={barColor} style={{width: health}}>
+                        </div>
                     </div>
                     {name}
                 </div>

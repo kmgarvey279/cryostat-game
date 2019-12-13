@@ -18,9 +18,7 @@ class Square extends React.Component{
   };
 
   getOtherContent() {
-    if (this.props.warning && this.props.player.location == this.props.squareId) {
-      return <div className="warning">{<img id="alert" src={alert} weight="50" height="50" />}</div>
-    } else if (this.props.alert == true && this.props.player.location == this.props.squareId) {
+    if ((this.props.warning && this.props.player.location == this.props.squareId) || (this.props.alert == true && this.props.player.location == this.props.squareId)) {
       return <div>{<img id="alert" src={alert} weight="50" height="50" />}</div>
     } else if (this.props.value == 'D') {
       return <Door content={this.props.content} doors={this.props.doors}/>
@@ -28,14 +26,6 @@ class Square extends React.Component{
       return <NPCs npcs={this.props.npcs} />
     } else if (this.props.value == '$') {
       return <Item content={this.props.content}/>
-    } else if (this.props.player.cloneLocation === this.props.squareId) {
-      let cloneClass;
-      if(this.props.player.activeClone === 1) {
-        cloneClass = 'clone2';
-      } else {
-        cloneClass = 'clone1';
-      }; 
-      return <div id={cloneClass}>{playerConsts.sprites.stand[this.props.player.cloneDirection]}</div>
     } else if (this.props.value == 'L') {
       return <div id="lava"></div>
     } else if (this.props.value == 'LC') {
@@ -79,19 +69,34 @@ class Square extends React.Component{
     };
   };
 
+  getClone(){
+    if (this.props.player.cloneLocation === this.props.squareId) {
+      let cloneClass;
+      if(this.props.player.activeClone === 1) {
+        cloneClass = 'clone2';
+      } else {
+        cloneClass = 'clone1';
+      }; 
+      return <div id={cloneClass}>{playerConsts.sprites.stand[this.props.player.cloneDirection]}</div>
+    } else {
+      return null;
+    };
+  }
+
   render() {
     if(this.props.game.lights === 'on'){
       return (
         <div id="square">
             {this.getOtherContent()}
-            <Sprite sprite={this.props.sprite} player={this.props.player} squareId={this.props.squareId} transition={this.props.transition} squareValue={this.props.value}/>
+            <Sprite sprite={this.props.sprite} player={this.props.player} boss={this.props.boss} squareId={this.props.squareId} transition={this.props.transition} squareValue={this.props.value}/>
+            {this.getClone()}
             {this.getTile()}
         </div>
       );
     } else {
       return (
         <div id="square">
-            <Sprite lights={this.props.game.lights} sprite={this.props.sprite} player={this.props.player} squareId={this.props.squareId} transition={this.props.transition} squareValue={this.props.value}/>
+            <Sprite lights={this.props.game.lights} sprite={this.props.sprite} player={this.props.player} squareId={this.props.squareId} boss={this.props.boss} transition={this.props.transition} squareValue={this.props.value}/>
         </div>
       );
     };
@@ -108,6 +113,7 @@ Square.propTypes = {
   transition: PropTypes.string,
   alert: PropTypes.bool,
   player: PropTypes.object,
+  boss: PropTypes.object,
   doors: PropTypes.object,
   eye: PropTypes.string,
   explosion: PropTypes.bool,

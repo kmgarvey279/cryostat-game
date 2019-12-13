@@ -5,7 +5,11 @@ import './Sprite.css';
 function Sprite(props){
   let spriteClass;
   if (props.squareValue == 'boss') {
-    spriteClass = 'boss-sprite';
+    if(props.boss.status === 'hurt'){
+      spriteClass = 'hurt-boss-sprite';
+    } else {
+      spriteClass = 'boss-sprite';
+    };
   } else if (props.player.location === props.squareId && props.player.cloneLocation !== null && props.player.status !== 'dash') {
     if(props.player.activeClone === 1) {
       spriteClass = 'split-player1';
@@ -24,6 +28,7 @@ function Sprite(props){
 }
 
 Sprite.propTypes = {
+  boss: PropTypes.object,
   lights: PropTypes.string,
   sprite: PropTypes.string,
   squareId: PropTypes.number,

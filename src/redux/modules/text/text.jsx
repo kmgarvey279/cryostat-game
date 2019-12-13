@@ -57,7 +57,7 @@ const initialState = {
   line: 0,
   paragraph: 1,
   options: [],
-  selectedOption: null,
+  selectedOption: 1,
   textInput: false,
 }
 

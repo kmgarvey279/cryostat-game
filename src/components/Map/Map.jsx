@@ -5,6 +5,18 @@ import * as text from '../../redux/modules/text/textConstants';
 import './Map.css';
 
 function Map(props) {
+  let key;
+  if(props.game.roomId === 'hallway1'){
+    key = <div id="mapKey">
+            Cryonic Storage Facility | Floor: B1
+            <br/>Lab Corridor
+          </div>
+  } else {
+    key = <div id="mapKey">
+            Cryonic Storage Facility | Floor: B1
+            <br/>{text.roomNames[props.game.roomId - 1]}
+          </div>
+  };
   return (
     <div id="outerMap">
       <div id="innerMap">
@@ -16,10 +28,7 @@ function Map(props) {
           current={props.game.roomId}/>
         })}
       </div>
-      <div id="mapKey">
-        Cryonic Storage Facility | Floor: B1
-        <br/>{text.roomNames[props.game.roomId - 1]}
-      </div>
+      {key}
     </div>
   );
 }

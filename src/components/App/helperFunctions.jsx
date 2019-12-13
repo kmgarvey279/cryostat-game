@@ -2,13 +2,21 @@ export function getDifference(direction) {
   if(direction == 'north') {
     return -1;
   } else if (direction == 'east') {
-    return  13;
+    return 13;
   } else if (direction == 'south') {
-    return  1;
-  } else {
-    return  -13
-  }
-};
+    return 1;
+  } else if (direction == 'west'){
+    return -13;
+  } else if (direction == 'northWest') {
+    return -14;
+  } else if (direction == 'northEast') {
+    return 12;
+  } else if (direction == 'southWest') {
+    return -12;
+  } else if (direction == 'southEast') {
+    return 14;
+  };
+}
 
 export function reverseDirection(direction) {
   if (direction == 'north') {
