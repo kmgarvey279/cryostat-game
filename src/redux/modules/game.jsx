@@ -156,8 +156,8 @@ export function toggleSkill(newBool) {
 //Initial State
 const initialState = {
   branch: 1,
-  roomId: 9,
-  previousRoomId: 8,
+  roomId: 1,
+  previousRoomId: null,
   gameState: 'title',
   respawnPoint: '',
   timers: [],
