@@ -67,3 +67,9 @@ div#dialogueText {
   border: solid mediumseagreen !important;
   background-color: darkseagreen !important;
 }
+
+.dark-color{
+  color: white !important;
+  border: solid black !important;
+  background-color: black !important;
+}

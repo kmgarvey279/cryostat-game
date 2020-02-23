@@ -1,18 +1,19 @@
-import * as enemyConsts from '../../redux/modules/enemies/enemyConstants';
+import npcSprites from '../../redux/modules/npcs/npcSprites';
 import React from 'react';
 import PropTypes from 'prop-types';
 import './NPCs.css';
 
 function NPCs(props){
+  let sprite = npcSprites[props.npc.kind][props.npc.status][props.npc.direction];
   return (
     <div id="npc">
-      {enemyConsts.sprites.slime.move.south}
+      {sprite}
     </div>
   )
 }
 
 NPCs.propTypes = {
-  npcs: PropTypes.object
+  npc: PropTypes.object
 };
 
 export default NPCs;

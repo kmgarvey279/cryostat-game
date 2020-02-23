@@ -141,7 +141,7 @@ class App extends React.Component {
       } else if (this.props.game.gameState === 'itemGet') {
         this.closeItemGet();
       } else if (this.props.game.gameState == 'active' && this.props.player.status =='normal') {
-        //check environment or attack
+        //talk, check environment, or attack
         let contentArr =  this.props.currentRoom[this.props.player.location].content;
         let interactArr = contentArr.find(function(content) {
           return content[0] == 'interact';
@@ -149,8 +149,13 @@ class App extends React.Component {
         let next = this.props.player.location + helpers.getDifference(this.props.player.direction);
         if (interactArr !== undefined) {
           this.triggerDialogue('interact', interactArr[1]);
-        } else if (this.props.npcs.location === next) {
-          this.triggerDialogue('dialogue', this.props.npcs.text)
+        } else if (this.props.currentRoom[next].value === 'NPC') {
+          let npcArr = this.props.currentRoom[next].content.find(function(content) {
+            return content[0] === 'npc';
+          });
+          let npcName = npcArr[1];
+          let npcText = this.props.npcs[npcName].text;
+          this.triggerDialogue('dialogue', npcText);
         } else if (this.props.game.gameState == 'itemGet') {
           this.closeItemGet();
         };
@@ -413,6 +418,7 @@ class App extends React.Component {
 
   setAlerts(){
     let squareArr = Object.values(this.props.currentRoom);
+    //set objects
     let filteredSquareArrT = squareArr.filter(function(square) {
       return square.value == 'T';
     });
@@ -427,6 +433,22 @@ class App extends React.Component {
         this.props.dispatch(roomModule.toggleAlert(square.squareId + 1, true));
       };
     });
+    //set npcs
+    let filteredSquareArrN = squareArr.filter(function(square) {
+      return square.value == 'NPC';
+    });
+    filteredSquareArrN.forEach(square => {
+      let npcArr = square.content.find(function(content) {
+        return content[0] == 'npc';
+      });
+      if(npcArr !== undefined){
+        let contentArr = this.props.currentRoom[square.squareId + 1].content;
+        contentArr.push(npcArr[1]);
+        this.props.dispatch(roomModule.updateContent(square.squareId + 1, contentArr));
+        this.props.dispatch(roomModule.toggleAlert(square.squareId + 1, true));
+      };
+    });
+    //set doors
     let filteredSquareArrD = squareArr.filter(function(square) {
       return square.value == 'D';
     });
@@ -688,6 +710,11 @@ class App extends React.Component {
       sprite = this.props.enemies[newEnemyId].sprites.move['south'];
       content.push(['enemy', newEnemyId]);
     };
+    //spawn NPC
+    if (squareValue === 'NPC') {
+      this.props.dispatch(npcsModule.createNPC(squareArr[1], thisSquareId, squareArr[2], squareArr[3], squareArr[4]));
+      content.push(['npc', squareArr[1]]);
+    }
     //spawn block
     if (squareValue == 'B' || squareValue == 'MB') {
       sprite = roomConsts.sprites['block'];
@@ -1090,10 +1117,12 @@ class App extends React.Component {
       };
       //trigger first event flag
         if (this.props.flags[1].triggered == false) {
-          let eventTimer = setTimeout(() =>
-          this.triggerEvent(1, 'A'),
-          800
-          );
+          setTimeout(() =>
+            this.props.dispatch(npcsModule.updateNPCStatus('robot', 'on')),
+          200);
+          setTimeout(() =>
+            this.triggerEvent(1, 'A'),
+          1000);
         };
     }
     //check if player was standing on a switch
@@ -1486,6 +1515,7 @@ class App extends React.Component {
       && hasElec == undefined 
       && doorStatus !== 'closed'
       && this.props.currentRoom[newLocation].value !== 'W'
+      && this.props.currentRoom[newLocation].value !== 'NPC'
       && this.props.currentRoom[newLocation].value !== 'T') {
         return newLocation;
       } else {

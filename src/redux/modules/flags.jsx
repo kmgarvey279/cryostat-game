@@ -19,7 +19,7 @@ export function triggerFlag(flagId) {
 
 //Initial State
 const initialState = {
-  1: {triggered: true},
+  1: {triggered: false},
   2: {triggered: false},
   3: {triggered: false},
   4: {triggered: false},

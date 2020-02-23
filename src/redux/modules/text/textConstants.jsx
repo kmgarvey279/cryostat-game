@@ -1,4 +1,5 @@
 import React from 'react';
+import Item from '../../../components/Item/Item';
 
 export const roomNames = ['Makeshift Recovery Room', 'Storage Room', 'Warp Lab Access', 'Warp Lab', 'Cryo Lab', 'Shipping and Receiving Room', 'Xenobiology Lab', 'Core Access', 'The Core']
 
@@ -117,91 +118,219 @@ export const examine = {
 }
  
 export const dialogue = {
-  ghost1: {1: ['Strange Voice', ['Oh, good, you\'re finally awake! As I am sure you\'ve noticed, the door to this room is locked.', 'The terminal next to you should be able to override the lock.', 'The power\'s been cut, but I can temporarily restore it for you.']]},
+  robotOff: {1: ['Strange Voice', ['Oh, good, you\'re finally awake! As I am sure you\'ve noticed, the door to this room is locked.', 'The terminal next to you should be able to override the lock.', 'The power\'s been cut, but I can temporarily restore it for you.']]},
   A1: {
-    1: ['Strange Voice', ['Oh, good, you\'re finally awake! As I am sure you\'ve noticed, the door to this room is locked.', 'The terminal next to you should be able to override the lock.', 'The power\'s been cut, but I can temporarily restore it for you.']],
-    2: ['Confused Girl', ['...']],
-    3: ['Strange Voice', ['No doubt you have a number of questions.', 'They will be answered in due time, but before any of that, you need a name.']],
-    4: ['Confused Girl', ['...']],
-    5: ['Strange Voice', ['Unfortunately, your records on file have been irreversibly corrupted and it is impossible to determine your identity.', 'However, no need to despair. Think of this as a fresh start!']],
-    6: ['Strange Voice', ['I\'ve taken the perogative to come up with a great new name for you!', 'Your name will henceforth be "Aurora"', 'It is ""SYMBOLIC"".']],
-    7: ['Aurora', ['...']],
-    8: ['Strange Voice', ['See? Much better.', 'Certainly a huge improvement over whatever boring name you might have had in a past life.', 'Now, make your way to the room I marked on your map, and we can meet face-to-face.']]
+    1: ['', ['A voice suddenly echos out of the object on your wrist.' ]],
+    2: ['Strange Voice1', ['Excelent, you\'re finally awake!', 'Lets see... vital signs are normal, all tissue damage seems to have been repaired...']],
+    3: ['Confused Girl', ['...']],
+    4: ['Strange Voice1', ['No doubt you\'re confused, that\'s to be expected.', 'I can explain in more detail later, but the short version is that you\'ve been successfully revitalized from a state of cryogenic stasis.', 'The object on your arm is a sort of control module for the nanomachines circulating through your body.', 'As I\'m sure you\'ve gathered, it also allows me to remotely monoter your vital signs and communicate with you.', 'I\'ll let me partner explain the rest.', '...', 'Damn it, Riley! Where the hell are you?']],
+    5: ['Orpheus', ['Yeah, yeah, I hear you. I\'m kind of still in the middle of something.']],
+    6: ['Strange Voice1', ['The girl\'s awake. I don\'t know what exactly you\'re doing out there, but she takes priority', 'Now hurry up and grab her so we can get out of here.']],
+    7: ['Orpheus', ['Fine, I\'ll handle it.', 'We\'ll be at the rendezue point in thirty.']],
+    8: ['Strange Voice1',['Affermative.']],
+    9: ['Orpheus', ['Hey girl, it sounds like you can walk and everything, right?', 'I\'m only a few rooms over, why don\'t you meet me out here?', 'I can send you a map with my location on that bracelet thing of yours.', 'BTW, if we\'re going to be working together, it would be nice to know one another\'s names.', 'I\'m Riley, as I\'m sure you heard. What should I call you?']],
+    10: ['Confused Girl', ['...']],
+    11: ['Orpheus', ['Nothing?', 'No worries, take your time. The revitalization process can be pretty disorienting. You were basically dead.', 'Maybe you could just make one up?', 'That\'s what I did and I didn\'t have half as good of an excuse as you.']],
+    12: ['Confused Girl', ['...']],
+    13: ['Orpheus', ['Well, keep thinking about it.', 'Anyway, I\'ve got to finish up here.', 'Oops, I almost forgot, I didn\'t want you going anywhere, so I attached a power disruper to the terminal that controls the door lock.', 'No sweat, I can just switch it off remotely.', '...', 'That should do it. Good luck!']]
   },
   A2: {
-    1: ['Strange Voice', ['My, how inconvenient.', 'It would appear that you will need to find something to weigh the switch in your stead.', 'Might I suggest one of those ample boxes lying around?', 'Fortunately for us, it has been quite some time since the facility\'s cleaning crew was last online.']],
-    2: ['Aurora', ['...']],
-    3: ['Strange Voice', ['You are quite the silent type, aren\'t you, Aurora?', 'No matter, that suits me just fine.', 'You deal with the heavy lifting and I shall continue to provide you with indispensable guidence.']]
-  },
-  B2: {
-    1: ['Strange Voice', ['Astonishing! Have you done this sort of thing before?', 'To complete such a complex puzzle without any of my assistance is no small feat!', 'To think that my mentorship could transform you so quickly into a puzzle-solving master.']],
-    2: ['Aurora', ['...']],
-    3: ['Strange Voice', ['You are quite the silent type, aren\'t you, Aurora?', 'No matter, that suits me just fine.', 'You deal with the heavy lifting and I shall continue to provide you with indispensable guidence.']]
+    1: ['Orpheus', ['I know that sound!', 'Oh man, are you on your first switch puzzle?', 'It seems like only yesterday I that I was a sweet summer child stepping on my first switch.']],
+    2: ['Confused Girl', ['That\'s okay, I\'m pretty sure I\'ve got this.']],
+    3: ['Orpheus', ['Suit yourself.']]
   },
   A3: {
-    1: ['Strange Voice', ['Wow! This looks like a tough one. Maybe if you push the block towards...']],
-    2: ['Aurora', ['Okay, dude. I get it, physics is totally a thing that exists.']],
-    3: ['Strange Voice', ['Interesting, I was under the impression that you were more of the silent type']],
-    4: ['Aurora', ['Yeah, I was mostly just hoping you\'d shut up if I ignored you, but clearly *that* didn\'t work', 'Anything is better then sitting through another one of your tutorials.', 'So what are you, some evil AI or something?']],
-    5: ['Strange Voice', ['What, an AI?', 'That\'s absurd.']],
-    6: ['Aurora', ['Like, I don\'t care either way. Who am I to judge? I get the impression that you genuinly need me alive for some reason, so we might as well put off the part where we try to kill one another until later.']],
-    7: ['Aurora', ['Anyway, sorry to ruin your *SYMBOLISM*, but my name is actually Claire.']],
-    8: ['Strange Voice', ['Fine, fine. I will henceforth call you by your boring, meaningless name.']],
-    9:['Claire', ['Sweet. Looks like we totally hashed out our conflicts and crap. Character arcs complete.']],
-    10:['Strange Voice', ['Yes, yes, quite the display of sarcasm.', 'We\'ll finish this conversation in the next room... if you can make it without my amazing hints.']]
+    1: ['Orpheus', ['~Heeey. How\'s it going? Still in one piece?']],
+    2: ['SB', ['*Sigh*', 'Yes, I haven\'t died since you last checked in on me.', 'Weren\'t you supposed to be busy with something?']],
+    3: ['Orpheus', ['Just looking through some records.', 'Pretty boring, honistly.', 'How\'s the ice treating you?']],
+    4: ['SB', ['I\'m pretty intimatly aquanted with ice, so I think I\'ll manage.']]
   },
   A4: {
-    1: ['Strange Voice', ['BEHOLD!', '...actually, would you mind beholding a little more to the left?', 'I have no idea what this huge thing is doing here, but it\'s really messing up my intro.']],
+    1: ['Orpheus', ['BEHOLD!', '...actually, would you mind beholding a little more to the left?', 'I have no idea what this huge thing is doing here, but it\'s really messing up my intro.']],
   },
   A5: {
-    1: ['Claire', ['Wow, way to jump to conclusions.', 'Thinking this perfectly normal ghost was actually a killer AI.', '...', '...wait, WHAT!?!']],
-    2: ['Strange Voice', ['I\'m honistly not sure what I am, but it is true that for just about all intents and purposes I\'m basically a ghost.', 'I\'ve been wandering through this ship for ages and you\'re the first person I\'ve ever encountered.']]
+    1: ['Orpheus', ['BEHOLD!']],
+    2: ['Claire', ['...yeah. Consider yourself beheld.', 'Now would you mind telling me what\'s going on here?', 'Where are we? Or should I be asking "When are we?"']],
+    3: ['Strange Voice2', ['Well, we\'re inside one of the many cryogenic storage areas situated on the orbital satalite "The Needle\'s Eye".', 'Bunch of old rich guys froze themselves here in the hope that someone would come along with a magic wand and poof them back to life once the situation on Earth improved.', 'As far as I know, they weren\'t being ironic when they named it, belive it or not.', 'As you can see, not many people took them up on the offer. Not that there was really anyone left who could.', 'Eveyone on this station is either frozen dead or dead dead. Well, on this version of the station at least.', 'The lines between possibilities tend to blur here.']],
+    4: ['Claire', ['"The Needle\'s Eye", why does that sound so familiar?', 'Ugg, my memory is such a wreck.']],
+    6: ['Claire', ['So if everyone on this station is dead, why are you guys here?', 'Just what do you want from me?', 'Why go through the trouble of reviving me?', 'That Grant guy mentioned something about a client?']], 
+    11: ['Strange Voice2', ['We find things for people. It\'s our job.', 'You just so happened to be the thing that someone wanted found. Tacking down missing loved ones is a pretty standard assignment.', 'What our client wants from you I couldn\'t say, but someone willing to pay that much probably isn\'t going to eat your eyeballs or anything.', 'Besides, I take my job seriously. I protect the items or people in my custody *with my life* during every step of the process. That includes ensuring that they will be well taken care of after the hand-off.', 'Anyone tries to mess with you and I\'ll kick the crap out of them.']],
+    12: ['Claire', ['Thanks, that\'s actually... kind of reasurring.']],
+    13: ['Strange Voice2', ['Hee, hee, hee. No problem. Like I said, I\'ll see this through no matter what.']],
+    14: ['Strange Voice1', ['****! Quit flirting and get a move on!']],
+    15: ['Strange Voice2', ['Rude.', 'I\'m just trying to reasure our ward that we aren\'t going to harvest her organs or anything.', 'Unfortentatly, I wasn\'t able to make it into the station\'s core. Looks like we\'ll need a different keycard.']],
+    14: ['Strange Voice1', ['I\'ve been surveying the place with my nano buddies and it looks like there might be something over on the east side of the facility.', 'It should be easier to just mark the spot on your map.']],
+    16: ['Claire', ['Sorry to keep asking dumb questions, but why are you guys trying to get into the core?', 'Weren\'t you just here for me?']],
+    13: ['Strange Voice2', ['It\'s a neccesicary step in getting out of here.', 'We\'ll need a lot more juice if we want to achive escape velocity.']],
+    6: ['Claire', ['Well that told me absolutely nothing, but as long as it gets us out of here..']], 
+    17: ['Strange Voice2', ['Excilent, then let us be off!', 'After you.']],
+    18: ['', ['**** joined you!']],
+    19: ['Strange Voice2', ['B-T-W, we should grab that keycard on the way out.', 'A lot of the doors in this place can only be opened with the right card.']]
   },
-  A6: {1: ['Strange', ['Hmm, it\'s not working.', 'Why don\'t you go grab that keycard while I unleash my otherworldly hacking skills on this poor sucker.']]},
-  A7: {1: ['Strange', ['DONE!']]},
+  A6: {1: ['Strange Voice2', ['Hmm, it\'s not working.', 'Why don\'t you go grab that keycard while I unleash my otherworldly hacking skills on this poor sucker.']],
+       2: ['Strange Voice3', ['That\'s right Claire, just do whatever she says and maybe she\'ll actually keep pretending to tolerate you.']],
+       3: ['Claire', ['Will you knock it off already!?']],
+       4: ['Strange Voice2', ['Claire, what are you...']],
+       5: ['Claire', ['Who is that person anyway? You and Grant have introduced yourselves, but who is that other jackass?']],
+       6: ['Strange Voice2', ['What do you mean? The two of us are the only ones with access to that frequency.', 'We\'d know if anyone else was using it.']],
+       7: ['Strange Voice3', ['You may still be learning the rules of this world, but I can gurentee you that telling people that you\'ve been hearing voices in your head still fightens them just as much.']],
+       8: ['Claire', ['...', 'Sorry, I guess I was just hearing things. You know, static or whatever.', 'I\'m still kind of disoriented.']],
+       9: ['Strange Voice2', ['Okay. If you need to take a break or anything, go ahead.']],
+      },
+  A7: {1: ['Strange Voice2', ['DONE!']]},
   A8: {
     1: ['Claire', ['What the hell?', 'How am I supposed to solve this one?']],
-    2: ['Strange Voice', ['What makes you think there\'s a solution?', 'I mean, this is a decaying derelect space ship? How statistically unlikely do you think it would be if everything was perfectly calebrated for you to progess?']],
+    2: ['Strange Voice2', ['What makes you think there\'s a solution?', 'I mean, this is a derelect space station that\'s probably been falling apart for who knows how long. How statistically unlikely do you think it would be if *everything* was perfectly calebrated for us to progess?']],
     3: ['Claire', ['Well, I don\'t know. It seemed to all work out pretty well up until now.']],
-    4: ['Strange Voice', ['It\'s the anthropic principle in action! If it wasn\'t so precisely arranged, you couldn\'t be making this observation right now!']],
-    5: ['Claire', ['Ok, first of all, that\'s definitely not how the anthropic principle works. Secondly, can\'t I just bring another block or something in from the next room over?']],
-    6: ['Strange Voice', ['Impossible. The ship\'s security system won\'t let anything without a human bio-signiture through these doors.', 'Moreso, even your entire inventory including your clothing won\'t heavy enough to trigger the switch.']],
-    7: ['Claire', ['While I appreciate being able to skip over that particular expereiment, that still doesn\'t solve the question of how we\'re supposed to move forward.']],
-    8: ['Strange Voice', ['Simple, we don\'t move forward, we move *sideways*!', 'We\'ve likely exhausted all of our options in *this* Branch. All will be made clear in the next room.']],
+    4: ['Strange Voice2', ['It\'s the anthropic principle in action! If it wasn\'t so precisely arranged, you wouldn\'t be making this observation right now!']],
+    5: ['Claire', ['Ok, first of all, I\'m pretty sure that\'s not how the anthropic principle works. Secondly, can\'t we just bring another block or something in from the next room over?']],
+    6: ['Strange Voice2', ['Impossible. The ship\'s security system won\'t let anything without a human bio-signiture through the doors.']],
+    7: ['Claire', ['So what, we\'re just boned?']],
+    8: ['Strange Voice2', ['No, we should have enough power to deal with this hurdle.', 'If we can\'t move *forward*, we\'ll move *sideways*!']],
+    9: ['Claire', ['Umm...']],
+    10: ['Strange Voice2', ['Head to the next room and all will be made clear!']]
   },
   A9: {
-    1: ['Claire', ['What am I looking at here?']],
+    1: ['Claire', ['Wow. What am I looking at here?']],
     2: ['Strange Voice', ['The nexis point of all possible worlds! Well, all possible states of this ship at least.', 'What if I told you that there was another world... in which the previous room had an extra block!']],
     3: ['Claire', ['I mean, I\'d probably say something like: "Why the hell don\'t we just find a world where this ship isn\'t an inescapable death trap".']],
-    4: ['Strange Voice', ['Moving between Branches is a costly process, the closer the Branch the easier the leap.', 'Getting to a Branch in which this ship isn\'t a rotting husk will require considerably more power then the meager amount we currently have avalable.', 'It would be a different story if we could reroute the ship\'s power supply to this room, but getting to the ship\'s core where we can do that will require the keycard.']],
-    5: ['Claire', ['Ok, so we hop to the next world over, grab the keycard, and then blast this machine with power from the ship\'s core?', 'This all sounds absolutly insaine, but I\'m waaaaay past the point of caring.']],
-    6: ['Strange Voice', ['Yep, that\'s pretty much sums it up. I\'ll start searching for viable Branches while you work on restoring power to the machine.']]
+    4: ['Strange Voice2', ['Moving between Branches is a costly process, the closer the Branch the easier the leap.', 'Getting to a Branch in which this ship *isn\'t* a rotting husk would require *considerably* more power then the meager amount we currently have avalable.', 'It would be a different story if we could reroute the ship\'s power supply to this room.']],
+    5: ['Claire', ['Wait, didn\'t you say you came here on a ship? Why are we bothering with this whole dimention hopping thing?']],
+    6: ['Strange Voice2', ['I did come *here* on a ship, it\'s just that it was another *here* in another Branch. Our ship is still docked in that Branch.']],
+    7: ['Claire', ['I\'m not sure I\'m following. How did you get here to begin with if the machine isn\'t receaving enough power?']],
+    8: ['Strange Voice2', ['*That* version of the machine *was* receaving enough power. *This* version *isn\'t*.']], 
+    9: ['Claire', ['Ok, so we hop to the next dimention or whatever, grab the keycard, and then blast this machine with power from the ship\'s core?', 'This all sounds absolutly insaine, but I\'m waaaaay past the point of caring.']],
+    10: ['Strange Voice2', ['Yep, that\'s pretty much sums it up. I\'ll start searching for viable Branches while you work on restoring power to the machine.']]
   },
   A10: {
-    1: ['Claire', ['So just to be clear, you\'re sure this isn\'t going to turn me into a ghost or anything, right?']],
-    2: ['Strange Voice', ['The teleporter uses the same principle as the warp pads you\'ve been using. Just think of it as their long-distance counterpart.']],
-    3: ['Claire', ['You say that like it\'s no big deal.', 'I mean, what *is* the deal with those pads? Did I just vaperize a few dozen copies of myself to complete some dumb puzzle?']],
+    1: ['Strange Voice2', ['Ready?']],    
+    1: ['Claire', ['Oh man. Are you sure this is safe?']],
+    2: ['Strange Voice2', ['Hey, what did I say about keeping you safe and sound?', 'The teleporter uses the same principle as the warp pads you\'ve been using. Just think of it as their long-distance counterpart.']],
+    3: ['Claire', ['You say that like it\'s no big deal!', 'I mean, what *is* the deal with those pads? Did I just anhihilate a few dozen copies of myself to complete some dumb puzzle?']],
     4: ['Strange Voice', ['Gotta go! Bye!']]
   },
   A11: {
-    1: ['Strange Voice', ['You made it!']],
-    2: ['Claire', ['WHAT. THE. HELL. WAS. THAT.']],
-    3: ['Strange Voice', ['Oh yeah, did I forget to mention that humans have been reported to experence some weird side effects during the process?', 'Nothing major, just dizziness, halucinasions, and maybe a few small irreversable changes to their relationship with the very fabric of reality.']],
-    4: ['Claire', ['...', '....', '.....']],
-    5: ['Strange Voice', ['Hey, why don\'t we go check out that block?']]
+    1: ['Strange Voice2', ['Well, how was your first time?']],
+    2: ['Claire', ['What the hell was that?', 'I started out in this weird... place. And I saw... myself?', 'I finally started to remember something, but it felt almost like I was intruding in a memory belonging to someone else.']],
+    3: ['Strange Voice2', ['Ummm, sorry. I really don\'t know.', 'Most people just end up throwing up afterwards.']],
+    4: ['Claire', ['...']],
+    5: ['Strange Voice2', ['Heeeey, why don\'t we go check out that block?']]
   },
   A12: {
-    1: ['Strange Voice', ['Got it! It looks like we can\'t go any further in this Branch, but it\'s easy enough to go back to the one we came from.', 'I\'ll go on ahead and get things ready.']]
+    1: ['Strange Voice2', ['Got it! It looks like we can\'t go any further in this Branch, but it\'s easy enough to go back to the one we came from.', 'I\'ll go on ahead and get things ready.']]
   },
   A13: {
-    1: ['Claire', ['Well, let\'s get this over with. Maybe I\'ll come out the other end with the ability to shoot lazers from my eyes or the ability to punch ghosts.']]
+    1: ['Claire', ['Well, let\'s get this over with.']]
   },
   A14: {
-    1: ['Claire', ['Ugg, somehow I feel even worse than last time.', 'Hey ghost, what\'s the deal? Last I checked, the walls of our original Branch wern\'t covered in throbbing tenticles.', 'Ghost?']]
+    1: ['Claire', ['Ugg, somehow I feel even worse than last time.', 'Hey ***, what\'s the deal? Last I checked, the walls of our original Branch wern\'t covered in throbbing tenticles.', '***?', '...']],
+    2: ['Strange Voice3', ['They\'ve abandoned you. Just like everyone always does.', 'Did you really think this time would be any different?']],
+    3: ['Claire', ['You again.', 'Did you send me here?']],
+    4: ['Strange Voice3', ['No. I told you before, I only want what\'s best for you.', 'What\'s best for *us*.', 'As for who I am, I think you already know.', 'No, it\'s more than that. I *know* you already know.', 'Anything I know, *we* know.']],
+    3: ['Claire', ['So... you\'re just a haucination?']],
+    3: ['Strange Voice3', ['No more than you are.', 'We\'re running on the same hardware, that\'s all.', 'I\'ve always been here, it seems like this environmnet just draws me out more than usual.']],
+    3: ['Claire', ['If that\'s the case, why don\'t *you* get us out of here?']],
+    3: ['Strange Voice3', ['Oh, I will. Just like I\'ve always gotten you out of the various messes you\'ve gotten yourself into.', 'Not that I ever get any thanks for it.', 'It\'s always "shut up!" or "you aren\'t real!".']],
+    3: ['Claire', ['What the hell am I doing?', "I need to pull myself together and get out of here."]],
+    3: ['Strange Voice3', ['Ignoring me won\'t make me go away.', 'It never has and never will.', 'The drinking, the reckless behavior, and that stunt you pulled that got us into this mess in the first place...']],
+    3: ['Claire', ['I\'m not listening to you.']],
+    3: ['Claire', ['Claire. I\'m not your enemy.', 'I\'m not some "split personaity" or whatever pop-sci box you\'re trying to put me in. We\'re smarter than that, even though you play dumb to protect yourself.', 'I\'m what you could be.']],
+    3: ['Strange Voice3', ['I don\'t know any more than you do, for obvious reasons.']],
+    5: ['Claire', ['So what, is this all some sort of mental breakdown on my part?']],
+    6: ['Strange Voice3', ['Come on now, we both know you aren\'t nearly creative to come up with all the sci-fi crap.', '']],
+  },
+  A15: {
+    1: ['Claire', ['Hell yeah! Take that!']],
+    2: ['Strange Voice3', ['Claire, we need to get out of here *now*.']],
+    3: ['Claire', ['What, why? I totally kicked that thing\'s ass.']],
+    4: ['Strange Voice3', ['Just go. Head back to the machine.']],
+  },
+  A16: {
+    1: ['Strange Voice3', ['We\'re too late.']],
+  },
+  A17: {
+    1: ['Armored Man', ['You... You shouldn\'t be here!']],
+    2: ['Claire', ['Umm, hello?']],
+    3: ['Armored Man', ['You shouldn\'t be alive.']],
+    4: ['Strange Voice3', ['Run.']],
+    5: ['Armored Man', ['Don\'t try it.', 'I\'m not going to hurt you, but you need return to your dreamless sleep.', 'The longer you remain in this state...']],
+    6: ['Strange Voice3', ['Don\'t listen to him.']],
+    7: ['Claire', ['"This state"? You mean alive?!', '"Not going to hurt me?"', 'No way I\'m going back into that thing!']],
+    8: ['Armored Man', ['You\'re a danger to yourself and others. Your very existance is ticking time bomb!', 'What the...']],
+  },
+  A18: {
+    1: ['Strange Voice2', ['You\'re okay!', 'What the hell happened?']],
+    2: ['Claire', ['Umm, I ended up in some meat dimention, then I fought a giant eyeball sac, then some guy who looked like a knight or something tried to capture me...']],
+    3: ['Strange Voice2', ['Wait. Knight guy? What did he look like?']],
+    4: ['Claire', ['I don\'t know, it was kind of dark. Big sword. Blond hair. Enormous shoulder pads.', 'Ha, ha, guess I found my prince. Too bad he wanted to put me back to sleep instead.']],
+    5: ['Strange Voice2', ['...']],
+    6: ['Claire', ['Hey, are you okay?']],
+    7: ['Strange Voice2', ['Oh yeah, of course. Don\'t worry about it.', 'We should head over to the core now that we have the keycard.']],
+    8: ['', ['**** joined you! Again.']],
   },
 
-}
+  A19: {
+    1: ['Strange Voice2', ['It looks like only one of us will be able to go on ahead.', 'Stay here, I\'ll handle it.']],
+    2: ['Claire', ['Wait! I don\'t think that\'s a good idea.', 'I can\'t shake this this feeling that this is something I need to do.']],
+    3: ['Strange Voice2', ['That place is super dangerous!', 'How will you even know what to do?']],
+    4: ['Claire', ['You and Grant can talk me through it.', 'Just trust me on this.', 'I don\'t know why, but I\'ve been getting these weird preninations since I went through that portal.']],
+    5: ['Strange Voice2', ['Okay. Just don\'t do anything stupid.']],
+  },
 
+  A20: {
+    1: ['Strange Voice2', ['How many blond swordweielding knights capable of interdimentional travel are there?', 'It had to of been *him*.']],
+    2: ['Strange Voice1', ['And she was certain that he was specificaly after her?']],
+    3: ['Strange Voice2', ['Yeah...']],
+    4: ['Strange Voice1', ['***, I know you aren\'t going to be happy about this, but you know that we can\'t handle this type of heat.', 'That guy. He\'s Lucy\'s god damn executioner.']],
+    5: ['Strange Voice2', ['I...']],
+    6: ['Strange Voice1', ['Listen, I\'ll make it easy for you.', 'Come back to this Branch with the girl and there won\'t be a ship waiting for you.']],
+    7: ['Strange Voice2', ['I promised her...']],
+    8: ['Strange Voice1', ['Oh come on, we both know you\'ve made more promises to more girls then there are stars in the sky.']],
+    9: ['Strange Voice2', ['This isn\'t the same thing!', 'She was scared. I promised I wouldn\'t let anything happen to her until the job was comeplete.']],
+    10: ['Strange Voice1', ['Than consider it complete.', 'I\'ve said my piece.', '****, we many not always see eye-to-eye, but you\'re still my friend. Don\'t throw your life away over this.']],
+    11: ['Strange Voice2', ['...']],
+  },
+
+  A21: {
+    1: ['Strange Voice2', ['...Hey.']],
+    2: ['Claire', ['Umm, hey.']],
+    3: ['Strange Voice2', ['...']],
+    4: ['Claire', ['...']],
+    5: ['Strange Voice2', ['The machine should be working now. Lets get out of here.']],
+    6: ['', ['**** joined you.']],
+  },
+
+  A22: {
+    1: ['Claire', ['****, listen, it\'s okay.', 'I heard your conversation. You\'ve done enough.', 'This has been... kind of fun.', 'I mean, I should be dead. I was lucky enough to get a few more hours, that\'s more then most people get.']],
+    2: ['Strange Voice2', ['That\'s BS and you know it.', 'Don\'t pretend you\'re okay with this. I mean, you can\'t *really* not care whether you live or die.']],
+    6: ['Strange Voice3', ['Your life is nothing but a prop in her stage drama.']],
+    3: ['Claire', ['You don\'t know anything about me.']],
+    6: ['Strange Voice3', ['I know *everything* about you.']],
+    4: ['Claire', ['Do you want to know what the last thing I remember before I woke up here!?!']],
+    6: ['Strange Voice3', ['I know what it was.']],
+    7: ['Armored Man', ['Sorry, am I interupting something?']]
+  },
+
+  A22: {
+    1: ['Armored Man', ['You, with the scarf. I suspect that you already know who I am.']],
+    2: ['Strange Voice2', ['Hmmm... now that you ment-t-t-ion it, isn\'t you\'re na-a-ame Blame or something?', 'You\'re Lucy\'s gardener, right?']],
+    3: ['Blame?', ['I\'m not interested in playing games.', 'I have no quarel with you, give me the girl and sware that you\'ll never speak of this again, and I\'ll let you walk away.', 'You\'d be one of the very few who came face-to-face with Blaine the Executioner and lived to tell the tale.', 'Certainly that would earn you no shortage of acalades in whatever sorred circles you frequent']],
+    4: ['Claire', ['I\'ll go with you.', 'Leave her out of it']],
+    5: ['Blaine', ['Well then, I\'m glad that we were able to settle things in a civilized manor.', 'Come Claire, let\'s be on our way.']],
+    6: ['Strange Voice3', ['He can\'t even bring himself to look at you.', 'That makes two of us.']],
+    7: ['Strange Voice2', ['No.']],
+    8: ['Armored Man', ['Excuse me?', 'I belive that this matter has already been settled between the relevent parties.']],
+    9: ['Strange Voice2', ['Claire. You\'re right, I don\'t know what you\'ve been through.', 'I\'m in no position to speak on your behalf or tell you what to do with your second chance at life.', 'This is about what I\'m going to do with *my* life.', 'Blaine. You want her you go through me. This isn\'t negotiable.']],
+    10: ['Claire', ['You idiot! Why are you doing this?!']],
+    11: ['Strange Voice2', ['I don\'t take kindly to being told what to do by ren-fair pricks with boradsword sized sticks up their asses.', 'Come on blondie, let\'s rock!']],
+    12: ['Armored Man', ['Very well, if you insist.']],
+  },
+
+  A23: {
+    6: ['Strange Voice3', ['TEAR HIM APART']],
+  },
+}
+ 
 export const flavorText = {
   keyCard1: ['You found a keycard!', 'It\'s labeled: "Security Clearance: Level 1". Hopefully it will at least get you into the lunchroom, you\'re starving.'],
   keyCard2: ['You found a keycard!', 'It\'s labeled: "Security Clearance: Level 2". Hopefully it will at least get you into the lunchroom, you\'re starving.'],

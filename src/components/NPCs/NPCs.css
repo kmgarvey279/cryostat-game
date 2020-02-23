@@ -2,7 +2,6 @@ div#npc{
     z-index: 200;
     position: absolute;
     bottom: 15px;
-    right: -13px;
+    right: -12px;
     break-inside: avoid;
-    opacity: 0.7;
   }

@@ -21,9 +21,13 @@ class TextBoxes extends React.Component {
     //get paragraph and speaker (if applicable)
     if (this.props.text.activeTextType == 'dialogue') {
       activeSpeaker = textConsts.dialogue[this.props.text.activeText][this.props.text.paragraph][0];
-      if(activeSpeaker === 'Strange Voice') {
+      if(activeSpeaker === 'Strange Voice 1') {
         speakerColor = 'ghost-color';
-      } else if (activeSpeaker === 'Confused Girl' || activeSpeaker === 'Aurora' || activeSpeaker === 'Claire') {
+      } else if(activeSpeaker === 'Strange Voice 2') {
+          speakerColor = 'ghost-color';
+      } else if(activeSpeaker === 'Strange Voice 3') {
+        speakerColor = 'dark-color';
+      } else if (activeSpeaker === 'Confused Girl' || activeSpeaker === 'SB' || activeSpeaker === 'Claire') {
         speakerColor = 'claire-color';
       };
       paragraphToRender = textConsts.dialogue[this.props.text.activeText][this.props.text.paragraph][1];

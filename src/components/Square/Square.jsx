@@ -22,8 +22,6 @@ class Square extends React.Component{
       return <div>{<img id="alert" src={alert} weight="50" height="50" />}</div>
     } else if (this.props.value == 'D') {
       return <Door content={this.props.content} doors={this.props.doors}/>
-    } else if (this.props.npcs.location === this.props.squareId) {
-      return <NPCs npcs={this.props.npcs} />
     } else if (this.props.value == '$') {
       return <Item content={this.props.content}/>
     } else if (this.props.value == 'L') {
@@ -83,6 +81,17 @@ class Square extends React.Component{
     };
   }
 
+  getNPC(){
+    let result;
+    Object.keys(this.props.npcs).forEach(name => {
+      let thisNPC = this.props.npcs[name];
+        if(thisNPC.location === this.props.squareId){
+          result = <NPCs npc={thisNPC}/>  
+        };
+    });
+    return result;
+  }
+
   render() {
     if(this.props.game.lights === 'on'){
       return (
@@ -90,6 +99,7 @@ class Square extends React.Component{
             {this.getOtherContent()}
             <Sprite sprite={this.props.sprite} player={this.props.player} boss={this.props.boss} squareId={this.props.squareId} transition={this.props.transition} squareValue={this.props.value}/>
             {this.getClone()}
+            {this.getNPC()}
             {this.getTile()}
         </div>
       );
