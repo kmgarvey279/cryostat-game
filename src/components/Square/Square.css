@@ -142,3 +142,110 @@ div#explosion {
   break-inside: avoid;
 }
 
+.shadow-player {
+  height: 20px;
+  width: 30px;
+  border-radius: 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 13px;
+  bottom: 20px;
+}
+
+.shadow-enemy {
+  height: 20px;
+  width: 45px;
+  border-radius: 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 3px;
+  bottom: 25px;
+}
+
+.shadow-other {
+  height: 20px;
+  width: 45px;
+  border-radius: 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 3px;
+  bottom: 20px;
+}
+
+.shadow-long {
+  height: 20px;
+  width: 95px;
+  border-radius: 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 3px;
+  bottom: 25px;
+}
+
+.shadow-last {
+  height: 20px;
+  width: 50px;
+  border-radius: 0 12px 12px 0;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 3px;
+  bottom: 20px;
+}
+
+.shadow-first {
+  height: 20px;
+  width: 45px;
+  border-radius: 12px 0 0 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 3px;
+  bottom: 20px;
+}
+
+.big-shadow-first {
+  height: 50px;
+  width: 45px;
+  border-radius: 0 0 0 50px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 3px;
+  bottom: 20px;
+}
+
+.big-shadow-mid {
+  height: 20px;
+  width: 55px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 0;
+  bottom: 20px;
+}
+
+.big-shadow-last {
+  height: 50px;
+  width: 45px;
+  border-radius: 0 0 50px 0;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 3px;
+  bottom: 20px;
+}
+

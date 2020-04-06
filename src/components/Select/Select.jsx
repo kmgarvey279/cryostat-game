@@ -36,34 +36,6 @@ function Select(props){
     copyFile = "RETURN TO FILE SELECT";
   };
 
-  let branchEnter;
-  let branchEx;
-  if (props.menu.selectedOption == 1) {
-    branchEnter = <img id="branch" src={branch1} width="500" height="300"/>;
-    if(props.menu.selectedMenu == 'delete') {
-      branchEx = <img id="branch-exit" src={branchDelete1} width="500" height="300"/>;
-    } else {
-      branchEx = <img id="branch-exit" src={branchExit1} width="500" height="300"/>;
-    };
-  } else if (props.menu.selectedOption == 2) {
-    branchEnter = <img id="branch" src={branch2} width="500" height="300"/>;
-    if(props.menu.selectedMenu == 'delete') {
-      branchEx = <img id="branch-exit" src={branchDelete2} width="500" height="300"/>;
-    } else {
-      branchEx = <img id="branch-exit" src={branchExit2} width="500" height="300"/>;
-    };
-  } else if (props.menu.selectedOption == 3){
-    branchEnter = <img id="branch" src={branch3} width="500" height="300"/>;
-    if(props.menu.selectedMenu == 'delete') {
-      branchEx = <img id="branch-exit" src={branchDelete3} width="500" height="300"/>;
-    } else {
-      branchEx = <img id="branch-exit" src={branchExit3} width="500" height="300"/>;
-    };
-  } else {
-    branchEnter = <img id="branch" src={branch} width="500" height="300"/>;
-    branchEx = <img id="branch-exit" src={branchExit2} width="500" height="300"/>;
-  };
-
   function isSelected(option) {
     if (props.menu.selectedOption == option) {
       if(props.menu.selectedMenu == 'delete' && option < 4) {
@@ -84,8 +56,6 @@ function Select(props){
   return (
     <div className="select-wrap">
       <div className="selectScreen">
-        {branchEnter}
-        {branchEx}
         <h2>{heading}</h2>
         <div id={isSelected(1)+'File'} className="file">
           {fileOne}

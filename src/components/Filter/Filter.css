@@ -24,6 +24,18 @@ div#fire {
   left: 0px;
   }
 
+  div#powerOff {
+  opacity: 0.4;
+  background-color: midnightblue;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  overflow: none;
+  top: 0px;
+  left: 0px;
+  }
+
 div#spooky {
   opacity: 0.3;
   background-color: mediumorchid;

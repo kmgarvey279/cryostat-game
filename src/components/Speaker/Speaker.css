@@ -8,7 +8,7 @@
   position: relative;
   height: 25px;
   min-width: 50px;
-  width: 120px;
+  width: 180px;
   z-index: 2000;
   overflow:visible;
   top: -10px;
@@ -18,16 +18,16 @@
   background-color: darkorchid;
 }
 
-.ghost-speaker{
+.default-speaker{
   position: relative;
   height: 25px;
   min-width: 50px;
-  width: 120px;
+  width: 200px;
   z-index: 2000;
   overflow:visible;
   top: -10px;
   left: -10px;
   opacity: 0.9;
-  border: solid mediumseagreen;
-  background-color: seagreen;
+  background-color:yellow; 
+  border: 3px solid darkorange; 
 }

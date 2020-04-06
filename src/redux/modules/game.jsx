@@ -170,14 +170,14 @@ const initialState = {
   file: '',
   eye: 'none',
   lights: 'on',
-  filter: '',
+  filter: 'powerOff',
   destination: ''
 }
 
 //Reducer
 const gameReducer = (state = initialState, action) => {
   let newState;
-  const { gameToLoad, gameState, roomId, respawnPoint, previousRoomId, activeText, north, east, west, south, fire, skill, timers, filter, file, branch, eye, destination, lights} = action;
+  const { gameToLoad, gameState, roomId, respawnPoint, previousRoomId, activeText, north, east, west, south, fire,  skill, timers, filter, file, branch, eye, destination, lights} = action;
   switch (action.type) {
     case LOAD_GAME:
       return gameToLoad;

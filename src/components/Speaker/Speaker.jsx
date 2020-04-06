@@ -4,8 +4,8 @@ import './Speaker.css';
 
 function Speaker(props){
   let color;
-  if (props.speaker === 'Strange Voice'){
-    color = 'ghost-speaker';
+  if (props.speaker === 'Automated System'){
+    color = 'default-speaker';
   } else if (props.speaker === 'Confused Girl' || props.speaker === 'Aurora' || props.speaker === 'Claire'){
     color = 'claire-speaker';
   };

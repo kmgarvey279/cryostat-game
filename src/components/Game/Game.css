@@ -54,3 +54,7 @@ div#enter {
 div#exit {
   animation: fade 6000ms;
 }
+
+.empty {
+  filter: grayscale(.9);
+}

@@ -16,7 +16,7 @@ import coreSprite from '../../assets/images/room/core.gif';
 
 function GameUITop(props) {
   let weaponIcon;
-  if (props.player.currentWeapon === null) {
+  if (props.player.currentWeapon === null || props.game.gameState === 'postExitBranch' || props.game.gameState === 'exitBranch') {
     weaponIcon = '';
   } else if (props.player.currentWeapon === 'Taser') {
     weaponIcon = <img id="current-weapon" src={taserIcon} width="40" height="40"/>
@@ -28,7 +28,7 @@ function GameUITop(props) {
     entanglement = <span className="single-digit">{entanglement}</span>
   };
   let skillIcon = '';
-  if (props.player.currentSkill === null) {
+  if (props.player.currentSkill === null || props.game.gameState === 'postExitBranch' || props.game.gameState === 'exitBranch') {
     skillIcon = '';
   } else if (props.player.currentSkill === 'dash') {
     skillIcon = <img id="current-skill" src={collider} width="40" height="40"/>
@@ -38,6 +38,12 @@ function GameUITop(props) {
   let core = null;
   if(props.game.roomId === 9){
     core = <div className="core"><img id="current-skill" src={coreSprite} width="400" height="200"/></div>
+  }
+  let magic;
+  if(props.game.gameState === 'postExitBranch' || props.game.gameState === 'exitBranch'){
+    magic = 0;
+  } else {
+    magic = props.player.magic;
   }
   return (
     <div id="UI-wrap">
@@ -60,7 +66,7 @@ function GameUITop(props) {
         </div>
         <div id="entangle-bar">
           <label>
-            <span id="mp"><MPBar type={'entanglement'} magic={props.player.magic} /></span>
+            <span id="mp"><MPBar type={'entanglement'} magic={magic} /></span>
             <img id="particle-icon" src={particle} width="270" height="60"/>
             <span id="particle-percentage">{entanglement}</span>
           </label>

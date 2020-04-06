@@ -1,6 +1,8 @@
 div#item {
   z-index: 500;
   position: absolute;
+  bottom: 5px;
+  left: 2px;
 }
 
 .item-float {

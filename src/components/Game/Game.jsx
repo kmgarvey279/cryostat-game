@@ -35,7 +35,7 @@ function Game(props){
     );
   } else if (props.game.gameState === 'exitBranch') {
     return (
-      <div className="game" id="exit">
+      <div className="empty" id="exit">
         <GameUITop player={props.player} game={props.game}/>
         <div id='level'><CurrentRoom npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
       </div>
@@ -63,6 +63,13 @@ function Game(props){
   } else if (props.game.gameState === 'glitch') {
     return (
       <div className="glitch">
+        <GameUITop player={props.player} game={props.game}/>
+        <div id='level'><CurrentRoom npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
+      </div>
+    );
+  } else if (props.game.gameState === 'postExitBranch') {
+    return (
+      <div className="empty">
         <GameUITop player={props.player} game={props.game}/>
         <div id='level'><CurrentRoom npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
       </div>

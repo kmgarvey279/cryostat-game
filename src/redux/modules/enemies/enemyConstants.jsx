@@ -20,19 +20,19 @@ export const sprites = {
   //Blob Type
   slime: {
     move: {
-      north: <img id="player" src={blobNorth} width="80" height="80"/>,
-      east: <img id="player" src={blobEast} width="80" height="80"/>,
-      south: <img id="player" src={blobSouth} width="80" height="80"/>,
-      west: <img id="player" src={blobWest} width="80" height="80"/>
+      north: <img id="player" src={blobNorth} width="65" height="80"/>,
+      east: <img id="player" src={blobEast} width="65" height="80"/>,
+      south: <img id="player" src={blobSouth} width="65" height="80"/>,
+      west: <img id="player" src={blobWest} width="65" height="80"/>
     },
     knockback: {
-      north: <img id="player" src={blobNorth} width="40" height="40"/>,
-      east: <img id="player" src={blobEast} width="40" height="40"/>,
-      south: <img id="player" src={blobSouth} width="40" height="40"/>,
-      west: <img id="player" src={blobWest} width="40" height="40"/>
+      north: <img id="player" src={blobNorth} width="65" height="80"/>,
+      east: <img id="player" src={blobEast} width="65" height="80"/>,
+      south: <img id="player" src={blobSouth} width="65" height="80"/>,
+      west: <img id="player" src={blobWest} width="65" height="80"/>
     },
-    frozen: <img id="player" src={blobFrozen} width="90" height="90"/>,
-    shock: <img id="player" src={blobShock} width="90" height="90"/>
+    frozen: <img id="player" src={blobFrozen} width="65" height="80"/>,
+    shock: <img id="player" src={blobShock} width="65" height="80"/>
   },
   boss: {
     move: {

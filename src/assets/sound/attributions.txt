@@ -24,3 +24,4 @@ ping: pomodoro (freesound.org)
 ecofuture soneproject (freesound.org)
 game over: extenz (opengameart)
 charge: plasterbrain (freesound.org)
+glitch effect: TheMinkman

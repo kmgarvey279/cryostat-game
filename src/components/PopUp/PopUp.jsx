@@ -23,7 +23,7 @@ function PopUp(props){
         message = <span id="popup-text"> Press <span className="button-prompt">S</span> to use selected skill</span>
     } else if (props.popUp === 8) {
         message = <span id="popup-text"> Press <span className="button-prompt">X</span> to switch skills</span>
-    };
+    }
 
     if (props.popUp !== null){
         return (

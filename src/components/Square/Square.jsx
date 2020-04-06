@@ -92,7 +92,58 @@ class Square extends React.Component{
     return result;
   }
 
+  
+
   render() {
+    let objectArr = this.props.content.find(function(content) {
+      return content[0] == 'interact';
+    });
+    let objectType = null; 
+    if(objectArr !== undefined){
+      objectType = objectArr[1]; 
+    };
+
+    let hasBlock = this.props.content.find(function(content) {
+      return content[0] == 'block';
+    });
+    let block;
+    if(hasBlock !== undefined){
+      block = true;
+    } else {
+      block = false;
+    };
+
+    let hasSwitch = this.props.content.find(function(content) {
+      return content[0] == 'elecSwitch';
+    });
+    let elecSwitch;
+    if(hasSwitch !== undefined){
+      elecSwitch = true;
+    } else {
+      elecSwitch = false;
+    };
+
+    let shadow = null;
+    if(this.props.player.location == this.props.squareId) {
+      shadow = <div className="shadow-player"></div>
+    } else if(objectType === 'save'){
+      shadow = null;
+    } else if (this.props.value === 'E'){
+      shadow = <div className="shadow-enemy"></div>
+    } else if (this.props.value === 'T' && (objectType === 'tank2' || objectType === 'tankE2' || objectType === 'uglyBed2')){
+      shadow = <div className="shadow-last"></div>
+    } else if (this.props.value === 'T' && (objectType === 'tank1' || objectType === 'tankE1' || objectType === 'uglyBed1')){
+      shadow = <div className="shadow-first"></div>
+    } else if (this.props.value === 'T' && (objectType === 'bigTube1' || objectType === 'brokenTube1')){
+      shadow = <div className="big-shadow-first"></div>
+    } else if (this.props.value === 'T' && (objectType === 'bigTube2' || objectType === 'brokenTube2')){
+      shadow = <div className="big-shadow-mid"></div>
+    } else if (this.props.value === 'T' && (objectType === 'bigTube3' || objectType === 'brokenTube3')){
+      shadow = <div className="big-shadow-last"></div>
+    } else if((this.props.value === 'T' || block === true || elecSwitch === true) && this.props.sprite !== ""){
+      shadow = <div className="shadow-other"></div>
+    }
+
     if(this.props.game.lights === 'on'){
       return (
         <div id="square">
@@ -100,6 +151,7 @@ class Square extends React.Component{
             <Sprite sprite={this.props.sprite} player={this.props.player} boss={this.props.boss} squareId={this.props.squareId} transition={this.props.transition} squareValue={this.props.value}/>
             {this.getClone()}
             {this.getNPC()}
+            {shadow}
             {this.getTile()}
         </div>
       );

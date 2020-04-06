@@ -58,7 +58,7 @@ class GameOver extends React.Component {
       return (
         <div className="game-over">
           <h1>Branch Terminated</h1>
-          <div id='select'><h4>Return to Last Junction</h4></div>
+          <div id='select'><h4>Retry</h4></div>
           <div><h4>Embrace the Void</h4></div>
         </div>
       );

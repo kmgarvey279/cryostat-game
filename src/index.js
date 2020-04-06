@@ -15,7 +15,7 @@ store.subscribe(throttle(() => {
   saveData.saveState({
     saves: store.getState().saves
   });
-}, 5000));
+}, 10000));
 
 let unsubscribe = store.subscribe(() =>
   console.log(store.getState())

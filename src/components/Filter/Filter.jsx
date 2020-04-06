@@ -15,6 +15,11 @@ function Filter(props){
       <div id="fire">
       </div>
     );
+  } else if (props.filter === 'powerOff') { 
+    return (
+      <div id="powerOff">
+      </div>
+    );
   } else {
     return null;
   }
