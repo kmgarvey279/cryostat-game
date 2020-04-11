@@ -276,6 +276,7 @@ class App extends React.Component {
         );
         setTimeout(() => {
           this.props.dispatch(soundsModule.changeEffect('phone'));
+          this.props.dispatch(roomModule.updateSprite(70, roomConsts.sprites['phoneRing']))
           this.props.dispatch(roomModule.updateContent(71, [['interact', 'phone1']]));
         }, 8000);
       };
@@ -420,7 +421,7 @@ class App extends React.Component {
 
   handleAddingSquareToSpecialRoom(thisSquareId, squareArr) {
     let squareValue = squareArr[0];
-    let squareImage;
+    let squareImage = '';
     let content = [];
     let sprite = '';
     let transition = '';
@@ -433,9 +434,13 @@ class App extends React.Component {
       this.props.dispatch(playerModule.updatePlayerLocation(thisSquareId));
       squareImage = roomConsts.sprites['white'];
     } else if (squareValue == 'T'){
-      sprite = roomConsts.sprites['phone'];
-      content.push(['interact', squareArr[2]]);
-      squareImage = roomConsts.sprites['white'];
+      if(squareArr[1] === 'terminal'){
+        sprite = roomConsts.sprites['phone'];
+        content.push(['interact', squareArr[2]]);
+        squareImage = roomConsts.sprites['white'];
+      }
+    } else if (squareValue === 'BG'){
+      sprite = roomConsts.sprites['fireplace'];
     } else if (squareValue === '0') {
       squareImage = roomConsts.sprites['white'];
     };
@@ -1724,7 +1729,6 @@ class App extends React.Component {
   }
 
   fadeOut() {
-    this.props.dispatch(soundsModule.changeEffect('wind'));
     let fadeOutTimer = setTimeout(() =>
     {this.props.dispatch(gameModule.changeGameState("exitBranch"));
     this.props.dispatch(soundsModule.changeEffect('wind'));},
@@ -1825,6 +1829,7 @@ class App extends React.Component {
     };
     this.props.dispatch(gameModule.setBranch(newBranch));
     this.props.dispatch(playerModule.updatePlayerHealth(50));
+    this.props.dispatch(playerModule.updatePlayerLocation(''));
     this.nullAll();
     this.startGame();
   }

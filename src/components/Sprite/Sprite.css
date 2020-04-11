@@ -6,6 +6,13 @@ div.sprite{
   break-inside: avoid;
 }
 
+div.background-sprite{
+  z-index: 100;
+  position: absolute;
+  break-inside: avoid;
+  bottom: 5px;
+}
+
 div.dark-sprite{
   z-index: 100;
   position: absolute;

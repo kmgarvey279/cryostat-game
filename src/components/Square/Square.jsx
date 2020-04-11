@@ -60,7 +60,7 @@ class Square extends React.Component{
       } else {
         return <div className="tile">{roomConsts.sprites['spookyTile']}</div>
       };
-    } else if (this.props.game.roomId === 'special' && this.props.value !== 'V' && this.props.value !== 'W'){
+    } else if (this.props.game.roomId === 'special' && this.props.value !== 'V' && this.props.value !== 'W' && this.props.value !== 'BG'){
       return <div className="special-tile">{this.props.tileImage}</div>
     } else {
       return <div className="tile">{this.props.tileImage}</div>
@@ -91,8 +91,6 @@ class Square extends React.Component{
     });
     return result;
   }
-
-  
 
   render() {
     let objectArr = this.props.content.find(function(content) {
@@ -140,6 +138,10 @@ class Square extends React.Component{
       shadow = <div className="big-shadow-mid"></div>
     } else if (this.props.value === 'T' && (objectType === 'bigTube3' || objectType === 'brokenTube3')){
       shadow = <div className="big-shadow-last"></div>
+    } else if (this.props.value === 'T' && (objectType === 'theMachineOn' || objectType === 'theMachine')){
+      shadow = <div className="machine-shadow"></div>
+    } else if (this.props.value === 'T' && (objectType === 'phoneOff' || objectType === 'phoneOn')) {
+      shadow = <div className="shadow-small"></div>
     } else if((this.props.value === 'T' || block === true || elecSwitch === true) && this.props.sprite !== ""){
       shadow = <div className="shadow-other"></div>
     }

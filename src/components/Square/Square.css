@@ -178,6 +178,18 @@ div#explosion {
   bottom: 20px;
 }
 
+.machine-shadow {
+  height: 20px;
+  width: 486px;
+  border-radius: 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 3px;
+  bottom: 20px;
+}
+
 .shadow-long {
   height: 20px;
   width: 95px;
@@ -249,3 +261,26 @@ div#explosion {
   bottom: 20px;
 }
 
+.shadow-small {
+  height: 18px;
+  width: 32px;
+  border-radius: 12px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 7px;
+  bottom: 25px;
+}
+
+.firelight {
+  height: 18px;
+  width: 60px;
+  border-radius: 12px;
+  background-color: orange;
+  opacity: 30%;
+  z-index: 100;
+  position: absolute;
+  right: 20px;
+  bottom: -10px;
+}

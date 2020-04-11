@@ -18,6 +18,8 @@ function Sprite(props){
     };
   } else if (props.lights === 'off'){
     spriteClass = 'dark-sprite';
+  } else if (props.squareValue === 'BG'){
+    spriteClass = 'background-sprite';
   } else {
     spriteClass = 'sprite';
   };

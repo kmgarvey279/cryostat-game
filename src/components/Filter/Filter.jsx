@@ -20,6 +20,11 @@ function Filter(props){
       <div id="powerOff">
       </div>
     );
+  } else if (props.branch === 1){
+    return (
+      <div id="old">
+      </div>
+    );
   } else {
     return null;
   }

@@ -56,7 +56,6 @@ import bigTube3 from '../../../assets/images/room/big-tube3.png';
 import brokenTube1 from '../../../assets/images/room/broken-tube1.png';
 import brokenTube2 from '../../../assets/images/room/broken-tube2.png';
 import brokenTube3 from '../../../assets/images/room/broken-tube3.png';
-import phone from '../../../assets/images/room/phone.png';
 import save from '../../../assets/images/items/save.gif';
 
 import corner1 from '../../../assets/images/room/wall-corner1.png';
@@ -97,7 +96,11 @@ import connectNE2Spooky from '../../../assets/images/room/spooky-wall-connect-to
 import connectNW from '../../../assets/images/room/wall-connect-top-right.png';
 import connectNWSpooky from '../../../assets/images/room/spooky-wall-connect-top-right.png';
 import danger from '../../../assets/images/room/danger.gif';
+
 import white from '../../../assets/images/room/white.png';
+import phone from '../../../assets/images/room/phone.png';
+import phoneRing from '../../../assets/images/room/phone-ring.gif';
+import fireplace from '../../../assets/images/room/fireplace.gif';
 
 import block from '../../../assets/images/room/block.png';
 import blockWarp from '../../../assets/images/room/block-warp.gif';
@@ -191,7 +194,6 @@ const sprites = {
   lightningRed: <img src={lightningRed} width="65" height="70"/>,
   explosion: <img src={explosion} width="50" height="50"/>,
   tube: <img src={tube} width="65" height="70"/>,
-  phone: <img src={phone} width="70" height="70"/>,
   save: <img src={save} width="70" height="70"/>,
   bigTube1: <img src={bigTube1} width="80" height="200"/>,
   bigTube2: <img src={bigTube2} width="70" height="200"/>,
@@ -241,10 +243,13 @@ const sprites = {
   connectNE2Spooky: <img src={connectNE2Spooky} width="50" height="50"/>,
   connectNWSpooky: <img src={connectNWSpooky} width="50" height="50"/>,
   innerCorner4AltSpooky: <img src={innerCorner4AltSpooky} width="50" height="50"/>,
-
   danger: <img src={danger} width="50" height="50"/>,
-  white: <img src={white} width="50" height="50"/>,
 
+  white: <img src={white} width="50" height="50"/>,
+  phone: <img src={phone} width="70" height="70"/>,
+  phoneRing: <img src={phoneRing} width="70" height="70"/>,
+  fireplace: <img src={fireplace} width="80" height="60"/>,
+ 
 
   block:  <img src={block} width="60" height="60"/>,
   blockWarp:  <img src={blockWarp} width="60" height="60"/>,
