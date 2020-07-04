@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "36146ac3d3d5c8f908713202167722d7",
+    "revision": "b7dbc3af49a9bb5b28e647b541e1d08b",
     "url": "/cryostat-game/index.html"
   },
   {
-    "revision": "e62da761ffcc1c1d925f",
+    "revision": "d60c6b24a2269e7b7a42",
     "url": "/cryostat-game/static/css/main.5afc9ce2.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/cryostat-game/static/js/2.8848c720.chunk.js"
   },
   {
-    "revision": "e62da761ffcc1c1d925f",
-    "url": "/cryostat-game/static/js/main.4e93f02c.chunk.js"
+    "revision": "d60c6b24a2269e7b7a42",
+    "url": "/cryostat-game/static/js/main.22807299.chunk.js"
   },
   {
     "revision": "17c9514806da12048b91",
