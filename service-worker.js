@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/cryostat-game/precache-manifest.833e3b9231c0a96d1b0b07adddef28aa.js"
+  "/cryostat-game/precache-manifest.9eb89906947a891cbb090ebd383f43fb.js"
 );
 
 self.addEventListener('message', (event) => {
