@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b7dbc3af49a9bb5b28e647b541e1d08b",
+    "revision": "0ba2f7c76fccf5ca0b995a38551efd73",
     "url": "/cryostat-game/index.html"
   },
   {
-    "revision": "d60c6b24a2269e7b7a42",
-    "url": "/cryostat-game/static/css/main.5afc9ce2.chunk.css"
+    "revision": "22dbaeb8510e49077516",
+    "url": "/cryostat-game/static/css/main.4b63d7e9.chunk.css"
   },
   {
     "revision": "153cd5bce17f4b4560d8",
     "url": "/cryostat-game/static/js/2.8848c720.chunk.js"
   },
   {
-    "revision": "d60c6b24a2269e7b7a42",
+    "revision": "22dbaeb8510e49077516",
     "url": "/cryostat-game/static/js/main.22807299.chunk.js"
   },
   {

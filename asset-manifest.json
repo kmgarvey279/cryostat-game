@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/cryostat-game/static/css/main.5afc9ce2.chunk.css",
+    "main.css": "/cryostat-game/static/css/main.4b63d7e9.chunk.css",
     "main.js": "/cryostat-game/static/js/main.22807299.chunk.js",
     "main.js.map": "/cryostat-game/static/js/main.22807299.chunk.js.map",
     "runtime-main.js": "/cryostat-game/static/js/runtime-main.c48f8836.js",
@@ -8,9 +8,9 @@
     "static/js/2.8848c720.chunk.js": "/cryostat-game/static/js/2.8848c720.chunk.js",
     "static/js/2.8848c720.chunk.js.map": "/cryostat-game/static/js/2.8848c720.chunk.js.map",
     "index.html": "/cryostat-game/index.html",
-    "precache-manifest.cbb9a43fd44d07725db723a46a05a859.js": "/cryostat-game/precache-manifest.cbb9a43fd44d07725db723a46a05a859.js",
+    "precache-manifest.27106b340a1b322386fae2a97916f7df.js": "/cryostat-game/precache-manifest.27106b340a1b322386fae2a97916f7df.js",
     "service-worker.js": "/cryostat-game/service-worker.js",
-    "static/css/main.5afc9ce2.chunk.css.map": "/cryostat-game/static/css/main.5afc9ce2.chunk.css.map",
+    "static/css/main.4b63d7e9.chunk.css.map": "/cryostat-game/static/css/main.4b63d7e9.chunk.css.map",
     "static/media/Bluezone_BC0240_background_command_center_ambience_002.wav": "/cryostat-game/static/media/Bluezone_BC0240_background_command_center_ambience_002.f9f6383d.wav",
     "static/media/ChunkyExplosion.mp3": "/cryostat-game/static/media/ChunkyExplosion.3e0e9956.mp3",
     "static/media/Cold Silence.mp3": "/cryostat-game/static/media/Cold Silence.9fdea6ef.mp3",
@@ -161,7 +161,7 @@
   "entrypoints": [
     "static/js/runtime-main.c48f8836.js",
     "static/js/2.8848c720.chunk.js",
-    "static/css/main.5afc9ce2.chunk.css",
+    "static/css/main.4b63d7e9.chunk.css",
     "static/js/main.22807299.chunk.js"
   ]
 }
