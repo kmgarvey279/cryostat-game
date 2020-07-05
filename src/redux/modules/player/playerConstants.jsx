@@ -26,7 +26,10 @@ import playerPunchSouth from '../../../assets/images/player/playerPunchSouth.gif
 import playerPunchNorth from '../../../assets/images/player/playerPunchSouth.gif';
 import playerPunchEast from '../../../assets/images/player/playerPunchSouth.gif';
 import playerPunchWest from '../../../assets/images/player/playerPunchSouth.gif';
-import blast from '../../../assets/images/player/punch.gif';
+import playerSink from '../../../assets/images/player/playerSink.gif';
+import playerFall from '../../../assets/images/player/player-fall.png';
+import playerRecoverWater from '../../../assets/images/player/playerRecoverWater.gif';
+
 
 export const sprites = {
   stand: {
@@ -76,7 +79,8 @@ export const sprites = {
     south: <img id="player" src={playerParticleSouth} width="80" height="80"/>,
     west: <img id="player" src={playerParticleEast} width="80" height="80"/>
   },
-  blast: <img id="player" src={blast} width="80" height="80"/>,
-  fall: <img id="player" src={playerStandEast} width="80" height="80"/>,
-  victory: <img id="player" src={playerStandEast} width="80" height="80"/>
+  fall: <img id="player" src={playerFall} width="85" height="80"/>,
+  victory: <img id="player" src={playerStandEast} width="80" height="80"/>,
+  sink: <img id="player" src={playerSink} width="80" height="80"/>,
+  recoverWater: <img id="player" src={playerRecoverWater} width="80" height="80"/>
 };

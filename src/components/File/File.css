@@ -5,3 +5,20 @@
 #file-num {
     font-weight: bold;
 }
+
+.file-player{
+    float: right;
+    top: -48px;
+}
+
+.file-branch {
+    animation: branch 5s infinite;
+}
+
+@keyframes branch {
+    0%  {color: rgb(190, 12, 190);}
+    25%  {color: darkmagenta;}
+    50%  {color: rgb(190, 12, 190);}
+    75%  {color: darkmagenta;}
+    100% {color: rgb(190, 12, 190);}
+}

@@ -7,7 +7,6 @@ export const CHANGE_STATUS = "CHANGE_STATUS";
 
 //Action Creators
 export function saveGame(file, player, flags, game, maps, doors) {
-  alert('save1')
   return {
     type: SAVE_GAME,
     file: file,

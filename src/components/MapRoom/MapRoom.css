@@ -6,7 +6,7 @@ div#empty{
   min-width: 105px;
   max-height: 105px;
   min-height: 105px;
-  border: 2px solid;
+  border: none;
   vertical-align: top;
   display: inline-block;
   z-index: 2000;

@@ -33,9 +33,15 @@ div.special {
     color: lightgray;
   }
 
-div#text {
+div#text-options {
   position: relative;
-  margin-top: 5px;
+  margin-top: 20px;
+  font-size: 21px;
+}
+
+div#text{
+  position: relative;
+  margin-top: 20px;
   font-size: 21px;
 }
 

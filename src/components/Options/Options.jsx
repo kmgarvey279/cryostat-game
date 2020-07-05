@@ -22,7 +22,7 @@ class Options extends React.Component {
   }
 
   handleKeyPress(event){
-    if(event.keyCode === 38){
+    if(event.keyCode === 38 || event.keyCode === 40 || event.keyCode === 87 || event.keyCode === 83){
       this.cycleOption();
     } else if(event.keyCode === 40){
       this.cycleOption();

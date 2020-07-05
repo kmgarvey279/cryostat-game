@@ -20,6 +20,8 @@ export const SET_EYE = "SET_EYE";
 export const CHANGE_DESTINATION = "CHANGE_DESTINATION";
 export const TOGGLE_LIGHTS = "TOGGLE_LIGHTS";
 export const CHANGE_FILTER = "CHANGE_FILTER";
+export const TOGGLE_DISPLAY_BRANCH = "TOGGLE_DISPLAY_BRANCH";
+export const TOGGLE_SPECIAL = "TOGGLE_SPECIAL";
 
 
 //Action Creators
@@ -153,6 +155,20 @@ export function toggleSkill(newBool) {
     }
   }
 
+  export function toggleDisplayBranch(newBool) {
+    return {
+      type: TOGGLE_DISPLAY_BRANCH,
+      displayBranch: newBool
+    }
+  }
+
+  export function toggleSpecial(newBool) {
+    return {
+      type: TOGGLE_SPECIAL,
+      special: newBool
+    }
+  }
+
 //Initial State
 const initialState = {
   branch: 1,
@@ -171,13 +187,15 @@ const initialState = {
   eye: 'none',
   lights: 'on',
   filter: 'powerOff',
-  destination: ''
+  destination: '',
+  displayBranch: false,
+  special: false
 }
 
 //Reducer
 const gameReducer = (state = initialState, action) => {
   let newState;
-  const { gameToLoad, gameState, roomId, respawnPoint, previousRoomId, activeText, north, east, west, south, fire,  skill, timers, filter, file, branch, eye, destination, lights} = action;
+  const { gameToLoad, gameState, roomId, respawnPoint, previousRoomId, activeText, north, east, west, south, fire,  skill, timers, filter, file, branch, eye, destination, lights, displayBranch, special} = action;
   switch (action.type) {
     case LOAD_GAME:
       return gameToLoad;
@@ -269,6 +287,16 @@ const gameReducer = (state = initialState, action) => {
     case CHANGE_FILTER:
       newState = Object.assign({}, state, {
         filter: filter
+      });
+        return newState;
+    case TOGGLE_DISPLAY_BRANCH:
+      newState = Object.assign({}, state, {
+        displayBranch: displayBranch
+      });
+        return newState;
+    case TOGGLE_SPECIAL:
+      newState = Object.assign({}, state, {
+        special: special
       });
         return newState;
   default:

@@ -17,6 +17,8 @@ export const LOAD_PLAYER = "LOAD_PLAYER";
 export const UPDATE_ENTANGLEMENT = "UPDATE_ENTANGLEMENT";
 export const UPDATE_CLONE = "UPDATE_CLONE";
 export const SWITCH_ACTIVE_CLONE = "SWITCH_ACTIVE_CLONE";
+export const GET_MAP = "GET_MAP";
+export const UPGRADE_CRYOSTAT = "UPGRADE_CRYOSTAT";
 
 //Action Creators
 export function loadPlayer(playerToLoad) {
@@ -120,9 +122,21 @@ export function switchActiveClone(activeClone){
   }
 }
 
+export function getMap(){
+  return {
+    type: GET_MAP
+  }
+}
+
+export function upgradeCryostat(){
+  return {
+    type: UPGRADE_CRYOSTAT
+  }
+}
+
 //Initial State
 const initialState = {
-    name: '???',
+    name: 'Claire',
     health: 50,
     entanglement: 0,
     magic: 0,
@@ -137,7 +151,9 @@ const initialState = {
     newItem: null,
     cloneLocation: null,
     cloneDirection: null,
-    activeClone: 1
+    activeClone: 1,
+    hasMap: false,
+    cryostatUpgrade: false
   };
 
 //Reducer
@@ -222,6 +238,16 @@ export default function playerReducer(state = initialState, action){
     case SWITCH_ACTIVE_CLONE:
       newState = Object.assign({}, state, {
         activeClone: activeClone
+      });
+      return newState;
+    case GET_MAP:
+      newState = Object.assign({}, state, {
+        hasMap: true
+      });
+      return newState;
+    case UPGRADE_CRYOSTAT:
+      newState = Object.assign({}, state, {
+        upgradeCryostat: true
       });
       return newState;
     default:

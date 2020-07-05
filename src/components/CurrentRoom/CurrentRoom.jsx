@@ -20,6 +20,8 @@ function CurrentRoom(props){
           alert={square.alert}
           explosion={square.explosion}
           warning={square.warning}
+          shatter={square.shatter}
+          tileOverlay={square.tileOverlay}
           player={props.player}
           boss={props.boss}
           doors={props.doors}

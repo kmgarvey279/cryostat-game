@@ -10,7 +10,8 @@ div.background-sprite{
   z-index: 100;
   position: absolute;
   break-inside: avoid;
-  bottom: 5px;
+  bottom: 1px;
+  right: -39.9px;
 }
 
 div.dark-sprite{
@@ -58,16 +59,18 @@ div.hurt-boss-sprite {
   right: -8px;
   animation-name: hurt;
   animation-duration: 2s;
+  animation-iteration-count: infinite;
+  
 }
   @keyframes hurt {
-    0%  {filter: hue-rotate(150deg);}
-    15%  {filter: hue-rotate(0deg);}
-    30%  {filter: hue-rotate(150deg);}
-    45%  {filter: hue-rotate(0deg);}
-    60%  {filter: hue-rotate(150deg)}
-    70%  {filter: hue-rotate(0deg)}
-    85%  {filter: hue-rotate(150deg);}
-    100%  {filter: hue-rotate(0deg);}
+    0%  {right: -4px; filter: hue-rotate(150deg);}
+    15%  {right: -8px; filter: hue-rotate(0deg);}
+    30%  {right: -4px; filter: hue-rotate(150deg);}
+    45%  {right: -8px; filter: hue-rotate(0deg);}
+    60%  {right: -4px; filter: hue-rotate(150deg)}
+    70%  {right: -8px; filter: hue-rotate(0deg)}
+    85%  {right: -4px; filter: hue-rotate(150deg);}
+    100%  {right: -8px; filter: hue-rotate(0deg);}
   }
 
 div#fall{

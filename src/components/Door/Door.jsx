@@ -10,7 +10,32 @@ function Door(props){
   });
   let door = props.doors[doorArr[1]];
   if (door.direction == 'north') {
-    if (door.isLocked === true) {
+    if(door.isLocked === 'keyCard2') {
+      if(door.status === 'closed') {
+        return (
+          <div id="doorNorth">
+            {roomConsts.sprites['unlockedDoorNorthKey2']}
+          </div>
+        )
+      } else if (door.status === 'opening') {
+        return (
+          <div id="doorNorth">
+            {roomConsts.sprites['openingDoorNorthKey2']}
+          </div>
+        )
+      } else if (door.status === 'closing') {
+        return (
+          <div id="doorNorth">
+            {roomConsts.sprites['closingDoorNorthKey2']}
+          </div>
+        )
+      } else if (door.status === 'open') {
+        return (
+          <div id="doorNorth">
+          </div>
+        )
+      };
+    } else if (door.isLocked === true) {
       return (
         <div id="doorNorth">
           {roomConsts.sprites['lockedDoorNorth']}

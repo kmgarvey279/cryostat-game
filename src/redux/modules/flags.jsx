@@ -19,26 +19,8 @@ export function triggerFlag(flagId) {
 
 //Initial State
 const initialState = {
-  1: {triggered: false},
-  2: {triggered: false},
-  3: {triggered: false},
-  4: {triggered: false},
-  5: {triggered: false},
-  6: {triggered: false},
-  7: {triggered: false},
-  8: {triggered: false},
-  9: {triggered: false},
-  10: {triggered: false},
-  11: {triggered: false},
-  12: {triggered: false},
-  13: {triggered: false},
-  14: {triggered: false},
-  15: {triggered: false},
-  16: {triggered: false},
-  17: {triggered: false},
-  18: {triggered: false},
-  19: {triggered: false},
-  20: {triggered: false}
+  'bootUp1': {triggered: false},
+  'clone': {triggered: false},
 }
 
 //Reducer

@@ -10,6 +10,7 @@ import lightningRight from '../../assets/images/room/lightningRight.gif';
 import lavaCool from '../../assets/images/room/lava-cool.png';
 import * as playerConsts from '../../redux/modules/player/playerConstants';
 import * as roomConsts from '../../redux/modules/rooms/roomConstants';
+import * as itemConsts from '../../redux/modules/rooms/itemConstants';
 import './Square.css';
 
 class Square extends React.Component{
@@ -17,23 +18,37 @@ class Square extends React.Component{
     super(props);
   };
 
+  getExplosion() {
+    if (this.props.explosion === true && this.props.value === 'I') {
+      return <div id="explosion">{itemConsts.sprites['freeze']}</div>
+    } else if (this.props.explosion === true || (this.props.value == "~" && this.props.eye === 'hurt') || (this.props.value == "i" && this.props.eye === 'hurt')) {
+      return <div id="explosion">{roomConsts.sprites['explosion']}</div>
+    } else if (this.props.shatter === 'break') {
+      return <div id="explosion">{roomConsts.sprites['crystalShatter']}</div>
+    } else if (this.props.shatter === 'form') {
+      return <div id="implosion">{roomConsts.sprites['crystalShatter']}</div>
+    };
+  };
+
   getOtherContent() {
     if ((this.props.warning && this.props.player.location == this.props.squareId) || (this.props.alert == true && this.props.player.location == this.props.squareId)) {
-      return <div>{<img id="alert" src={alert} weight="50" height="50" />}</div>
+      return <div>{<img id="alert" src={alert} weight="45" height="45" />}</div>
     } else if (this.props.value == 'D') {
       return <Door content={this.props.content} doors={this.props.doors}/>
     } else if (this.props.value == '$') {
       return <Item content={this.props.content}/>
     } else if (this.props.value == 'L') {
       return <div id="lava"></div>
+    } else if (this.props.value === 'I'){
+      return <div id="goo">{roomConsts.sprites['ice']}</div>
     } else if (this.props.value == 'LC') {
       return <div id="lava-cool">{<img src={lavaCool} weight="50" height="50" />}</div>
     } else if (this.props.value == '%') {
       return <div id="lightning">{<img src={lightningRight} weight="50" height="50" />}</div>
     } else if (this.props.value == 'H') {
       return <div id="goo">{roomConsts.sprites['goo']}</div>
-    } else if (this.props.explosion === true || (this.props.value == "~" && this.props.eye === 'hurt') || (this.props.value == "i" && this.props.eye === 'hurt')) {
-      return <div id="explosion">{roomConsts.sprites['explosion']}</div>
+    } else if (this.props.tileOverlay === 'fragileBreak'){
+      return <div id="tile-overlay">{roomConsts.sprites['fragileBreak']}</div>
     };
   }
   
@@ -60,7 +75,9 @@ class Square extends React.Component{
       } else {
         return <div className="tile">{roomConsts.sprites['spookyTile']}</div>
       };
-    } else if (this.props.game.roomId === 'special' && this.props.value !== 'V' && this.props.value !== 'W' && this.props.value !== 'BG'){
+    } else if (this.props.game.special === true && this.props.value === 'W' && this.props.squareId !== 80){
+      return <div className="tile"><div className="gradient"></div>{this.props.tileImage}</div>
+    } else if (this.props.game.branch === 0 && this.props.value !== 'V' && this.props.value !== 'W' && this.props.value !== 'BG'){
       return <div className="special-tile">{this.props.tileImage}</div>
     } else {
       return <div className="tile">{this.props.tileImage}</div>
@@ -121,16 +138,28 @@ class Square extends React.Component{
       elecSwitch = false;
     };
 
+    let hasEnemy = this.props.content.find(function(content) {
+      return content[0] == 'enemy';
+    });
+    let enemy;
+    if(hasEnemy !== undefined){
+      enemy = true;
+    } else {
+      enemy = false;
+    };
+
     let shadow = null;
     if(this.props.player.location == this.props.squareId) {
       shadow = <div className="shadow-player"></div>
     } else if(objectType === 'save'){
       shadow = null;
-    } else if (this.props.value === 'E'){
+    } else if (enemy === true){
       shadow = <div className="shadow-enemy"></div>
-    } else if (this.props.value === 'T' && (objectType === 'tank2' || objectType === 'tankE2' || objectType === 'uglyBed2')){
+    } else if (this.props.value === 'T' && (objectType === 'tank2' || objectType === 'tankE2' || objectType === 'uglyBed2' || objectType === 'desk3')){
       shadow = <div className="shadow-last"></div>
-    } else if (this.props.value === 'T' && (objectType === 'tank1' || objectType === 'tankE1' || objectType === 'uglyBed1')){
+    } else if (this.props.value === 'T' && (objectType === 'desk2')){
+      shadow = <div className="shadow-mid"></div>
+    } else if (this.props.value === 'T' && (objectType === 'tank1' || objectType === 'tankE1' || objectType === 'uglyBed1' || objectType === 'desk1')){
       shadow = <div className="shadow-first"></div>
     } else if (this.props.value === 'T' && (objectType === 'bigTube1' || objectType === 'brokenTube1')){
       shadow = <div className="big-shadow-first"></div>
@@ -140,17 +169,20 @@ class Square extends React.Component{
       shadow = <div className="big-shadow-last"></div>
     } else if (this.props.value === 'T' && (objectType === 'theMachineOn' || objectType === 'theMachine')){
       shadow = <div className="machine-shadow"></div>
+    } else if (this.props.value === 'T' && (objectType === 'theMachineOn' || objectType === 'theMachine')){
+      shadow = <div className="machine-shadow"></div>
     } else if (this.props.value === 'T' && (objectType === 'phoneOff' || objectType === 'phoneOn')) {
       shadow = <div className="shadow-small"></div>
-    } else if((this.props.value === 'T' || block === true || elecSwitch === true) && this.props.sprite !== ""){
+    } else if((this.props.value === 'T' || block === true || elecSwitch === true || this.props.value === '<>') && this.props.sprite !== ""){
       shadow = <div className="shadow-other"></div>
     }
 
     if(this.props.game.lights === 'on'){
       return (
         <div id="square">
+            {this.getExplosion()}
             {this.getOtherContent()}
-            <Sprite sprite={this.props.sprite} player={this.props.player} boss={this.props.boss} squareId={this.props.squareId} transition={this.props.transition} squareValue={this.props.value}/>
+            <Sprite sprite={this.props.sprite} player={this.props.player} boss={this.props.boss} squareId={this.props.squareId} transition={this.props.transition} squareValue={this.props.value} branch={this.props.game.branch} special={this.props.game.special} roomId={this.props.game.roomId}/>
             {this.getClone()}
             {this.getNPC()}
             {shadow}
@@ -181,6 +213,8 @@ Square.propTypes = {
   doors: PropTypes.object,
   eye: PropTypes.string,
   explosion: PropTypes.bool,
+  shatter: PropTypes.string,
+  tileOverlay: PropTypes.string,
   warning: PropTypes.bool,
   npcs: PropTypes.object
 };

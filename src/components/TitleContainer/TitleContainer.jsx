@@ -29,13 +29,16 @@ class TitleContainer extends React.Component {
 
   handleKeyPress(event){
     if (this.props.menu.selectedMenu !== 'title'){
-      if(event.keyCode === 38){
+      if(event.keyCode === 38 || event.keyCode === 87){
+        event.preventDefault();
         this.cycleOption(-1);
-      } else if(event.keyCode === 40){
+      } else if(event.keyCode === 40 || event.keyCode === 83){
+        event.preventDefault();
         this.cycleOption(1);
       }
     }
     if (event.keyCode === 32 || event.keyCode === 13) {
+      event.preventDefault();
       this.selectOption();
     }
   };
@@ -68,20 +71,44 @@ class TitleContainer extends React.Component {
       if (selectNum <= 3) {
         //set the new file which will continue the game
         let nextFile;
-        if (this.props.game.file == 3) {
-          nextFile = 2;
+        if (this.props.game.branch === 1){
+          if (this.props.game.file == 3) {
+            nextFile = 2;
+          } else {
+            nextFile = this.props.game.file + 1;
+          };
         } else {
-          nextFile = this.props.game.file + 1;
+          nextFile = this.props.game.file;
         };
-        if (selectNum == this.props.game.file) {
-          this.props.handleLoad();
-          this.props.history.push('/game');
-        } else if (selectNum == nextFile) {
-          this.props.handleStart();
-          this.props.dispatch(menuModule.changeOption(1));
-          this.props.history.push('/game');
+        if (this.props.game.branch === 1){
+          if (selectNum == this.props.game.file) {
+            this.props.handleLoad();
+            this.props.history.push('/game');
+          } else if (selectNum == nextFile) {
+            this.props.handleStart();
+            this.props.dispatch(menuModule.changeOption(1));
+            this.props.history.push('/game');
+          } else {
+            this.props.dispatch(soundsModule.changeEffect('doorLocked'));
+          };
         } else {
-          this.props.dispatch(soundsModule.changeEffect('doorLocked'));
+          if (selectNum == nextFile) {
+            this.props.handleStart();
+            this.props.dispatch(menuModule.changeOption(1));
+            this.props.history.push('/game');
+          } else if(this.props.game.file === 3){
+              if (selectNum == 2) {
+                this.props.handleLoad();
+                this.props.history.push('/game');
+              };
+          } else {
+            if (selectNum == nextFile + 1) {
+                this.props.handleLoad();
+                this.props.history.push('/game');
+            } else {
+              this.props.dispatch(soundsModule.changeEffect('doorLocked')); 
+            }
+          };
         };
       } else if (selectNum == 4) {
         this.props.dispatch(soundsModule.changeEffect('doorLocked'));

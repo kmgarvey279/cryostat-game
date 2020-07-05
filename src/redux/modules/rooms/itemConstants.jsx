@@ -8,6 +8,7 @@ import keyCard1 from '../../../assets/images/items/key.png';
 import keyCard2 from '../../../assets/images/items/key2.png';
 import dash from '../../../assets/images/items/collider.png';
 import clone from '../../../assets/images/items/cloneOrb.gif';
+import freeze from '../../../assets/images/items/freeze.gif';
 import React from 'react';
 
 export const weapons = {
@@ -20,7 +21,7 @@ export const weapons = {
   },
   Cryostat: {
     name: 'Cryostat',
-    range: 3,
+    range: 1,
     sprites: {
       projectileNS: <img src={cryostat} width="60" height="60"/>,
       projectileEW: <img src={cryostat} width="60" height="60"/>
@@ -31,9 +32,11 @@ export const weapons = {
 export const sprites = {
   Taser: <img src={taserIcon} width="50" height="50"/>,
   Cryostat: <img src={cryoIcon} width="50" height="50"/>,
+  Cryostat2: <img src={cryoIcon} width="50" height="50"/>,
   health: <img src={health} width="50" height="50"/>,
   keyCard1: <img src={keyCard1} width="50" height="50"/>,
   keyCard2: <img src={keyCard2} width="50" height="50"/>,
   dash: <img src={dash} width="50" height="50"/>,
-  clone: <img src={clone} width="50" height="50"/>
+  clone: <img src={clone} width="50" height="50"/>,
+  freeze: <img src={freeze} width="50" height="50"/>
 }

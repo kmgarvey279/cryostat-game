@@ -10,6 +10,8 @@ export const UPDATE_TRANSITION = "UPDATE_TRANSITION";
 export const TOGGLE_ALERT = "TOGGLE_ALERT";
 export const SET_EXPLOSION = "SET_EXPLOSION";
 export const SET_WARNING = "SET_WARNING";
+export const SET_SHATTER = "SET_SHATTER";
+export const SET_TILE_OVERLAY = "SET_TILE_OVERLAY";
 
 //Action Creators
 export function nullRoom() {
@@ -17,7 +19,7 @@ export function nullRoom() {
     type: NULL_ROOM,
   };
 }
-export function addSquare(newSquareId, newValue, newContent, newTileImage, newSprite, newTransition, alertBool, explosion = null, warning = false) {
+export function addSquare(newSquareId, newValue, newContent, newTileImage, newSprite, newTransition, alertBool, explosion = null, warning = false, shatter = 'none', newTileOverlay = 'none') {
   return {
     type: ADD_SQUARE,
     squareId: newSquareId,
@@ -28,7 +30,9 @@ export function addSquare(newSquareId, newValue, newContent, newTileImage, newSp
     transition: newTransition,
     alert: alertBool,
     explosion: explosion,
-    warning: warning
+    warning: warning,
+    shatter: shatter,
+    tileOverlay: newTileOverlay
   };
 }
 export function updateContent(squareId, newContent) {
@@ -83,13 +87,30 @@ export function setWarning(squareId, warning){
     warning: warning
   }
 }
+
+export function setShatter(squareId, shatter){
+  return {
+    type: SET_SHATTER,
+    squareId: squareId,
+    shatter: shatter
+  }
+}
+
+export function setTileOverlay(squareId, tileOverlay){
+  return {
+    type: SET_TILE_OVERLAY,
+    squareId: squareId,
+    tileOverlay: tileOverlay
+  }
+}
+
 //Initial State
 
 //Reducer
 const roomReducer = (state = {}, action) => {
   let newState;
   let newSquare;
-  const { squareId, value, content, tileImage, sprite, transition, alert, explosion, warning} = action;
+  const { squareId, value, content, tileImage, sprite, transition, alert, explosion, warning, shatter, tileOverlay} = action;
 
   switch (action.type) {
     case NULL_ROOM:
@@ -106,7 +127,9 @@ const roomReducer = (state = {}, action) => {
             transition: transition,
             alert: alert,
             explosion: explosion,
-            warning: warning
+            warning: warning,
+            shatter: shatter,
+            tileOverlay: tileOverlay
           }
         });
         return newState;
@@ -152,6 +175,18 @@ const roomReducer = (state = {}, action) => {
           [squareId]: newSquare
         });
           return newState;
+    case SET_SHATTER:
+      newSquare = Object.assign({}, state[squareId], {shatter});
+      newState = Object.assign({}, state, {
+        [squareId]: newSquare
+      });
+        return newState;
+    case SET_TILE_OVERLAY:
+      newSquare = Object.assign({}, state[squareId], {tileOverlay});
+      newState = Object.assign({}, state, {
+        [squareId]: newSquare
+      });
+        return newState;
   default:
     return state;
   }

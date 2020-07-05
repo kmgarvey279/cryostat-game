@@ -17,9 +17,9 @@ function Game(props){
   if (props.game.gameState === 'paused') {
     return (
       <div className="game">
-        <Map maps={props.maps} game={props.game} />
-        <GameUITop player={props.player} game={props.game}/>
-        <div id='pause'><CurrentRoom boss={props.boss} npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div>
+        <Map maps={props.maps} game={props.game} player={props.player}/>
+        <div id='ui-pause'><GameUITop player={props.player} game={props.game}/></div>
+        <div id='pause'><div id='level'><CurrentRoom boss={props.boss} npcs={props.npcs} currentRoom={props.currentRoom} game={props.game} player={props.player} doors={props.doors}/></div></div>
       </div>
     );
   } else if (props.game.gameState === 'gameOver') {

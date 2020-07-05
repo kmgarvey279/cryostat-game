@@ -42,6 +42,8 @@ import merge from './krank_sounds/water/magnet_start.wav';
 import charge from './charging.ogg';
 import glitch from './glitch-computer.mp3';
 import noMP from './krank_sounds/industry/magnet_start.wav';
+import crack from './bfh1_glass_hit_01.ogg';
+import shatter from './bfh1_glass_falling_04.ogg';
 
 const effects = {
   shot: shot,
@@ -87,7 +89,9 @@ const effects = {
   charge: charge,
   win: win,
   glitch: glitch,
-  noMPL: noMP
+  noMPL: noMP,
+  crack: crack,
+  shatter: shatter
 };
 
 export default effects

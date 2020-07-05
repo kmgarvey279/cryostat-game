@@ -17,6 +17,13 @@ div#pause {
   background-color: black;
 }
 
+div#ui-pause {
+  position: relative;
+  z-index: 1000;
+  -webkit-filter: blur(5px);
+  filter: blur(5px) grayscale(100%) sepia(100%) hue-rotate(130deg);
+}
+
 div#loading {
   height: 600px;
   width: 600px;
@@ -53,8 +60,4 @@ div#enter {
 
 div#exit {
   animation: fade 6000ms;
-}
-
-.empty {
-  filter: grayscale(.9);
 }

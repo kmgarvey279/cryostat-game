@@ -1,6 +1,3 @@
-import React from 'react';
-import Item from '../../../components/Item/Item';
-
 export const roomNames = ['Makeshift Recovery Room', 'Storage Room', 'Warp Lab Access', 'Warp Lab', 'Cryo Lab', 'Shipping and Receiving Room', 'Xenobiology Lab', 'Core Access', 'The Core']
 
 export const examine = {
@@ -25,17 +22,36 @@ export const examine = {
   uglyBed2: {1: ['A truely hideous bed.', 'Just looking at it hurts your eyes.', 'You can only think of one person with such a gaudy sense of style...']},
   shelf: {1: ['A shelf filled with assorted junk.', 'Nothing worth taking.']},
   save: {1: ['The strange light seems to split into countless branching rays.'],
-         2: ['options', 'Would you like to save your game at this junction?', ['No','Yes']],
+         2: ['options', 'Save your game at this junction?', ['No','Yes']],
          3: ['results', ['Save Canceled.','Game Saved.']]
         },
+  resetPrompt: {1: ['options', 'Reset?', ['No','Yes']],
+                2: ['results', ['Reset Cancelled.','Resetting...']]},
+  desk1: {
+    1: ['A desk. The computer seems damaged irreparably.']
+  },
+  desk2: {
+    1: ['A desk. The computer seems damaged irreparably.']
+  },
+  desk3: {
+    1: ['A desk. The computer seems damaged irreparably.']
+  },
+  sign1: {1: ['Teleportation and Interdimentional Research','Please check in with security guard on duty.', 'In case of emergency, door locks can be manually overwritten using pressure switches.']},
+  sign2: {1: ['Teleportation and Interdimentional Research','Please check in with security guard on duty.']},
   terminalOff: {1: ['A computer terminal. It doesn\'t seem to be receaving any power.']},
   spookyTerminal: {1: ['A computer terminal. It doesn\'t seem to be receaving any power.']},
-  terminal1: {1: ['Logging in...'],
+  mapTerminal:{
+    1: ['Downloading map data for this floor...'],
+    2: ['Download successful.'],
+  },
+  terminal1:{
+              1: ['Logging in...'],
               2: ['options', 'Please input new door lock status:', ['Lock','Unlock']],
               3: ['results', ['Door Lock Engaged.','Door Lock Disengaged.']],
               4: ['Logging Out...']
             },
-  terminal2: {1: ['I can\'t believe the idiots I\'m trapped on this ship with.', 'Dr _____ continues to waste her time on Cryonic research. Not a single test subject has been successfully revitalized.', 'Quite the sick joke our predacessors played, freezing hundreds of people without the slightest idea of how to bring them back.'],
+  terminal12:{
+             1: ['I can\'t believe the idiots I\'m trapped on this ship with.', 'Dr _____ continues to waste her time on Cryonic research. Not a single test subject has been successfully revitalized.', 'Quite the sick joke our predacessors played, freezing hundreds of people without the slightest idea of how to bring them back.'],
              2: ['What\'s even the point of bringing them back to life if we can\'t find another habitable planet. The ship certainly can\'t support them.', 'Even with the curent skeleton crew alone, it we\'ll be out of supplies in a few decades at most.'],
              3: ['Our only chance of survival is to look beyond this narrow sliver of time and space into the wider expanse of all possible worlds, or rather, all possible futures.', 'I should be grateful to by benevolnet corperate overlords of the the resouces and briliant reseachers they\'ve given me. I certainly wouldn\'t have been so lucky were I selected to serve on one of the Earth Union\'s ships.'],
              4: ['On the other hand, someone like Dr ____ would have never been treated so charitably by the government buracrats.', 'There\'s vision and then there\'s... whatever madness it is that he\'s pursuing. It\'s an open secret at this point that that the frozen bodies of some of the less well-connected individuals who managed to bribe (or prehaps blackmail) themselves on this ship have been entering his lab, never to be seen again']
@@ -115,11 +131,14 @@ export const examine = {
   sync3: {1: ['A flood of strange but familiar memories and emotions came rushing in.'],
     2: ['Terror courses through your veins as you watch the facility ceilling collapse on top of you.'],
     3: ['Entanglement increased by 5%.']},
+  sync4: {1: ['A flood of strange but familiar memories and emotions came rushing in.'],
+  2: ['Terror courses through your veins as you watch the facility ceilling collapse on top of you.'],
+  3: ['Entanglement increased by 5%.']},
 }
  
 export const dialogue = {
   robotOff: {1: ['Strange Voice', ['Oh, good, you\'re finally awake! As I am sure you\'ve noticed, the door to this room is locked.', 'The terminal next to you should be able to override the lock.', 'The power\'s been cut, but I can temporarily restore it for you.']]},
-  A1: {
+  bootUp1: {
     1: ['Automated System', ['Human biosignature detected. Restoring secondary power systems.' ]]
   },
   A4: {
@@ -206,6 +225,7 @@ export const flavorText = {
   keyCard2: ['You found a keycard!', 'It\'s labeled: "Security Clearance: Level 2". Hopefully it will at least get you into the lunchroom, you\'re starving.'],
   Taser: ['You found the TASER GUN!', 'A weapon that fires bolts of electricty. It can also be used to temporarily charge ELECTRIC GENERATORS.'],
   Cryostat: ['You found the Cryostat!', 'A handhold device that uses the same quick-freeze technology utilized by facilty\'s the cryo chambers.'],
+  Cryostat2: ['You found the Cryostat 2.0!', 'Water will now remain frozen until you leave a room!'],
   dash: ['New SPECIAL SKILL unlocked: SUPERCOLLIDER', 'Use to quickly dash in any direction. MP will automatically regenerate over time.'],
   clone: ['New SPECIAL SKILL unlocked: SPOOKY ACTION AT A DISTANCE', 'Use to create a copy of yourself, activating it again will swap places with your copy. Max MP will be capped at 50% until you merge back with your copy.']
 }

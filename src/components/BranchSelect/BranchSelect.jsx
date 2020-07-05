@@ -16,43 +16,58 @@ function BranchSelect(props){
     let fileOne;
     let fileTwo;
     let fileThree;
-    let previous;
+    let grayScale;
     if (props.game.file == 1) {
+      if(props.game.branch === 1){
         fileOne = <File number={1} name={props.player.name} saves={props.saves} game={props.game} relation={'current'}/>;
         fileTwo = <File number={2} name={props.player.name} saves={props.saves} game={props.game} relation={'new'}/>;
         fileThree = <File number={3} name={props.player.name} saves={props.saves} game={props.game} relation={'null'}/>;
+        grayScale = 1;
+      } else {
+        fileOne = <File number={1} name={props.player.name} saves={props.saves} game={props.game} relation={'new'}/>;
+        fileTwo = <File number={2} name={props.player.name} saves={props.saves} game={props.game} relation={'current'}/>;
+        fileThree = <File number={3} name={props.player.name} saves={props.saves} game={props.game} relation={'null'}/>;
+        grayScale = 2;
+      };
     } else if (props.game.file == 2) {
+      if(props.game.branch === 1){
         fileOne = <File number={1} name={props.player.name} saves={props.saves} game={props.game} relation={'null'}/>;
         fileTwo = <File number={2} name={props.player.name} saves={props.saves} game={props.game} relation={'current'}/>;
         fileThree = <File number={3} name={props.player.name} saves={props.saves} game={props.game} relation={'new'}/>;
-    } else {
+        grayScale = 2;
+      } else {
         fileOne = <File number={1} name={props.player.name} saves={props.saves} game={props.game} relation={'null'}/>;
         fileTwo = <File number={2} name={props.player.name} saves={props.saves} game={props.game} relation={'new'}/>;
         fileThree = <File number={3} name={props.player.name} saves={props.saves} game={props.game} relation={'current'}/>;
-    };
+        grayScale = 3;
+      }
+    } else {
+      if(props.game.branch === 1){
+        fileOne = <File number={1} name={props.player.name} saves={props.saves} game={props.game} relation={'null'}/>;
+        fileTwo = <File number={2} name={props.player.name} saves={props.saves} game={props.game} relation={'current'}/>;
+        fileThree = <File number={3} name={props.player.name} saves={props.saves} game={props.game} relation={'new'}/>;
+        grayScale = 2;
+      } else {
+        fileOne = <File number={1} name={props.player.name} saves={props.saves} game={props.game} relation={'null'}/>;
+        fileTwo = <File number={2} name={props.player.name} saves={props.saves} game={props.game} relation={'new'}/>;
+        fileThree = <File number={3} name={props.player.name} saves={props.saves} game={props.game} relation={'current'}/>;
+        grayScale = 3;
+      }
+     };
 
   function isSelected(option) {
-    if (props.game.file === option && props.menu.selectedOption == option) {
+    if (grayScale === option && props.menu.selectedOption == option) {
       return "selectedVoid";
-    } else if (props.game.file === option) {
+    } else if (grayScale === option) {
       return "void";
     } else if (props.menu.selectedOption == option) {
       return "selected";
     } 
   }
 
-  function getPosition() {
-    if(props.game.file == 1) {
-      return "branch-connect-top"
-    } else {
-      return "branch-connect-bottom"
-    };
-  }
-
   return (
     <div className="select-wrap">
       <div className="selectScreen-2">
-        <img id={getPosition()} src={connect} width="300" height="100"/>
         <h2>Select a File</h2>
         <div id={isSelected(1)+'File'} className="file">
           {fileOne}

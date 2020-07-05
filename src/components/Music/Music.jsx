@@ -14,12 +14,24 @@ class Music extends React.Component {
 
   render() {
     let track = tracks[this.props.sounds.music];
+    let bgEffect;
+    let speed = 1;
+    let vol = 100;
+    if(this.props.game.branch === 2 && this.props.game.roomId === 3){
+      speed = 0.95;
+    };
+    if(this.props.game.gameState !== 'active'){
+      vol = 50;
+    }
     return (
       <div>
        <Sound
         url={track}
         loop={true}
+        playbackRate={speed}
+        volume={vol}
         playStatus={Sound.status.PLAYING}/>
+        {bgEffect}
       </div>
     );
   }
@@ -27,6 +39,7 @@ class Music extends React.Component {
 
 Music.propTypes = {
   sounds: PropTypes.object,
+  game: PropTypes.object
 }
 
 function mapDispatchToProps(dispatch) {

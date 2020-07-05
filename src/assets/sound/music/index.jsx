@@ -1,4 +1,4 @@
-import machine from './Hum.wav';
+import machine from './Bluezone_BC0240_background_command_center_ambience_002.wav';
 import bgm1 from './LunarHarvest.mp3';
 import boss from './OrbitalColossus.mp3';
 import bossIntro from './illegalityPoint.mp3';
@@ -9,6 +9,7 @@ import array from './Spacearray.ogg';
 import gameOver from './Piano Loop.wav';
 import ghost from './Space Sprinkles.mp3';
 import blaine from './For the king.ogg';
+import core from './Heart of Machine.mp3'
 
 
 

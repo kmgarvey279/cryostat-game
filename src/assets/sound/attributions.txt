@@ -3,6 +3,7 @@ menu click: NenadSimic (Open Game Art)
 shot: farfadet46 (Open Game Art)
 robot voice: DaGameKnower (Open Game Art)
 slam: Joth (Open Game Art)
+break: rubberduck (oga)
 whoosh:  INSTINCT Trailer Sound Effects library
 Space Dimensions (8bit/Retro Version), Space Boss Battle Theme, Space Sprinkles: Matthew Pablo (Open Game Art)
 wind: IgnasD (Open Game Art)

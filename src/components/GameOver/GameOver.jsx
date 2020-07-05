@@ -25,10 +25,13 @@ class GameOver extends React.Component {
 
   handleKeyPress(event){
     if(event.keyCode === 38){
+      event.preventDefault();
       this.cycleOption();
     } else if(event.keyCode === 40){
+      event.preventDefault();
       this.cycleOption();
     } else if (event.keyCode === 32 || event.keyCode === 13) {
+      event.preventDefault();
       this.selectOption();
     }
   }
@@ -79,6 +82,7 @@ GameOver.propTypes = {
   menu: PropTypes.object.isRequired,
   player: PropTypes.object.isRequired,
   handleStart: PropTypes.func.isRequired,
+  handleLoad: PropTypes.func.isRequired,
   nullAll: PropTypes.func.isRequired
 };
 

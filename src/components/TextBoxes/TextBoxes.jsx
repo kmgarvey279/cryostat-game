@@ -47,7 +47,7 @@ class TextBoxes extends React.Component {
       return (
         <div id="wrap">
           <div id="box-content">
-            <div id="text">{lineToRender}</div>
+            <div id="text-options">{lineToRender}</div>
             <Options text={this.props.text} menu={this.props.menu}/>
           </div>
         </div>

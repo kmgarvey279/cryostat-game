@@ -1,8 +1,8 @@
   @keyframes alert {
-  0%  {bottom: 120px; transform: scale(1.0);}
-  25%  {bottom: 130px; transform: scale(1.2);}
-  50%  {bottom: 120px; transform: scale(1.0);}
-  75%  {bottom: 130px; transform: scale(1.2);}
+  0%  {bottom: 110px; transform: scale(1.0);}
+  25%  {bottom: 120px; transform: scale(1.2);}
+  50%  {bottom: 110px; transform: scale(1.0);}
+  75%  {bottom: 120px; transform: scale(1.2);}
 }
 
 @keyframes heat {
@@ -23,21 +23,40 @@
 
 @keyframes explode {
   0%  {transform: scale(1.0); opacity: 1.0}
-  25%  {transform: scale(1.5); opacity: 0.8}
-  50%  {transform: scale(2.0); opacity: 0.6}
-  75%  {transform: scale(2.5); opacity: 0.4}
-  100%  {transform: scale(3.0); opacity: 0.2;}
+  25%  {transform: scale(1.2); opacity: 0.8}
+  50%  {transform: scale(1.4); opacity: 0.6}
+  75%  {transform: scale(1.8); opacity: 0.4}
+  100%  {transform: scale(2.0); opacity: 0.2;}
+}
+
+@keyframes implode {
+  0%  {transform: scale(2.0); opacity: 0.2}
+  25%  {transform: scale(1.8); opacity: 0.4}
+  50%  {transform: scale(1.4); opacity: 0.6}
+  75%  {transform: scale(1.2); opacity: 0.8}
+  100%  {transform: scale(1.0); opacity: 1.0;}
 }
 
 #alert{
   z-index: 500;
-  left: -2.9px;
+  left: 1px;
   position: absolute;
-  opacity: 0.8;
-  bottom: 120px;
+  opacity: 0.6;
+  bottom: 110px;
   animation-iteration-count:infinite;
   animation-name: alert;
   animation-duration: 2s;
+}
+
+.gradient {
+ position: absolute;
+ display: block;
+ height: 50px;
+ width: 50px;
+ z-index: 10;
+ top: -10px;
+ background: rgb(255,255,255);
+ background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 93%);
 }
 
 .warning {
@@ -106,6 +125,15 @@ div#goo {
   opacity: 0.8;
 }
 
+div#tile-overlay {
+  width: 50px;
+  height: 50px;
+  z-index: 10;
+  position: absolute;
+  display: block;
+  opacity: 1;
+}
+
 div#lightning {
   z-index: 500;
   position: absolute;
@@ -116,10 +144,20 @@ div#lightning {
 div#explosion {
   top: -10px;
   z-index: 500;
+  opacity: 0;
   position: absolute;
   display: block;
   animation-name: explode;
-  animation-duration: 1500ms;
+  animation-duration: 1200ms;
+}
+
+div#implosion {
+  top: -10px;
+  z-index: 500;
+  position: absolute;
+  display: block;
+  animation-name: implode;
+  animation-duration: 1200ms;
 }
 
 #clone2 {
@@ -174,7 +212,7 @@ div#explosion {
   opacity: 40%;
   z-index: 50;
   position: absolute;
-  right: 3px;
+  right: 2px;
   bottom: 20px;
 }
 
@@ -222,6 +260,18 @@ div#explosion {
   opacity: 40%;
   z-index: 50;
   position: absolute;
+  right: 3px;
+  bottom: 20px;
+}
+
+.shadow-mid {
+  height: 20px;
+  width: 45px;
+  background-color: black;
+  opacity: 40%;
+  z-index: 50;
+  position: absolute;
+  right: 0;
   right: 3px;
   bottom: 20px;
 }
@@ -274,13 +324,13 @@ div#explosion {
 }
 
 .firelight {
-  height: 18px;
+  height: 30px;
   width: 60px;
   border-radius: 12px;
   background-color: orange;
-  opacity: 30%;
+  opacity: 40%;
   z-index: 100;
   position: absolute;
-  right: 20px;
-  bottom: -10px;
+  top: -10px;
+  left: -10px;
 }

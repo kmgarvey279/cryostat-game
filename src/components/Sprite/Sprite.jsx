@@ -18,7 +18,7 @@ function Sprite(props){
     };
   } else if (props.lights === 'off'){
     spriteClass = 'dark-sprite';
-  } else if (props.squareValue === 'BG'){
+  } else if (props.roomId === 3 && props.squareId === 67 && props.special === true){
     spriteClass = 'background-sprite';
   } else {
     spriteClass = 'sprite';
@@ -36,7 +36,10 @@ Sprite.propTypes = {
   squareId: PropTypes.number,
   transition: PropTypes.string,
   squareValue: PropTypes.string,
-  player: PropTypes.object
+  player: PropTypes.object,
+  branch: PropTypes.number,
+  special: PropTypes.bool, 
+  roomId: PropTypes.number
 };
 
 export default Sprite;
